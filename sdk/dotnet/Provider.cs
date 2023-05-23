@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
+using Pulumi;
 
-namespace Pulumi.Octopusdeploy
+namespace PiersKarsenbarg.Octopusdeploy
 {
     /// <summary>
     /// The provider type for the octopusdeploy package. By default, resources use package-wide configuration

@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Immutable;
 
-namespace Pulumi.Octopusdeploy
+namespace PiersKarsenbarg.Octopusdeploy
 {
     public static class Config
     {

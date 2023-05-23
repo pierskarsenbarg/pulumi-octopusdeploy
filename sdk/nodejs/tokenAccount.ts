@@ -9,7 +9,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ * import * as octopusdeploy from "@pierskarsenbarg/octopusdeploy";
  *
  * const example = new octopusdeploy.TokenAccount("example", {token: "[token]"});
  * ```

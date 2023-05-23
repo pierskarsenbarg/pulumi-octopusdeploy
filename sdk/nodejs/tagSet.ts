@@ -11,7 +11,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ * import * as octopusdeploy from "@pierskarsenbarg/octopusdeploy";
  *
  * const example = new octopusdeploy.TagSet("example", {description: "Provides tenants with access to certain early access programs."});
  * // tags are distinct resources and associated with tag sets through tag_set_id

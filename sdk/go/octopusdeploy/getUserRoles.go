@@ -19,7 +19,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-octopusdeploy/sdk/go/octopusdeploy"
+//	"github.com/pierskarsenbarg/pulumi-octopusdeploy/sdk/go/octopusdeploy"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )

@@ -37,7 +37,7 @@ def readme():
         return "octopusdeploy Pulumi Package - Development Version"
 
 
-setup(name='pulumi_octopusdeploy',
+setup(name='pierskarsenbarg_pulumi_sdm',
       python_requires='>=3.7',
       version=VERSION,
       description="A Pulumi package for creating and managing octopusdeploy cloud resources.",
@@ -54,7 +54,7 @@ setup(name='pulumi_octopusdeploy',
       license='Apache-2.0',
       packages=find_packages(),
       package_data={
-          'pulumi_octopusdeploy': [
+          'pierskarsenbarg_pulumi_sdm': [
               'py.typed',
               'pulumi-plugin.json',
           ]

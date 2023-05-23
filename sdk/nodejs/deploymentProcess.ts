@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ * import * as octopusdeploy from "@pierskarsenbarg/octopusdeploy";
  *
  * // basic deployment process with 2 run a script steps
  * const example = new octopusdeploy.DeploymentProcess("example", {

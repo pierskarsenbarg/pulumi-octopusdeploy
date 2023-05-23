@@ -13,7 +13,7 @@ import * as utilities from "./utilities";
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
- * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ * import * as octopusdeploy from "@pierskarsenbarg/octopusdeploy";
  *
  * const k8s_target = new octopusdeploy.KubernetesClusterDeploymentTarget("k8s-target", {
  *     awsAccountAuthentication: {
