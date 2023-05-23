@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getTagSets(args?: GetTagSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetTagSetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getTagSets:getTagSets", {
         "ids": args.ids,
         "partialName": args.partialName,
@@ -79,9 +77,11 @@ export interface GetTagSetsResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing tag sets.
+ */
 export function getTagSetsOutput(args?: GetTagSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagSetsResult> {
-    return pulumi.output(args).apply(a => getTagSets(a, opts))
+    return pulumi.output(args).apply((a: any) => getTagSets(a, opts))
 }
 
 /**

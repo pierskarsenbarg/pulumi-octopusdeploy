@@ -29,13 +29,13 @@ import (
 //			_, err := octopusdeploy.NewEnvironment(ctx, "example", &octopusdeploy.EnvironmentArgs{
 //				AllowDynamicInfrastructure: pulumi.Bool(false),
 //				Description:                pulumi.String("An environment for the development team."),
-//				JiraExtensionSettings: &EnvironmentJiraExtensionSettingsArgs{
+//				JiraExtensionSettings: &octopusdeploy.EnvironmentJiraExtensionSettingsArgs{
 //					EnvironmentType: pulumi.String("unmapped"),
 //				},
-//				JiraServiceManagementExtensionSettings: &EnvironmentJiraServiceManagementExtensionSettingsArgs{
+//				JiraServiceManagementExtensionSettings: &octopusdeploy.EnvironmentJiraServiceManagementExtensionSettingsArgs{
 //					IsEnabled: pulumi.Bool(false),
 //				},
-//				ServicenowExtensionSettings: &EnvironmentServicenowExtensionSettingsArgs{
+//				ServicenowExtensionSettings: &octopusdeploy.EnvironmentServicenowExtensionSettingsArgs{
 //					IsEnabled: pulumi.Bool(false),
 //				},
 //				UseGuidedFailure: pulumi.Bool(false),

@@ -161,6 +161,10 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "aadUserCredentialPassword",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -191,7 +195,16 @@ namespace Pulumi.Octopusdeploy
         public Input<string>? AadCredentialType { get; set; }
 
         [Input("aadUserCredentialPassword")]
-        public Input<string>? AadUserCredentialPassword { get; set; }
+        private Input<string>? _aadUserCredentialPassword;
+        public Input<string>? AadUserCredentialPassword
+        {
+            get => _aadUserCredentialPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aadUserCredentialPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("aadUserCredentialUsername")]
         public Input<string>? AadUserCredentialUsername { get; set; }
@@ -338,7 +351,16 @@ namespace Pulumi.Octopusdeploy
         public Input<string>? AadCredentialType { get; set; }
 
         [Input("aadUserCredentialPassword")]
-        public Input<string>? AadUserCredentialPassword { get; set; }
+        private Input<string>? _aadUserCredentialPassword;
+        public Input<string>? AadUserCredentialPassword
+        {
+            get => _aadUserCredentialPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _aadUserCredentialPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("aadUserCredentialUsername")]
         public Input<string>? AadUserCredentialUsername { get; set; }

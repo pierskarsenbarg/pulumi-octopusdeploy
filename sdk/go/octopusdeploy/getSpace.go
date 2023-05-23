@@ -22,7 +22,7 @@ func LookupSpace(ctx *pulumi.Context, args *LookupSpaceArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getSpace.
 type LookupSpaceArgs struct {
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name string `pulumi:"name"`
 }
 
@@ -36,7 +36,7 @@ type LookupSpaceResult struct {
 	IsDefault bool `pulumi:"isDefault"`
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped bool `pulumi:"isTaskQueueStopped"`
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name string `pulumi:"name"`
 	// The unique slug of this space.
 	Slug string `pulumi:"slug"`
@@ -61,7 +61,7 @@ func LookupSpaceOutput(ctx *pulumi.Context, args LookupSpaceOutputArgs, opts ...
 
 // A collection of arguments for invoking getSpace.
 type LookupSpaceOutputArgs struct {
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -104,7 +104,7 @@ func (o LookupSpaceResultOutput) IsTaskQueueStopped() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupSpaceResult) bool { return v.IsTaskQueueStopped }).(pulumi.BoolOutput)
 }
 
-// The name of this resource.
+// The name of this resource, no more than 20 characters long
 func (o LookupSpaceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSpaceResult) string { return v.Name }).(pulumi.StringOutput)
 }

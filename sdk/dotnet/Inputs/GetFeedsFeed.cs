@@ -65,11 +65,17 @@ namespace Pulumi.Octopusdeploy.Inputs
             set => _packageAcquisitionLocationOptions = value;
         }
 
+        [Input("password", required: true)]
+        private string? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password", required: true)]
-        public string Password { get; set; } = null!;
+        public string? Password
+        {
+            get => _password;
+            set => _password = value;
+        }
 
         [Input("region", required: true)]
         public string Region { get; set; } = null!;
@@ -78,7 +84,12 @@ namespace Pulumi.Octopusdeploy.Inputs
         public string RegistryPath { get; set; } = null!;
 
         [Input("secretKey", required: true)]
-        public string SecretKey { get; set; } = null!;
+        private string? _secretKey;
+        public string? SecretKey
+        {
+            get => _secretKey;
+            set => _secretKey = value;
+        }
 
         /// <summary>
         /// The space ID associated with this resource.
@@ -86,11 +97,17 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("spaceId", required: true)]
         public string SpaceId { get; set; } = null!;
 
+        [Input("username", required: true)]
+        private string? _username;
+
         /// <summary>
         /// The username associated with this resource.
         /// </summary>
-        [Input("username", required: true)]
-        public string Username { get; set; } = null!;
+        public string? Username
+        {
+            get => _username;
+            set => _username = value;
+        }
 
         public GetFeedsFeedArgs()
         {

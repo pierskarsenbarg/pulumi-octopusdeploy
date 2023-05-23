@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetProjectGroups(ctx, &GetProjectGroupsArgs{
+//			_, err := octopusdeploy.GetProjectGroups(ctx, &octopusdeploy.GetProjectGroupsArgs{
 //				Ids: []string{
 //					"ProjectGroups-123",
 //					"ProjectGroups-321",

@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -33,7 +34,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetListeningTentacleDeploymentTargetsResult> InvokeAsync(GetListeningTentacleDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetListeningTentacleDeploymentTargetsResult>("octopusdeploy:index/getListeningTentacleDeploymentTargets:getListeningTentacleDeploymentTargets", args ?? new GetListeningTentacleDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetListeningTentacleDeploymentTargetsResult>("octopusdeploy:index/getListeningTentacleDeploymentTargets:getListeningTentacleDeploymentTargets", args ?? new GetListeningTentacleDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing listening tentacle deployment targets.
@@ -44,6 +45,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -57,7 +59,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetListeningTentacleDeploymentTargetsResult> Invoke(GetListeningTentacleDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetListeningTentacleDeploymentTargetsResult>("octopusdeploy:index/getListeningTentacleDeploymentTargets:getListeningTentacleDeploymentTargets", args ?? new GetListeningTentacleDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetListeningTentacleDeploymentTargetsResult>("octopusdeploy:index/getListeningTentacleDeploymentTargets:getListeningTentacleDeploymentTargets", args ?? new GetListeningTentacleDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

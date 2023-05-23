@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := octopusdeploy.NewKubernetesClusterDeploymentTarget(ctx, "k8s-target", &octopusdeploy.KubernetesClusterDeploymentTargetArgs{
-//				AwsAccountAuthentication: &KubernetesClusterDeploymentTargetAwsAccountAuthenticationArgs{
+//				AwsAccountAuthentication: &octopusdeploy.KubernetesClusterDeploymentTargetAwsAccountAuthenticationArgs{
 //					AccountId:   pulumi.String("Accounts-123"),
 //					ClusterName: pulumi.String("cluster-name"),
 //				},

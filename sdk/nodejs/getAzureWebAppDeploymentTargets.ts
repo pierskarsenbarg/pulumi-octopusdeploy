@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getAzureWebAppDeploymentTargets({
+ * const example = octopusdeploy.getAzureWebAppDeploymentTargets({
  *     healthStatuses: [
  *         "Healthy",
  *         "Unavailable",
@@ -26,16 +27,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getAzureWebAppDeploymentTargets(args?: GetAzureWebAppDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureWebAppDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getAzureWebAppDeploymentTargets:getAzureWebAppDeploymentTargets", {
         "azureWebAppDeploymentTargets": args.azureWebAppDeploymentTargets,
         "deploymentId": args.deploymentId,
@@ -190,9 +188,32 @@ export interface GetAzureWebAppDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing Azure web app deployment targets.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getAzureWebAppDeploymentTargets({
+ *     healthStatuses: [
+ *         "Healthy",
+ *         "Unavailable",
+ *     ],
+ *     ids: [
+ *         "Machines-123",
+ *         "Machines-321",
+ *     ],
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getAzureWebAppDeploymentTargetsOutput(args?: GetAzureWebAppDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureWebAppDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getAzureWebAppDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getAzureWebAppDeploymentTargets(a, opts))
 }
 
 /**

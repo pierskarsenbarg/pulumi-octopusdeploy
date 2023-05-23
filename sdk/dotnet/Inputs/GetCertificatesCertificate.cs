@@ -18,11 +18,17 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("archived", required: true)]
         public string Archived { get; set; } = null!;
 
+        [Input("certificateData", required: true)]
+        private string? _certificateData;
+
         /// <summary>
         /// The encoded data of the certificate.
         /// </summary>
-        [Input("certificateData", required: true)]
-        public string CertificateData { get; set; } = null!;
+        public string? CertificateData
+        {
+            get => _certificateData;
+            set => _certificateData = value;
+        }
 
         /// <summary>
         /// Specifies the archive file format used for storing cryptography objects in the certificate. Valid formats are `Der`, `Pem`, `Pkcs12`, or `Unknown`.
@@ -84,11 +90,17 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("notes", required: true)]
         public string Notes { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private string? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password", required: true)]
-        public string Password { get; set; } = null!;
+        public string? Password
+        {
+            get => _password;
+            set => _password = value;
+        }
 
         [Input("replacedBy", required: true)]
         public string ReplacedBy { get; set; } = null!;

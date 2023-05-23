@@ -16,6 +16,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -93,6 +94,11 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "password",
+                    "username",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -133,11 +139,21 @@ namespace Pulumi.Octopusdeploy
             set => _packageAcquisitionLocationOptions = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The space ID associated with this resource.
@@ -145,11 +161,21 @@ namespace Pulumi.Octopusdeploy
         [Input("spaceId")]
         public Input<string>? SpaceId { get; set; }
 
+        [Input("username")]
+        private Input<string>? _username;
+
         /// <summary>
         /// The username associated with this resource.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public HelmFeedArgs()
         {
@@ -176,11 +202,21 @@ namespace Pulumi.Octopusdeploy
             set => _packageAcquisitionLocationOptions = value;
         }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The space ID associated with this resource.
@@ -188,11 +224,21 @@ namespace Pulumi.Octopusdeploy
         [Input("spaceId")]
         public Input<string>? SpaceId { get; set; }
 
+        [Input("username")]
+        private Input<string>? _username;
+
         /// <summary>
         /// The username associated with this resource.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public HelmFeedState()
         {

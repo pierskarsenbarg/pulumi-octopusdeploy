@@ -304,9 +304,11 @@ class HelmFeed(pulumi.CustomResource):
             __props__.__dict__["feed_uri"] = feed_uri
             __props__.__dict__["name"] = name
             __props__.__dict__["package_acquisition_location_options"] = package_acquisition_location_options
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["space_id"] = space_id
-            __props__.__dict__["username"] = username
+            __props__.__dict__["username"] = None if username is None else pulumi.Output.secret(username)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "username"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(HelmFeed, __self__).__init__(
             'octopusdeploy:index/helmFeed:HelmFeed',
             resource_name,

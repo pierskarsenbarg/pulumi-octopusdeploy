@@ -7,10 +7,14 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// This resource manages projects in Octopus Deploy.
+//
+// > Credentials are stored in state as plaintext. Read more about sensitive data in state.
+//
 // ## Example Usage
 //
 // ```go
@@ -37,24 +41,24 @@ import (
 //				LifecycleId:                     pulumi.String("Lifecycles-123"),
 //				ProjectGroupId:                  pulumi.String("ProjectGroups-123"),
 //				TenantedDeploymentParticipation: pulumi.String("TenantedOrUntenanted"),
-//				ConnectivityPolicy: &ProjectConnectivityPolicyArgs{
+//				ConnectivityPolicy: &octopusdeploy.ProjectConnectivityPolicyArgs{
 //					AllowDeploymentsToNoTargets: pulumi.Bool(false),
 //					ExcludeUnhealthyTargets:     pulumi.Bool(false),
 //					SkipMachineBehavior:         pulumi.String("SkipUnavailableMachines"),
 //				},
-//				JiraServiceManagementExtensionSettings: &ProjectJiraServiceManagementExtensionSettingsArgs{
+//				JiraServiceManagementExtensionSettings: &octopusdeploy.ProjectJiraServiceManagementExtensionSettingsArgs{
 //					ConnectionId:           pulumi.String("133d7fe602514060a48bc42ee9870f99"),
 //					IsEnabled:              pulumi.Bool(false),
 //					ServiceDeskProjectName: pulumi.String("Test Service Desk Project (OK to Delete)"),
 //				},
-//				ServicenowExtensionSettings: &ProjectServicenowExtensionSettingsArgs{
+//				ServicenowExtensionSettings: &octopusdeploy.ProjectServicenowExtensionSettingsArgs{
 //					ConnectionId:                     pulumi.String("989034685e2c48c4b06a29286c9ef5cc"),
 //					IsEnabled:                        pulumi.Bool(false),
 //					IsStateAutomaticallyTransitioned: pulumi.Bool(false),
 //					StandardChangeTemplateName:       pulumi.String("Standard Change Template Name (OK to Delete)"),
 //				},
-//				Templates: ProjectTemplateArray{
-//					&ProjectTemplateArgs{
+//				Templates: octopusdeploy.ProjectTemplateArray{
+//					&octopusdeploy.ProjectTemplateArgs{
 //						DefaultValue: pulumi.String("example-default-value"),
 //						HelpText:     pulumi.String("example-help-test"),
 //						Label:        pulumi.String("example-label"),

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getMachinePolicies(args?: GetMachinePoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetMachinePoliciesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getMachinePolicies:getMachinePolicies", {
         "ids": args.ids,
         "machinePolicies": args.machinePolicies,
@@ -79,9 +77,11 @@ export interface GetMachinePoliciesResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing machine policies.
+ */
 export function getMachinePoliciesOutput(args?: GetMachinePoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachinePoliciesResult> {
-    return pulumi.output(args).apply(a => getMachinePolicies(a, opts))
+    return pulumi.output(args).apply((a: any) => getMachinePolicies(a, opts))
 }
 
 /**

@@ -8,11 +8,8 @@ import * as utilities from "./utilities";
  * Provides information about an existing space.
  */
 export function getSpace(args: GetSpaceArgs, opts?: pulumi.InvokeOptions): Promise<GetSpaceResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getSpace:getSpace", {
         "name": args.name,
     }, opts);
@@ -23,7 +20,7 @@ export function getSpace(args: GetSpaceArgs, opts?: pulumi.InvokeOptions): Promi
  */
 export interface GetSpaceArgs {
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     name: string;
 }
@@ -49,7 +46,7 @@ export interface GetSpaceResult {
      */
     readonly isTaskQueueStopped: boolean;
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     readonly name: string;
     /**
@@ -65,9 +62,11 @@ export interface GetSpaceResult {
      */
     readonly spaceManagersTeams: string[];
 }
-
+/**
+ * Provides information about an existing space.
+ */
 export function getSpaceOutput(args: GetSpaceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpaceResult> {
-    return pulumi.output(args).apply(a => getSpace(a, opts))
+    return pulumi.output(args).apply((a: any) => getSpace(a, opts))
 }
 
 /**
@@ -75,7 +74,7 @@ export function getSpaceOutput(args: GetSpaceOutputArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetSpaceOutputArgs {
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     name: pulumi.Input<string>;
 }

@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -43,7 +44,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetScriptModulesResult> InvokeAsync(GetScriptModulesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetScriptModulesResult>("octopusdeploy:index/getScriptModules:getScriptModules", args ?? new GetScriptModulesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetScriptModulesResult>("octopusdeploy:index/getScriptModules:getScriptModules", args ?? new GetScriptModulesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing script modules.
@@ -54,6 +55,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -77,7 +79,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetScriptModulesResult> Invoke(GetScriptModulesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetScriptModulesResult>("octopusdeploy:index/getScriptModules:getScriptModules", args ?? new GetScriptModulesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetScriptModulesResult>("octopusdeploy:index/getScriptModules:getScriptModules", args ?? new GetScriptModulesInvokeArgs(), options.WithDefaults());
     }
 
 

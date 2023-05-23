@@ -109,12 +109,14 @@ export class DockerContainerRegistry extends pulumi.CustomResource {
             resourceInputs["feedUri"] = args ? args.feedUri : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["packageAcquisitionLocationOptions"] = args ? args.packageAcquisitionLocationOptions : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["registryPath"] = args ? args.registryPath : undefined;
             resourceInputs["spaceId"] = args ? args.spaceId : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username ? pulumi.secret(args.username) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "username"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(DockerContainerRegistry.__pulumiType, name, resourceInputs, opts);
     }
 }

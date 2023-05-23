@@ -528,8 +528,8 @@ class AzureSubscriptionAccount(pulumi.CustomResource):
             __props__ = AzureSubscriptionAccountArgs.__new__(AzureSubscriptionAccountArgs)
 
             __props__.__dict__["azure_environment"] = azure_environment
-            __props__.__dict__["certificate"] = certificate
-            __props__.__dict__["certificate_thumbprint"] = certificate_thumbprint
+            __props__.__dict__["certificate"] = None if certificate is None else pulumi.Output.secret(certificate)
+            __props__.__dict__["certificate_thumbprint"] = None if certificate_thumbprint is None else pulumi.Output.secret(certificate_thumbprint)
             __props__.__dict__["description"] = description
             __props__.__dict__["environments"] = environments
             if management_endpoint is None and not opts.urn:
@@ -546,6 +546,8 @@ class AzureSubscriptionAccount(pulumi.CustomResource):
             __props__.__dict__["tenant_tags"] = tenant_tags
             __props__.__dict__["tenanted_deployment_participation"] = tenanted_deployment_participation
             __props__.__dict__["tenants"] = tenants
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificate", "certificateThumbprint"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AzureSubscriptionAccount, __self__).__init__(
             'octopusdeploy:index/azureSubscriptionAccount:AzureSubscriptionAccount',
             resource_name,

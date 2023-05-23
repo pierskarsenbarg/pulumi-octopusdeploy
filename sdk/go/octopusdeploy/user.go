@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -30,15 +30,15 @@ import (
 //			_, err := octopusdeploy.NewUser(ctx, "example", &octopusdeploy.UserArgs{
 //				DisplayName:  pulumi.String("Bob Smith"),
 //				EmailAddress: pulumi.String("bob.smith@example.com"),
-//				Identities: UserIdentityArray{
-//					&UserIdentityArgs{
-//						Claims: UserIdentityClaimArray{
-//							&UserIdentityClaimArgs{
+//				Identities: octopusdeploy.UserIdentityArray{
+//					&octopusdeploy.UserIdentityArgs{
+//						Claims: octopusdeploy.UserIdentityClaimArray{
+//							&octopusdeploy.UserIdentityClaimArgs{
 //								IsIdentifyingClaim: pulumi.Bool(true),
 //								Name:               pulumi.String("email"),
 //								Value:              pulumi.String("bob.smith@example.com"),
 //							},
-//							&UserIdentityClaimArgs{
+//							&octopusdeploy.UserIdentityClaimArgs{
 //								IsIdentifyingClaim: pulumi.Bool(false),
 //								Name:               pulumi.String("dn"),
 //								Value:              pulumi.String("Bob Smith"),
@@ -99,6 +99,17 @@ func NewUser(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	if args.Username != nil {
+		args.Username = pulumi.ToSecret(args.Username).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"username",
+	})
+	opts = append(opts, secrets)
 	var resource User
 	err := ctx.RegisterResource("octopusdeploy:index/user:User", name, args, &resource, opts...)
 	if err != nil {

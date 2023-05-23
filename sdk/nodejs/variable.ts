@@ -2,73 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * This resource manages variables in Octopus Deploy.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as octopusdeploy from "@pulumi/octopusdeploy";
- *
- * // create an Amazon web services account variable
- * const amazonWebServicesAccountVariable = new octopusdeploy.Variable("amazon_web_services_account_variable", {
- *     ownerId: "Projects-123",
- *     type: "AmazonWebServicesAccount",
- *     value: "Accounts-123",
- * });
- * // create an Azure service principal account variable
- * const azureServicePrincipalAccountVariable = new octopusdeploy.Account("azure_service_principal_account_variable", {
- *     name: "My Azure Service Principal Account (OK to Delete)",
- *     ownerId: "Projects-123",
- *     type: "AzureAccount",
- *     value: "Accounts-123",
- * });
- * // create a Google Cloud account variable
- * const googleCloudAccountVariable = new octopusdeploy.Variable("google_cloud_account_variable", {
- *     ownerId: "Projects-123",
- *     type: "GoogleCloudAccount",
- *     value: "Accounts-123",
- * });
- * // create a Certificate variable
- * const certificateVariable = new octopusdeploy.Variable("certificate_variable", {
- *     ownerId: "Projects-123",
- *     type: "Certificate",
- *     value: "Certificates-123",
- * });
- * // create a Sensitive variable
- * const sensitiveVariable = new octopusdeploy.Variable("sensitive_variable", {
- *     isSensitive: true,
- *     ownerId: "Projects-123",
- *     sensitiveValue: "YourSecrets",
- *     type: "Sensitive",
- * });
- * // create a String variable
- * const stringVariable = new octopusdeploy.Variable("string_variable", {
- *     ownerId: "Projects-123",
- *     type: "String",
- *     value: "PlainText",
- * });
- * // create a WorkerPool variable
- * const workerpoolVariable = new octopusdeploy.Variable("workerpool_variable", {
- *     ownerId: "Projects-123",
- *     type: "WorkerPool",
- *     value: "WorkerPools-123",
- * });
- * // create a prompted variable
- * const promptedVariable = new octopusdeploy.Variable("prompted_variable", {
- *     ownerId: "Projects-123",
- *     prompt: {
- *         description: "Variable Description",
- *         isRequired: true,
- *         label: "Variable Label",
- *     },
- *     type: "String",
- * });
- * ```
  *
  * ## Import
  *
@@ -174,17 +113,19 @@ export class Variable extends pulumi.CustomResource {
             resourceInputs["isSensitive"] = args ? args.isSensitive : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["ownerId"] = args ? args.ownerId : undefined;
-            resourceInputs["pgpKey"] = args ? args.pgpKey : undefined;
+            resourceInputs["pgpKey"] = args?.pgpKey ? pulumi.secret(args.pgpKey) : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["prompt"] = args ? args.prompt : undefined;
             resourceInputs["scope"] = args ? args.scope : undefined;
-            resourceInputs["sensitiveValue"] = args ? args.sensitiveValue : undefined;
+            resourceInputs["sensitiveValue"] = args?.sensitiveValue ? pulumi.secret(args.sensitiveValue) : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["encryptedValue"] = undefined /*out*/;
             resourceInputs["keyFingerprint"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["pgpKey", "sensitiveValue"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Variable.__pulumiType, name, resourceInputs, opts);
     }
 }

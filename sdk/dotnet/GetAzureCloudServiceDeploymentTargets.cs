@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -48,7 +49,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAzureCloudServiceDeploymentTargetsResult> InvokeAsync(GetAzureCloudServiceDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAzureCloudServiceDeploymentTargetsResult>("octopusdeploy:index/getAzureCloudServiceDeploymentTargets:getAzureCloudServiceDeploymentTargets", args ?? new GetAzureCloudServiceDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureCloudServiceDeploymentTargetsResult>("octopusdeploy:index/getAzureCloudServiceDeploymentTargets:getAzureCloudServiceDeploymentTargets", args ?? new GetAzureCloudServiceDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing Azure cloud service deployment targets.
@@ -59,6 +60,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -87,7 +89,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAzureCloudServiceDeploymentTargetsResult> Invoke(GetAzureCloudServiceDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAzureCloudServiceDeploymentTargetsResult>("octopusdeploy:index/getAzureCloudServiceDeploymentTargets:getAzureCloudServiceDeploymentTargets", args ?? new GetAzureCloudServiceDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureCloudServiceDeploymentTargetsResult>("octopusdeploy:index/getAzureCloudServiceDeploymentTargets:getAzureCloudServiceDeploymentTargets", args ?? new GetAzureCloudServiceDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

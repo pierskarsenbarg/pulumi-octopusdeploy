@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetCloudRegionDeploymentTargets(ctx, &GetCloudRegionDeploymentTargetsArgs{
+//			_, err := octopusdeploy.GetCloudRegionDeploymentTargets(ctx, &octopusdeploy.GetCloudRegionDeploymentTargetsArgs{
 //				Environments: []string{
 //					"Environments-123",
 //					"Environments-321",

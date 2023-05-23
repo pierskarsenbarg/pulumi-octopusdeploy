@@ -16,6 +16,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -96,6 +97,10 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "secretKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -145,11 +150,21 @@ namespace Pulumi.Octopusdeploy
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
 
+        [Input("secretKey", required: true)]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// The AWS secret key to use when authenticating against Amazon Web Services.
         /// </summary>
-        [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The space ID associated with this feed.
@@ -191,11 +206,21 @@ namespace Pulumi.Octopusdeploy
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("secretKey")]
+        private Input<string>? _secretKey;
+
         /// <summary>
         /// The AWS secret key to use when authenticating against Amazon Web Services.
         /// </summary>
-        [Input("secretKey")]
-        public Input<string>? SecretKey { get; set; }
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The space ID associated with this feed.

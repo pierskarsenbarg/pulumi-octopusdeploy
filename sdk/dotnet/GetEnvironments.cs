@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -44,7 +45,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetEnvironmentsResult> InvokeAsync(GetEnvironmentsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsResult>("octopusdeploy:index/getEnvironments:getEnvironments", args ?? new GetEnvironmentsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnvironmentsResult>("octopusdeploy:index/getEnvironments:getEnvironments", args ?? new GetEnvironmentsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing environments.
@@ -55,6 +56,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -79,7 +81,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetEnvironmentsResult> Invoke(GetEnvironmentsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetEnvironmentsResult>("octopusdeploy:index/getEnvironments:getEnvironments", args ?? new GetEnvironmentsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentsResult>("octopusdeploy:index/getEnvironments:getEnvironments", args ?? new GetEnvironmentsInvokeArgs(), options.WithDefaults());
     }
 
 

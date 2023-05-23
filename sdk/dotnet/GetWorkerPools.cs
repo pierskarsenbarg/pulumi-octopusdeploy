@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing worker pools.
         /// </summary>
         public static Task<GetWorkerPoolsResult> InvokeAsync(GetWorkerPoolsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolsResult>("octopusdeploy:index/getWorkerPools:getWorkerPools", args ?? new GetWorkerPoolsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetWorkerPoolsResult>("octopusdeploy:index/getWorkerPools:getWorkerPools", args ?? new GetWorkerPoolsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing worker pools.
         /// </summary>
         public static Output<GetWorkerPoolsResult> Invoke(GetWorkerPoolsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetWorkerPoolsResult>("octopusdeploy:index/getWorkerPools:getWorkerPools", args ?? new GetWorkerPoolsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkerPoolsResult>("octopusdeploy:index/getWorkerPools:getWorkerPools", args ?? new GetWorkerPoolsInvokeArgs(), options.WithDefaults());
     }
 
 

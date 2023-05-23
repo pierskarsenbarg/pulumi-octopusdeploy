@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getCertificates({
+ * const example = octopusdeploy.getCertificates({
  *     archived: "false",
  *     ids: [
  *         "Certificates-123",
@@ -23,16 +24,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getCertificates(args?: GetCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificatesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getCertificates:getCertificates", {
         "archived": args.archived,
         "certificates": args.certificates,
@@ -142,9 +140,29 @@ export interface GetCertificatesResult {
      */
     readonly tenant?: string;
 }
-
+/**
+ * Provides information about existing certificates.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getCertificates({
+ *     archived: "false",
+ *     ids: [
+ *         "Certificates-123",
+ *         "Certificates-321",
+ *     ],
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getCertificatesOutput(args?: GetCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificatesResult> {
-    return pulumi.output(args).apply(a => getCertificates(a, opts))
+    return pulumi.output(args).apply((a: any) => getCertificates(a, opts))
 }
 
 /**

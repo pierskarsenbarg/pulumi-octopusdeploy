@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getSshConnectionDeploymentTargets(args?: GetSshConnectionDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSshConnectionDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getSshConnectionDeploymentTargets:getSshConnectionDeploymentTargets", {
         "deploymentId": args.deploymentId,
         "environments": args.environments,
@@ -169,9 +167,11 @@ export interface GetSshConnectionDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing SSH connection deployment targets.
+ */
 export function getSshConnectionDeploymentTargetsOutput(args?: GetSshConnectionDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSshConnectionDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getSshConnectionDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getSshConnectionDeploymentTargets(a, opts))
 }
 
 /**

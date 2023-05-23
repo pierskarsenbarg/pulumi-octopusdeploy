@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -80,6 +80,13 @@ func NewAzureServiceFabricClusterDeploymentTarget(ctx *pulumi.Context,
 	if args.Roles == nil {
 		return nil, errors.New("invalid value for required argument 'Roles'")
 	}
+	if args.AadUserCredentialPassword != nil {
+		args.AadUserCredentialPassword = pulumi.ToSecret(args.AadUserCredentialPassword).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"aadUserCredentialPassword",
+	})
+	opts = append(opts, secrets)
 	var resource AzureServiceFabricClusterDeploymentTarget
 	err := ctx.RegisterResource("octopusdeploy:index/azureServiceFabricClusterDeploymentTarget:AzureServiceFabricClusterDeploymentTarget", name, args, &resource, opts...)
 	if err != nil {

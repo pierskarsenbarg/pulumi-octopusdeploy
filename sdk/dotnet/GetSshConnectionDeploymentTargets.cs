@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing SSH connection deployment targets.
         /// </summary>
         public static Task<GetSshConnectionDeploymentTargetsResult> InvokeAsync(GetSshConnectionDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSshConnectionDeploymentTargetsResult>("octopusdeploy:index/getSshConnectionDeploymentTargets:getSshConnectionDeploymentTargets", args ?? new GetSshConnectionDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshConnectionDeploymentTargetsResult>("octopusdeploy:index/getSshConnectionDeploymentTargets:getSshConnectionDeploymentTargets", args ?? new GetSshConnectionDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing SSH connection deployment targets.
         /// </summary>
         public static Output<GetSshConnectionDeploymentTargetsResult> Invoke(GetSshConnectionDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSshConnectionDeploymentTargetsResult>("octopusdeploy:index/getSshConnectionDeploymentTargets:getSshConnectionDeploymentTargets", args ?? new GetSshConnectionDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSshConnectionDeploymentTargetsResult>("octopusdeploy:index/getSshConnectionDeploymentTargets:getSshConnectionDeploymentTargets", args ?? new GetSshConnectionDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

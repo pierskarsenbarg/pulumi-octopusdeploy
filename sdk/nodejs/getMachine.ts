@@ -5,11 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 export function getMachine(args: GetMachineArgs, opts?: pulumi.InvokeOptions): Promise<GetMachineResult> {
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getMachine:getMachine", {
         "name": args.name,
     }, opts);
@@ -52,9 +49,8 @@ export interface GetMachineResult {
     readonly tenantids: string[];
     readonly tenanttags: string[];
 }
-
 export function getMachineOutput(args: GetMachineOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineResult> {
-    return pulumi.output(args).apply(a => getMachine(a, opts))
+    return pulumi.output(args).apply((a: any) => getMachine(a, opts))
 }
 
 /**

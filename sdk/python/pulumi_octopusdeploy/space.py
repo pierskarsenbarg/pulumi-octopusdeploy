@@ -26,7 +26,7 @@ class SpaceArgs:
         :param pulumi.Input[str] description: The description of this space.
         :param pulumi.Input[bool] is_default: Specifies if this space is the default space in Octopus.
         :param pulumi.Input[bool] is_task_queue_stopped: Specifies the status of the task queue for this space.
-        :param pulumi.Input[str] name: The name of this resource.
+        :param pulumi.Input[str] name: The name of this resource, no more than 20 characters long
         :param pulumi.Input[str] slug: The unique slug of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_team_members: A list of user IDs designated to be managers of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_teams: A list of team IDs designated to be managers of this space.
@@ -86,7 +86,7 @@ class SpaceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this resource.
+        The name of this resource, no more than 20 characters long
         """
         return pulumi.get(self, "name")
 
@@ -146,7 +146,7 @@ class _SpaceState:
         :param pulumi.Input[str] description: The description of this space.
         :param pulumi.Input[bool] is_default: Specifies if this space is the default space in Octopus.
         :param pulumi.Input[bool] is_task_queue_stopped: Specifies the status of the task queue for this space.
-        :param pulumi.Input[str] name: The name of this resource.
+        :param pulumi.Input[str] name: The name of this resource, no more than 20 characters long
         :param pulumi.Input[str] slug: The unique slug of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_team_members: A list of user IDs designated to be managers of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_teams: A list of team IDs designated to be managers of this space.
@@ -206,7 +206,7 @@ class _SpaceState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of this resource.
+        The name of this resource, no more than 20 characters long
         """
         return pulumi.get(self, "name")
 
@@ -295,7 +295,7 @@ class Space(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of this space.
         :param pulumi.Input[bool] is_default: Specifies if this space is the default space in Octopus.
         :param pulumi.Input[bool] is_task_queue_stopped: Specifies the status of the task queue for this space.
-        :param pulumi.Input[str] name: The name of this resource.
+        :param pulumi.Input[str] name: The name of this resource, no more than 20 characters long
         :param pulumi.Input[str] slug: The unique slug of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_team_members: A list of user IDs designated to be managers of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_teams: A list of team IDs designated to be managers of this space.
@@ -397,7 +397,7 @@ class Space(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of this space.
         :param pulumi.Input[bool] is_default: Specifies if this space is the default space in Octopus.
         :param pulumi.Input[bool] is_task_queue_stopped: Specifies the status of the task queue for this space.
-        :param pulumi.Input[str] name: The name of this resource.
+        :param pulumi.Input[str] name: The name of this resource, no more than 20 characters long
         :param pulumi.Input[str] slug: The unique slug of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_team_members: A list of user IDs designated to be managers of this space.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] space_managers_teams: A list of team IDs designated to be managers of this space.
@@ -443,7 +443,7 @@ class Space(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of this resource.
+        The name of this resource, no more than 20 characters long
         """
         return pulumi.get(self, "name")
 

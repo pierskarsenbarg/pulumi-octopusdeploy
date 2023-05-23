@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AzureCloudServiceDeploymentTargetEndpoint {
     aadClientCredentialSecret?: string;
@@ -2910,7 +2911,7 @@ export interface GetSpacesSpace {
      */
     isTaskQueueStopped: boolean;
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     name: string;
     /**
@@ -4787,3 +4788,4 @@ export interface VariableScope {
      */
     tenantTags?: string[];
 }
+

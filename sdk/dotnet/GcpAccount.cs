@@ -16,6 +16,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -109,6 +110,10 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "jsonKey",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -150,11 +155,21 @@ namespace Pulumi.Octopusdeploy
             set => _environments = value;
         }
 
+        [Input("jsonKey", required: true)]
+        private Input<string>? _jsonKey;
+
         /// <summary>
         /// The JSON key associated with this GCP account.
         /// </summary>
-        [Input("jsonKey", required: true)]
-        public Input<string> JsonKey { get; set; } = null!;
+        public Input<string>? JsonKey
+        {
+            get => _jsonKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _jsonKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of this GCP account.
@@ -224,11 +239,21 @@ namespace Pulumi.Octopusdeploy
             set => _environments = value;
         }
 
+        [Input("jsonKey")]
+        private Input<string>? _jsonKey;
+
         /// <summary>
         /// The JSON key associated with this GCP account.
         /// </summary>
-        [Input("jsonKey")]
-        public Input<string>? JsonKey { get; set; }
+        public Input<string>? JsonKey
+        {
+            get => _jsonKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _jsonKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The name of this GCP account.

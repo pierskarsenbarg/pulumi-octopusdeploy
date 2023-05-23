@@ -13,9 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = new octopusdeploy.ProjectGroup("example", {
- *     description: "The development project group.",
- * });
+ * const example = new octopusdeploy.ProjectGroup("example", {description: "The development project group."});
  * ```
  *
  * ## Import

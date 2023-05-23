@@ -124,11 +124,13 @@ export class NugetFeed extends pulumi.CustomResource {
             resourceInputs["isEnhancedMode"] = args ? args.isEnhancedMode : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["packageAcquisitionLocationOptions"] = args ? args.packageAcquisitionLocationOptions : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["spaceId"] = args ? args.spaceId : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username ? pulumi.secret(args.username) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "username"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(NugetFeed.__pulumiType, name, resourceInputs, opts);
     }
 }

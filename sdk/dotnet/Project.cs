@@ -10,10 +10,15 @@ using Pulumi.Serialization;
 namespace Pulumi.Octopusdeploy
 {
     /// <summary>
+    /// This resource manages projects in Octopus Deploy.
+    /// 
+    /// &gt; Credentials are stored in state as plaintext. Read more about sensitive data in state.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 

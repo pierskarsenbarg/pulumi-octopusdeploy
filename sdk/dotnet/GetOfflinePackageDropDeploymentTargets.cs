@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing offline package drop deployment targets.
         /// </summary>
         public static Task<GetOfflinePackageDropDeploymentTargetsResult> InvokeAsync(GetOfflinePackageDropDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetOfflinePackageDropDeploymentTargetsResult>("octopusdeploy:index/getOfflinePackageDropDeploymentTargets:getOfflinePackageDropDeploymentTargets", args ?? new GetOfflinePackageDropDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetOfflinePackageDropDeploymentTargetsResult>("octopusdeploy:index/getOfflinePackageDropDeploymentTargets:getOfflinePackageDropDeploymentTargets", args ?? new GetOfflinePackageDropDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing offline package drop deployment targets.
         /// </summary>
         public static Output<GetOfflinePackageDropDeploymentTargetsResult> Invoke(GetOfflinePackageDropDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetOfflinePackageDropDeploymentTargetsResult>("octopusdeploy:index/getOfflinePackageDropDeploymentTargets:getOfflinePackageDropDeploymentTargets", args ?? new GetOfflinePackageDropDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetOfflinePackageDropDeploymentTargetsResult>("octopusdeploy:index/getOfflinePackageDropDeploymentTargets:getOfflinePackageDropDeploymentTargets", args ?? new GetOfflinePackageDropDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

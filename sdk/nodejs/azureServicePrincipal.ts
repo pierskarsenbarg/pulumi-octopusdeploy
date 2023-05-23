@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  *
  * const example = new octopusdeploy.AzureServicePrincipal("example", {
  *     applicationId: "00000000-0000-0000-0000-000000000000",
- *     password: "###########", // required; get from secure environment/store
+ *     password: "###########",
  *     subscriptionId: "00000000-0000-0000-0000-000000000000",
  *     tenantId: "00000000-0000-0000-0000-000000000000",
  * });
@@ -159,7 +159,7 @@ export class AzureServicePrincipal extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["resourceManagerEndpoint"] = args ? args.resourceManagerEndpoint : undefined;
             resourceInputs["spaceId"] = args ? args.spaceId : undefined;
             resourceInputs["subscriptionId"] = args ? args.subscriptionId : undefined;
@@ -169,6 +169,8 @@ export class AzureServicePrincipal extends pulumi.CustomResource {
             resourceInputs["tenants"] = args ? args.tenants : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AzureServicePrincipal.__pulumiType, name, resourceInputs, opts);
     }
 }

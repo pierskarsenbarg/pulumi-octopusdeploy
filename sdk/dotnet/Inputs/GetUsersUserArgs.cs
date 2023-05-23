@@ -50,17 +50,37 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("isService", required: true)]
         public Input<bool> IsService { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        [Input("username", required: true)]
+        private Input<string>? _username;
 
         /// <summary>
         /// The username associated with this resource.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GetUsersUserInputArgs()
         {

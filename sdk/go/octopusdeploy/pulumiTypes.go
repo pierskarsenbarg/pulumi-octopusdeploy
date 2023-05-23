@@ -45850,7 +45850,7 @@ type GetSpacesSpace struct {
 	IsDefault bool `pulumi:"isDefault"`
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped bool `pulumi:"isTaskQueueStopped"`
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name string `pulumi:"name"`
 	// The unique slug of this space.
 	Slug string `pulumi:"slug"`
@@ -45880,7 +45880,7 @@ type GetSpacesSpaceArgs struct {
 	IsDefault pulumi.BoolInput `pulumi:"isDefault"`
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped pulumi.BoolInput `pulumi:"isTaskQueueStopped"`
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name pulumi.StringInput `pulumi:"name"`
 	// The unique slug of this space.
 	Slug pulumi.StringInput `pulumi:"slug"`
@@ -45961,7 +45961,7 @@ func (o GetSpacesSpaceOutput) IsTaskQueueStopped() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetSpacesSpace) bool { return v.IsTaskQueueStopped }).(pulumi.BoolOutput)
 }
 
-// The name of this resource.
+// The name of this resource, no more than 20 characters long
 func (o GetSpacesSpaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSpacesSpace) string { return v.Name }).(pulumi.StringOutput)
 }

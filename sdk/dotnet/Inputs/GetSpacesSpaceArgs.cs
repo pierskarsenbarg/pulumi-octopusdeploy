@@ -37,7 +37,7 @@ namespace Pulumi.Octopusdeploy.Inputs
         public Input<bool> IsTaskQueueStopped { get; set; } = null!;
 
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

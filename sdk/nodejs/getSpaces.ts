@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const spaces = pulumi.output(octopusdeploy.getSpaces({
+ * const spaces = octopusdeploy.getSpaces({
  *     ids: [
  *         "Spaces-123",
  *         "Spaces-321",
@@ -22,16 +23,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getSpaces(args?: GetSpacesArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getSpaces:getSpaces", {
         "ids": args.ids,
         "partialName": args.partialName,
@@ -96,9 +94,28 @@ export interface GetSpacesResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing spaces.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const spaces = octopusdeploy.getSpaces({
+ *     ids: [
+ *         "Spaces-123",
+ *         "Spaces-321",
+ *     ],
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getSpacesOutput(args?: GetSpacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSpacesResult> {
-    return pulumi.output(args).apply(a => getSpaces(a, opts))
+    return pulumi.output(args).apply((a: any) => getSpaces(a, opts))
 }
 
 /**

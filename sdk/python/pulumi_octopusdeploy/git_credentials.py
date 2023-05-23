@@ -284,12 +284,14 @@ class GitCredentials(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["space_id"] = space_id
             __props__.__dict__["type"] = type
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
             __props__.__dict__["username"] = username
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GitCredentials, __self__).__init__(
             'octopusdeploy:index/gitCredentials:GitCredentials',
             resource_name,

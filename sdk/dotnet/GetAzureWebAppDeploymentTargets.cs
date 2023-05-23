@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -48,7 +49,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetAzureWebAppDeploymentTargetsResult> InvokeAsync(GetAzureWebAppDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetAzureWebAppDeploymentTargetsResult>("octopusdeploy:index/getAzureWebAppDeploymentTargets:getAzureWebAppDeploymentTargets", args ?? new GetAzureWebAppDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetAzureWebAppDeploymentTargetsResult>("octopusdeploy:index/getAzureWebAppDeploymentTargets:getAzureWebAppDeploymentTargets", args ?? new GetAzureWebAppDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing Azure web app deployment targets.
@@ -59,6 +60,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -87,7 +89,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetAzureWebAppDeploymentTargetsResult> Invoke(GetAzureWebAppDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetAzureWebAppDeploymentTargetsResult>("octopusdeploy:index/getAzureWebAppDeploymentTargets:getAzureWebAppDeploymentTargets", args ?? new GetAzureWebAppDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureWebAppDeploymentTargetsResult>("octopusdeploy:index/getAzureWebAppDeploymentTargets:getAzureWebAppDeploymentTargets", args ?? new GetAzureWebAppDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

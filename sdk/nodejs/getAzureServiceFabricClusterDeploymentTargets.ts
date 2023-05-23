@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getAzureServiceFabricClusterDeploymentTargets({
+ * const example = octopusdeploy.getAzureServiceFabricClusterDeploymentTargets({
  *     healthStatuses: [
  *         "Healthy",
  *         "Unavailable",
@@ -26,16 +27,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getAzureServiceFabricClusterDeploymentTargets(args?: GetAzureServiceFabricClusterDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetAzureServiceFabricClusterDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getAzureServiceFabricClusterDeploymentTargets:getAzureServiceFabricClusterDeploymentTargets", {
         "azureServiceFabricClusterDeploymentTargets": args.azureServiceFabricClusterDeploymentTargets,
         "deploymentId": args.deploymentId,
@@ -190,9 +188,32 @@ export interface GetAzureServiceFabricClusterDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing Azure service fabric cluster deployment targets.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getAzureServiceFabricClusterDeploymentTargets({
+ *     healthStatuses: [
+ *         "Healthy",
+ *         "Unavailable",
+ *     ],
+ *     ids: [
+ *         "Machines-123",
+ *         "Machines-321",
+ *     ],
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getAzureServiceFabricClusterDeploymentTargetsOutput(args?: GetAzureServiceFabricClusterDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureServiceFabricClusterDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getAzureServiceFabricClusterDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getAzureServiceFabricClusterDeploymentTargets(a, opts))
 }
 
 /**

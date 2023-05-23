@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,6 +83,21 @@ func NewSshKeyAccount(ctx *pulumi.Context,
 	if args.Username == nil {
 		return nil, errors.New("invalid value for required argument 'Username'")
 	}
+	if args.PrivateKeyFile != nil {
+		args.PrivateKeyFile = pulumi.ToSecret(args.PrivateKeyFile).(pulumi.StringInput)
+	}
+	if args.PrivateKeyPassphrase != nil {
+		args.PrivateKeyPassphrase = pulumi.ToSecret(args.PrivateKeyPassphrase).(pulumi.StringPtrInput)
+	}
+	if args.Username != nil {
+		args.Username = pulumi.ToSecret(args.Username).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"privateKeyFile",
+		"privateKeyPassphrase",
+		"username",
+	})
+	opts = append(opts, secrets)
 	var resource SshKeyAccount
 	err := ctx.RegisterResource("octopusdeploy:index/sshKeyAccount:SshKeyAccount", name, args, &resource, opts...)
 	if err != nil {

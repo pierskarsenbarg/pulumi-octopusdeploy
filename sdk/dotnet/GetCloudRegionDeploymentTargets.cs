@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -48,7 +49,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetCloudRegionDeploymentTargetsResult> InvokeAsync(GetCloudRegionDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetCloudRegionDeploymentTargetsResult>("octopusdeploy:index/getCloudRegionDeploymentTargets:getCloudRegionDeploymentTargets", args ?? new GetCloudRegionDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetCloudRegionDeploymentTargetsResult>("octopusdeploy:index/getCloudRegionDeploymentTargets:getCloudRegionDeploymentTargets", args ?? new GetCloudRegionDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing cloud region deployment targets.
@@ -59,6 +60,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -87,7 +89,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetCloudRegionDeploymentTargetsResult> Invoke(GetCloudRegionDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetCloudRegionDeploymentTargetsResult>("octopusdeploy:index/getCloudRegionDeploymentTargets:getCloudRegionDeploymentTargets", args ?? new GetCloudRegionDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudRegionDeploymentTargetsResult>("octopusdeploy:index/getCloudRegionDeploymentTargets:getCloudRegionDeploymentTargets", args ?? new GetCloudRegionDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

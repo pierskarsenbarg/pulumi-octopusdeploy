@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +77,13 @@ func NewGcpAccount(ctx *pulumi.Context,
 	if args.JsonKey == nil {
 		return nil, errors.New("invalid value for required argument 'JsonKey'")
 	}
+	if args.JsonKey != nil {
+		args.JsonKey = pulumi.ToSecret(args.JsonKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"jsonKey",
+	})
+	opts = append(opts, secrets)
 	var resource GcpAccount
 	err := ctx.RegisterResource("octopusdeploy:index/gcpAccount:GcpAccount", name, args, &resource, opts...)
 	if err != nil {

@@ -30,7 +30,7 @@ namespace Pulumi.Octopusdeploy
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("octopusdeploy");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("octopusdeploy");
 
         private static readonly __Value<string?> _address = new __Value<string?>(() => __config.Get("address"));
         /// <summary>

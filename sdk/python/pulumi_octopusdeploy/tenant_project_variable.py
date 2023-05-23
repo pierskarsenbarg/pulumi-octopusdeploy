@@ -210,7 +210,9 @@ class TenantProjectVariable(pulumi.CustomResource):
             if tenant_id is None and not opts.urn:
                 raise TypeError("Missing required property 'tenant_id'")
             __props__.__dict__["tenant_id"] = tenant_id
-            __props__.__dict__["value"] = value
+            __props__.__dict__["value"] = None if value is None else pulumi.Output.secret(value)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["value"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(TenantProjectVariable, __self__).__init__(
             'octopusdeploy:index/tenantProjectVariable:TenantProjectVariable',
             resource_name,

@@ -46,7 +46,12 @@ namespace Pulumi.Octopusdeploy.Inputs
         public string OwnerId { get; set; } = null!;
 
         [Input("pgpKey", required: true)]
-        public string PgpKey { get; set; } = null!;
+        private string? _pgpKey;
+        public string? PgpKey
+        {
+            get => _pgpKey;
+            set => _pgpKey = value;
+        }
 
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
@@ -68,7 +73,12 @@ namespace Pulumi.Octopusdeploy.Inputs
         }
 
         [Input("sensitiveValue", required: true)]
-        public string SensitiveValue { get; set; } = null!;
+        private string? _sensitiveValue;
+        public string? SensitiveValue
+        {
+            get => _sensitiveValue;
+            set => _sensitiveValue = value;
+        }
 
         /// <summary>
         /// The type of variable represented by this resource. Valid types are `AmazonWebServicesAccount`, `AzureAccount`, `GoogleCloudAccount`, `Certificate`, `Sensitive`, `String`, or `WorkerPool`.

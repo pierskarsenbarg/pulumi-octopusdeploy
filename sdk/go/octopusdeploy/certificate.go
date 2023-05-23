@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -102,6 +102,17 @@ func NewCertificate(ctx *pulumi.Context,
 	if args.Password == nil {
 		return nil, errors.New("invalid value for required argument 'Password'")
 	}
+	if args.CertificateData != nil {
+		args.CertificateData = pulumi.ToSecret(args.CertificateData).(pulumi.StringInput)
+	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"certificateData",
+		"password",
+	})
+	opts = append(opts, secrets)
 	var resource Certificate
 	err := ctx.RegisterResource("octopusdeploy:index/certificate:Certificate", name, args, &resource, opts...)
 	if err != nil {

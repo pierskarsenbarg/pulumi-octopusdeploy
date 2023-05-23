@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getTenants(args?: GetTenantsArgs, opts?: pulumi.InvokeOptions): Promise<GetTenantsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getTenants:getTenants", {
         "clonedFromTenantId": args.clonedFromTenantId,
         "ids": args.ids,
@@ -124,9 +122,11 @@ export interface GetTenantsResult {
      */
     readonly tenants: outputs.GetTenantsTenant[];
 }
-
+/**
+ * Provides information about existing tenants.
+ */
 export function getTenantsOutput(args?: GetTenantsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTenantsResult> {
-    return pulumi.output(args).apply(a => getTenants(a, opts))
+    return pulumi.output(args).apply((a: any) => getTenants(a, opts))
 }
 
 /**

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,13 +29,13 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := octopusdeploy.NewDeploymentProcess(ctx, "example", &octopusdeploy.DeploymentProcessArgs{
 //				ProjectId: pulumi.String("Projects-123"),
-//				Steps: DeploymentProcessStepArray{
-//					&DeploymentProcessStepArgs{
+//				Steps: octopusdeploy.DeploymentProcessStepArray{
+//					&octopusdeploy.DeploymentProcessStepArgs{
 //						Condition:          pulumi.String("Success"),
 //						Name:               pulumi.String("Hello world (using PowerShell)"),
 //						PackageRequirement: pulumi.String("LetOctopusDecide"),
-//						RunScriptActions: DeploymentProcessStepRunScriptActionArray{
-//							&DeploymentProcessStepRunScriptActionArgs{
+//						RunScriptActions: octopusdeploy.DeploymentProcessStepRunScriptActionArray{
+//							&octopusdeploy.DeploymentProcessStepRunScriptActionArgs{
 //								CanBeUsedForProjectVersioning: pulumi.Bool(false),
 //								Condition:                     pulumi.String("Success"),
 //								IsDisabled:                    pulumi.Bool(false),
@@ -47,12 +47,12 @@ import (
 //						},
 //						StartTrigger: pulumi.String("StartAfterPrevious"),
 //					},
-//					&DeploymentProcessStepArgs{
+//					&octopusdeploy.DeploymentProcessStepArgs{
 //						Condition:          pulumi.String("Success"),
 //						Name:               pulumi.String("Hello world (using Bash)"),
 //						PackageRequirement: pulumi.String("LetOctopusDecide"),
-//						RunScriptActions: DeploymentProcessStepRunScriptActionArray{
-//							&DeploymentProcessStepRunScriptActionArgs{
+//						RunScriptActions: octopusdeploy.DeploymentProcessStepRunScriptActionArray{
+//							&octopusdeploy.DeploymentProcessStepRunScriptActionArgs{
 //								CanBeUsedForProjectVersioning: pulumi.Bool(false),
 //								Condition:                     pulumi.String("Success"),
 //								IsDisabled:                    pulumi.Bool(false),
@@ -71,13 +71,13 @@ import (
 //			}
 //			_, err = octopusdeploy.NewDeploymentProcess(ctx, "childStepExample", &octopusdeploy.DeploymentProcessArgs{
 //				ProjectId: pulumi.String("Projects-123"),
-//				Steps: DeploymentProcessStepArray{
-//					&DeploymentProcessStepArgs{
+//				Steps: octopusdeploy.DeploymentProcessStepArray{
+//					&octopusdeploy.DeploymentProcessStepArgs{
 //						Condition:          pulumi.String("Success"),
 //						Name:               pulumi.String("Hello world (using PowerShell)"),
 //						PackageRequirement: pulumi.String("LetOctopusDecide"),
-//						RunScriptActions: DeploymentProcessStepRunScriptActionArray{
-//							&DeploymentProcessStepRunScriptActionArgs{
+//						RunScriptActions: octopusdeploy.DeploymentProcessStepRunScriptActionArray{
+//							&octopusdeploy.DeploymentProcessStepRunScriptActionArgs{
 //								CanBeUsedForProjectVersioning: pulumi.Bool(false),
 //								Condition:                     pulumi.String("Success"),
 //								IsDisabled:                    pulumi.Bool(false),
@@ -85,7 +85,7 @@ import (
 //								Name:                          pulumi.String("Hello world (using PowerShell)"),
 //								ScriptBody:                    pulumi.String("  Write-Host 'Hello world, using PowerShell'\n  #TODO: Experiment with steps of your own :)\n  Write-Host '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'\n\n"),
 //							},
-//							&DeploymentProcessStepRunScriptActionArgs{
+//							&octopusdeploy.DeploymentProcessStepRunScriptActionArgs{
 //								CanBeUsedForProjectVersioning: pulumi.Bool(false),
 //								Condition:                     pulumi.String("Success"),
 //								IsDisabled:                    pulumi.Bool(false),
@@ -106,13 +106,13 @@ import (
 //			}
 //			_, err = octopusdeploy.NewDeploymentProcess(ctx, "childStepRollingDeploymentExample", &octopusdeploy.DeploymentProcessArgs{
 //				ProjectId: pulumi.String("Projects-123"),
-//				Steps: DeploymentProcessStepArray{
-//					&DeploymentProcessStepArgs{
+//				Steps: octopusdeploy.DeploymentProcessStepArray{
+//					&octopusdeploy.DeploymentProcessStepArgs{
 //						Condition:          pulumi.String("Success"),
 //						Name:               pulumi.String("Hello world (using PowerShell)"),
 //						PackageRequirement: pulumi.String("LetOctopusDecide"),
-//						RunScriptActions: DeploymentProcessStepRunScriptActionArray{
-//							&DeploymentProcessStepRunScriptActionArgs{
+//						RunScriptActions: octopusdeploy.DeploymentProcessStepRunScriptActionArray{
+//							&octopusdeploy.DeploymentProcessStepRunScriptActionArgs{
 //								CanBeUsedForProjectVersioning: pulumi.Bool(false),
 //								Condition:                     pulumi.String("Success"),
 //								IsDisabled:                    pulumi.Bool(false),
@@ -120,7 +120,7 @@ import (
 //								Name:                          pulumi.String("Hello world (using PowerShell)"),
 //								ScriptBody:                    pulumi.String("  Write-Host 'Hello world, using PowerShell'\n  #TODO: Experiment with steps of your own :)\n  Write-Host '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'\n\n"),
 //							},
-//							&DeploymentProcessStepRunScriptActionArgs{
+//							&octopusdeploy.DeploymentProcessStepRunScriptActionArgs{
 //								CanBeUsedForProjectVersioning: pulumi.Bool(false),
 //								Condition:                     pulumi.String("Success"),
 //								IsDisabled:                    pulumi.Bool(false),

@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetAzureWebAppDeploymentTargets(ctx, &GetAzureWebAppDeploymentTargetsArgs{
+//			_, err := octopusdeploy.GetAzureWebAppDeploymentTargets(ctx, &octopusdeploy.GetAzureWebAppDeploymentTargetsArgs{
 //				HealthStatuses: []string{
 //					"Healthy",
 //					"Unavailable",

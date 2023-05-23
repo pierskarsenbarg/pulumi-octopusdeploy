@@ -16,6 +16,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -130,6 +131,11 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "certificate",
+                    "certificateThumbprint",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -160,10 +166,28 @@ namespace Pulumi.Octopusdeploy
         public Input<string>? AzureEnvironment { get; set; }
 
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        private Input<string>? _certificate;
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("certificateThumbprint")]
-        public Input<string>? CertificateThumbprint { get; set; }
+        private Input<string>? _certificateThumbprint;
+        public Input<string>? CertificateThumbprint
+        {
+            get => _certificateThumbprint;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateThumbprint = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The description of this Azure subscription account.
@@ -255,10 +279,28 @@ namespace Pulumi.Octopusdeploy
         public Input<string>? AzureEnvironment { get; set; }
 
         [Input("certificate")]
-        public Input<string>? Certificate { get; set; }
+        private Input<string>? _certificate;
+        public Input<string>? Certificate
+        {
+            get => _certificate;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificate = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("certificateThumbprint")]
-        public Input<string>? CertificateThumbprint { get; set; }
+        private Input<string>? _certificateThumbprint;
+        public Input<string>? CertificateThumbprint
+        {
+            get => _certificateThumbprint;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateThumbprint = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The description of this Azure subscription account.

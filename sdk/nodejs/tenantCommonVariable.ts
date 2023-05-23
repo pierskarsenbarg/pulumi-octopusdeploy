@@ -71,9 +71,11 @@ export class TenantCommonVariable extends pulumi.CustomResource {
             resourceInputs["libraryVariableSetId"] = args ? args.libraryVariableSetId : undefined;
             resourceInputs["templateId"] = args ? args.templateId : undefined;
             resourceInputs["tenantId"] = args ? args.tenantId : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
+            resourceInputs["value"] = args?.value ? pulumi.secret(args.value) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["value"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(TenantCommonVariable.__pulumiType, name, resourceInputs, opts);
     }
 }

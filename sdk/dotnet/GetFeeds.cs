@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -44,7 +45,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetFeedsResult> InvokeAsync(GetFeedsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetFeedsResult>("octopusdeploy:index/getFeeds:getFeeds", args ?? new GetFeedsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetFeedsResult>("octopusdeploy:index/getFeeds:getFeeds", args ?? new GetFeedsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing feeds.
@@ -55,6 +56,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -79,7 +81,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetFeedsResult> Invoke(GetFeedsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetFeedsResult>("octopusdeploy:index/getFeeds:getFeeds", args ?? new GetFeedsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetFeedsResult>("octopusdeploy:index/getFeeds:getFeeds", args ?? new GetFeedsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,16 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getVariables());
+ * const example = octopusdeploy.getVariables({});
  * ```
  */
 export function getVariables(args?: GetVariablesArgs, opts?: pulumi.InvokeOptions): Promise<GetVariablesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getVariables:getVariables", {
         "ids": args.ids,
         "variables": args.variables,
@@ -61,9 +59,20 @@ export interface GetVariablesResult {
      */
     readonly variables: outputs.GetVariablesVariable[];
 }
-
+/**
+ * Provides information about existing variables.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getVariables({});
+ * ```
+ */
 export function getVariablesOutput(args?: GetVariablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVariablesResult> {
-    return pulumi.output(args).apply(a => getVariables(a, opts))
+    return pulumi.output(args).apply((a: any) => getVariables(a, opts))
 }
 
 /**

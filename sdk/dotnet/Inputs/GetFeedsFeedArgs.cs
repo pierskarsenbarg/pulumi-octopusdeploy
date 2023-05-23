@@ -65,11 +65,21 @@ namespace Pulumi.Octopusdeploy.Inputs
             set => _packageAcquisitionLocationOptions = value;
         }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -78,7 +88,16 @@ namespace Pulumi.Octopusdeploy.Inputs
         public Input<string> RegistryPath { get; set; } = null!;
 
         [Input("secretKey", required: true)]
-        public Input<string> SecretKey { get; set; } = null!;
+        private Input<string>? _secretKey;
+        public Input<string>? SecretKey
+        {
+            get => _secretKey;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _secretKey = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The space ID associated with this resource.
@@ -86,11 +105,21 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("spaceId", required: true)]
         public Input<string> SpaceId { get; set; } = null!;
 
+        [Input("username", required: true)]
+        private Input<string>? _username;
+
         /// <summary>
         /// The username associated with this resource.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public GetFeedsFeedInputArgs()
         {

@@ -30,7 +30,7 @@ namespace Pulumi.Octopusdeploy.Outputs
         /// </summary>
         public readonly bool IsTaskQueueStopped;
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         public readonly string Name;
         /// <summary>

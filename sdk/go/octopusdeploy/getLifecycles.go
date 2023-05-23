@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetLifecycles(ctx, &GetLifecyclesArgs{
+//			_, err := octopusdeploy.GetLifecycles(ctx, &octopusdeploy.GetLifecyclesArgs{
 //				Ids: []string{
 //					"Lifecycles-123",
 //					"Lifecycles-321",

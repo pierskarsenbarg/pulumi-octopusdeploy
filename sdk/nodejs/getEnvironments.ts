@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getEnvironments({
+ * const example = octopusdeploy.getEnvironments({
  *     ids: [
  *         "Environments-123",
  *         "Environments-321",
@@ -23,16 +24,13 @@ import * as utilities from "./utilities";
  *     partialName: "Produc",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getEnvironments(args?: GetEnvironmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetEnvironmentsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getEnvironments:getEnvironments", {
         "environments": args.environments,
         "ids": args.ids,
@@ -106,9 +104,29 @@ export interface GetEnvironmentsResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing environments.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getEnvironments({
+ *     ids: [
+ *         "Environments-123",
+ *         "Environments-321",
+ *     ],
+ *     name: "Production",
+ *     partialName: "Produc",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getEnvironmentsOutput(args?: GetEnvironmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentsResult> {
-    return pulumi.output(args).apply(a => getEnvironments(a, opts))
+    return pulumi.output(args).apply((a: any) => getEnvironments(a, opts))
 }
 
 /**

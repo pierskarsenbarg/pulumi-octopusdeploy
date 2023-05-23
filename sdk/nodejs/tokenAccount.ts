@@ -11,9 +11,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = new octopusdeploy.TokenAccount("example", {
- *     token: "[token]",
- * });
+ * const example = new octopusdeploy.TokenAccount("example", {token: "[token]"});
  * ```
  *
  * ## Import
@@ -116,9 +114,11 @@ export class TokenAccount extends pulumi.CustomResource {
             resourceInputs["tenantTags"] = args ? args.tenantTags : undefined;
             resourceInputs["tenantedDeploymentParticipation"] = args ? args.tenantedDeploymentParticipation : undefined;
             resourceInputs["tenants"] = args ? args.tenants : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(TokenAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

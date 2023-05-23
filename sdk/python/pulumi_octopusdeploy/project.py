@@ -901,6 +901,10 @@ class Project(pulumi.CustomResource):
                  versioning_strategies: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ProjectVersioningStrategyArgs']]]]] = None,
                  __props__=None):
         """
+        This resource manages projects in Octopus Deploy.
+
+        > Credentials are stored in state as plaintext. Read more about sensitive data in state.
+
         ## Example Usage
 
         ```python
@@ -976,6 +980,10 @@ class Project(pulumi.CustomResource):
                  args: ProjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        This resource manages projects in Octopus Deploy.
+
+        > Credentials are stored in state as plaintext. Read more about sensitive data in state.
+
         ## Example Usage
 
         ```python

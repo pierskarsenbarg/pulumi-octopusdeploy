@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetChannels(ctx, &GetChannelsArgs{
+//			_, err := octopusdeploy.GetChannels(ctx, &octopusdeploy.GetChannelsArgs{
 //				Ids: []string{
 //					"Channels-123",
 //					"Channels-321",

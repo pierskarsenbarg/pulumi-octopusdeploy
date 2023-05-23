@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -43,7 +44,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetLifecyclesResult> InvokeAsync(GetLifecyclesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLifecyclesResult>("octopusdeploy:index/getLifecycles:getLifecycles", args ?? new GetLifecyclesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLifecyclesResult>("octopusdeploy:index/getLifecycles:getLifecycles", args ?? new GetLifecyclesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing lifecycles.
@@ -54,6 +55,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -77,7 +79,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetLifecyclesResult> Invoke(GetLifecyclesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLifecyclesResult>("octopusdeploy:index/getLifecycles:getLifecycles", args ?? new GetLifecyclesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLifecyclesResult>("octopusdeploy:index/getLifecycles:getLifecycles", args ?? new GetLifecyclesInvokeArgs(), options.WithDefaults());
     }
 
 

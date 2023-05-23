@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing tag sets.
         /// </summary>
         public static Task<GetTagSetsResult> InvokeAsync(GetTagSetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTagSetsResult>("octopusdeploy:index/getTagSets:getTagSets", args ?? new GetTagSetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagSetsResult>("octopusdeploy:index/getTagSets:getTagSets", args ?? new GetTagSetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing tag sets.
         /// </summary>
         public static Output<GetTagSetsResult> Invoke(GetTagSetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTagSetsResult>("octopusdeploy:index/getTagSets:getTagSets", args ?? new GetTagSetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagSetsResult>("octopusdeploy:index/getTagSets:getTagSets", args ?? new GetTagSetsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing deployment targets.
         /// </summary>
         public static Task<GetDeploymentTargetsResult> InvokeAsync(GetDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetDeploymentTargetsResult>("octopusdeploy:index/getDeploymentTargets:getDeploymentTargets", args ?? new GetDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeploymentTargetsResult>("octopusdeploy:index/getDeploymentTargets:getDeploymentTargets", args ?? new GetDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing deployment targets.
         /// </summary>
         public static Output<GetDeploymentTargetsResult> Invoke(GetDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetDeploymentTargetsResult>("octopusdeploy:index/getDeploymentTargets:getDeploymentTargets", args ?? new GetDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeploymentTargetsResult>("octopusdeploy:index/getDeploymentTargets:getDeploymentTargets", args ?? new GetDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

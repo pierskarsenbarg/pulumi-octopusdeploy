@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -34,7 +35,7 @@ import * as utilities from "./utilities";
  *     }],
  *     isActive: true,
  *     isService: false,
- *     password: "###########", // get from secure environment/store
+ *     password: "###########",
  *     username: "[username]",
  * });
  * ```
@@ -130,12 +131,14 @@ export class User extends pulumi.CustomResource {
             resourceInputs["identities"] = args ? args.identities : undefined;
             resourceInputs["isActive"] = args ? args.isActive : undefined;
             resourceInputs["isService"] = args ? args.isService : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
+            resourceInputs["username"] = args?.username ? pulumi.secret(args.username) : undefined;
             resourceInputs["canPasswordBeEdited"] = undefined /*out*/;
             resourceInputs["isRequestor"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["password", "username"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(User.__pulumiType, name, resourceInputs, opts);
     }
 }

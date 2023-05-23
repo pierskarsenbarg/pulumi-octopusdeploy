@@ -16,6 +16,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -174,6 +175,11 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "certificateData",
+                    "password",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -200,11 +206,21 @@ namespace Pulumi.Octopusdeploy
         [Input("archived")]
         public Input<string>? Archived { get; set; }
 
+        [Input("certificateData", required: true)]
+        private Input<string>? _certificateData;
+
         /// <summary>
         /// The encoded data of the certificate.
         /// </summary>
-        [Input("certificateData", required: true)]
-        public Input<string> CertificateData { get; set; } = null!;
+        public Input<string>? CertificateData
+        {
+            get => _certificateData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies the archive file format used for storing cryptography objects in the certificate. Valid formats are `Der`, `Pem`, `Pkcs12`, or `Unknown`.
@@ -260,11 +276,21 @@ namespace Pulumi.Octopusdeploy
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("replacedBy")]
         public Input<string>? ReplacedBy { get; set; }
@@ -342,11 +368,21 @@ namespace Pulumi.Octopusdeploy
         [Input("archived")]
         public Input<string>? Archived { get; set; }
 
+        [Input("certificateData")]
+        private Input<string>? _certificateData;
+
         /// <summary>
         /// The encoded data of the certificate.
         /// </summary>
-        [Input("certificateData")]
-        public Input<string>? CertificateData { get; set; }
+        public Input<string>? CertificateData
+        {
+            get => _certificateData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies the archive file format used for storing cryptography objects in the certificate. Valid formats are `Der`, `Pem`, `Pkcs12`, or `Unknown`.
@@ -402,11 +438,21 @@ namespace Pulumi.Octopusdeploy
         [Input("notes")]
         public Input<string>? Notes { get; set; }
 
+        [Input("password")]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password")]
-        public Input<string>? Password { get; set; }
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("replacedBy")]
         public Input<string>? ReplacedBy { get; set; }

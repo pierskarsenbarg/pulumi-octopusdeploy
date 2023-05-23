@@ -30,11 +30,17 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private string? _password;
+
         /// <summary>
         /// The password for the Git credential.
         /// </summary>
-        [Input("password", required: true)]
-        public string Password { get; set; } = null!;
+        public string? Password
+        {
+            get => _password;
+            set => _password = value;
+        }
 
         /// <summary>
         /// The space ID associated with this resource.

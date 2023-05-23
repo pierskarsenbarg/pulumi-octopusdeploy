@@ -2,33 +2,12 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
  * This resource manages Azure service fabric cluster deployment targets in Octopus Deploy.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as octopusdeploy from "@pulumi/octopusdeploy";
- *
- * const example = new octopusdeploy.AzureServiceFabricClusterDeploymentTarget("example", {
- *     accountId: "Accounts-123",
- *     connectionEndpoint: "[connection-endpoint]",
- *     environments: [
- *         "Environments-123",
- *         "Environment-321",
- *     ],
- *     roles: [
- *         "Development Team",
- *         "System Administrators",
- *     ],
- *     storageAccountName: "[storage_account_name]",
- *     tenantedDeploymentParticipation: "Untenanted",
- * });
- * ```
  *
  * ## Import
  *
@@ -178,7 +157,7 @@ export class AzureServiceFabricClusterDeploymentTarget extends pulumi.CustomReso
             }
             resourceInputs["aadClientCredentialSecret"] = args ? args.aadClientCredentialSecret : undefined;
             resourceInputs["aadCredentialType"] = args ? args.aadCredentialType : undefined;
-            resourceInputs["aadUserCredentialPassword"] = args ? args.aadUserCredentialPassword : undefined;
+            resourceInputs["aadUserCredentialPassword"] = args?.aadUserCredentialPassword ? pulumi.secret(args.aadUserCredentialPassword) : undefined;
             resourceInputs["aadUserCredentialUsername"] = args ? args.aadUserCredentialUsername : undefined;
             resourceInputs["certificateStoreLocation"] = args ? args.certificateStoreLocation : undefined;
             resourceInputs["certificateStoreName"] = args ? args.certificateStoreName : undefined;
@@ -208,6 +187,8 @@ export class AzureServiceFabricClusterDeploymentTarget extends pulumi.CustomReso
             resourceInputs["isInProcess"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["aadUserCredentialPassword"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AzureServiceFabricClusterDeploymentTarget.__pulumiType, name, resourceInputs, opts);
     }
 }

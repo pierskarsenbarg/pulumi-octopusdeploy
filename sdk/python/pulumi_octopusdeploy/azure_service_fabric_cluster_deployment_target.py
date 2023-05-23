@@ -918,7 +918,7 @@ class AzureServiceFabricClusterDeploymentTarget(pulumi.CustomResource):
 
             __props__.__dict__["aad_client_credential_secret"] = aad_client_credential_secret
             __props__.__dict__["aad_credential_type"] = aad_credential_type
-            __props__.__dict__["aad_user_credential_password"] = aad_user_credential_password
+            __props__.__dict__["aad_user_credential_password"] = None if aad_user_credential_password is None else pulumi.Output.secret(aad_user_credential_password)
             __props__.__dict__["aad_user_credential_username"] = aad_user_credential_username
             __props__.__dict__["certificate_store_location"] = certificate_store_location
             __props__.__dict__["certificate_store_name"] = certificate_store_name
@@ -952,6 +952,8 @@ class AzureServiceFabricClusterDeploymentTarget(pulumi.CustomResource):
             __props__.__dict__["uri"] = uri
             __props__.__dict__["has_latest_calamari"] = None
             __props__.__dict__["is_in_process"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["aadUserCredentialPassword"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AzureServiceFabricClusterDeploymentTarget, __self__).__init__(
             'octopusdeploy:index/azureServiceFabricClusterDeploymentTarget:AzureServiceFabricClusterDeploymentTarget',
             resource_name,

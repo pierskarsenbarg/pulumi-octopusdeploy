@@ -386,7 +386,9 @@ class TokenAccount(pulumi.CustomResource):
             __props__.__dict__["tenants"] = tenants
             if token is None and not opts.urn:
                 raise TypeError("Missing required property 'token'")
-            __props__.__dict__["token"] = token
+            __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(TokenAccount, __self__).__init__(
             'octopusdeploy:index/tokenAccount:TokenAccount',
             resource_name,

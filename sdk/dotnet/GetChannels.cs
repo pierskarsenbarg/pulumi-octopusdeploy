@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -43,7 +44,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetChannelsResult> InvokeAsync(GetChannelsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetChannelsResult>("octopusdeploy:index/getChannels:getChannels", args ?? new GetChannelsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetChannelsResult>("octopusdeploy:index/getChannels:getChannels", args ?? new GetChannelsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing channels.
@@ -54,6 +55,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -77,7 +79,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetChannelsResult> Invoke(GetChannelsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetChannelsResult>("octopusdeploy:index/getChannels:getChannels", args ?? new GetChannelsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetChannelsResult>("octopusdeploy:index/getChannels:getChannels", args ?? new GetChannelsInvokeArgs(), options.WithDefaults());
     }
 
 

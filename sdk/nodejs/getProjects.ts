@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getProjects({
+ * const example = octopusdeploy.getProjects({
  *     clonedFromProjectId: "Projects-456",
  *     ids: [
  *         "Projects-123",
@@ -25,16 +26,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getProjects(args?: GetProjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetProjectsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getProjects:getProjects", {
         "clonedFromProjectId": args.clonedFromProjectId,
         "ids": args.ids,
@@ -126,9 +124,31 @@ export interface GetProjectsResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing projects.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getProjects({
+ *     clonedFromProjectId: "Projects-456",
+ *     ids: [
+ *         "Projects-123",
+ *         "Projects-321",
+ *     ],
+ *     isClone: true,
+ *     name: "Default",
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getProjectsOutput(args?: GetProjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectsResult> {
-    return pulumi.output(args).apply(a => getProjects(a, opts))
+    return pulumi.output(args).apply((a: any) => getProjects(a, opts))
 }
 
 /**

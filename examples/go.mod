@@ -1,3 +1,3 @@
 module github.com/pierskarsenbarg/pulumi-octopusdeploy/examples
 
-go 1.16
+go 1.19

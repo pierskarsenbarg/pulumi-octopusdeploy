@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getKubernetesClusterDeploymentTargets(args?: GetKubernetesClusterDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getKubernetesClusterDeploymentTargets:getKubernetesClusterDeploymentTargets", {
         "deploymentId": args.deploymentId,
         "environments": args.environments,
@@ -169,9 +167,11 @@ export interface GetKubernetesClusterDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing Kubernetes cluster deployment targets.
+ */
 export function getKubernetesClusterDeploymentTargetsOutput(args?: GetKubernetesClusterDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKubernetesClusterDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getKubernetesClusterDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getKubernetesClusterDeploymentTargets(a, opts))
 }
 
 /**

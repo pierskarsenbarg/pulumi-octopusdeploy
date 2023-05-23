@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getCloudRegionDeploymentTargets({
+ * const example = octopusdeploy.getCloudRegionDeploymentTargets({
  *     environments: [
  *         "Environments-123",
  *         "Environments-321",
@@ -24,16 +25,13 @@ import * as utilities from "./utilities";
  *     partialName: "Azure Nor",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getCloudRegionDeploymentTargets(args?: GetCloudRegionDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetCloudRegionDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getCloudRegionDeploymentTargets:getCloudRegionDeploymentTargets", {
         "cloudRegionDeploymentTargets": args.cloudRegionDeploymentTargets,
         "deploymentId": args.deploymentId,
@@ -188,9 +186,30 @@ export interface GetCloudRegionDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing cloud region deployment targets.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getCloudRegionDeploymentTargets({
+ *     environments: [
+ *         "Environments-123",
+ *         "Environments-321",
+ *     ],
+ *     ids: ["Machines-123"],
+ *     name: "Azure North America",
+ *     partialName: "Azure Nor",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getCloudRegionDeploymentTargetsOutput(args?: GetCloudRegionDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudRegionDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getCloudRegionDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getCloudRegionDeploymentTargets(a, opts))
 }
 
 /**

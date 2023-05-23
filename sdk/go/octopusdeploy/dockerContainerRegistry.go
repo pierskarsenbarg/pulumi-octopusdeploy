@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -77,6 +77,17 @@ func NewDockerContainerRegistry(ctx *pulumi.Context,
 	if args.FeedUri == nil {
 		return nil, errors.New("invalid value for required argument 'FeedUri'")
 	}
+	if args.Password != nil {
+		args.Password = pulumi.ToSecret(args.Password).(pulumi.StringPtrInput)
+	}
+	if args.Username != nil {
+		args.Username = pulumi.ToSecret(args.Username).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"password",
+		"username",
+	})
+	opts = append(opts, secrets)
 	var resource DockerContainerRegistry
 	err := ctx.RegisterResource("octopusdeploy:index/dockerContainerRegistry:DockerContainerRegistry", name, args, &resource, opts...)
 	if err != nil {

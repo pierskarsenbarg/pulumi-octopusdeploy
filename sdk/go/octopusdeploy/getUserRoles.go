@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetUserRoles(ctx, &GetUserRolesArgs{
+//			_, err := octopusdeploy.GetUserRoles(ctx, &octopusdeploy.GetUserRolesArgs{
 //				Ids: []string{
 //					"UserRoles-123",
 //					"UserRoles-321",

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getScriptModules({
+ * const example = octopusdeploy.getScriptModules({
  *     ids: [
  *         "LibraryVariableSets-123",
  *         "LibraryVariableSets-321",
@@ -22,16 +23,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getScriptModules(args?: GetScriptModulesArgs, opts?: pulumi.InvokeOptions): Promise<GetScriptModulesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getScriptModules:getScriptModules", {
         "ids": args.ids,
         "partialName": args.partialName,
@@ -96,9 +94,28 @@ export interface GetScriptModulesResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing script modules.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getScriptModules({
+ *     ids: [
+ *         "LibraryVariableSets-123",
+ *         "LibraryVariableSets-321",
+ *     ],
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getScriptModulesOutput(args?: GetScriptModulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScriptModulesResult> {
-    return pulumi.output(args).apply(a => getScriptModules(a, opts))
+    return pulumi.output(args).apply((a: any) => getScriptModules(a, opts))
 }
 
 /**

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getLifecycles({
+ * const example = octopusdeploy.getLifecycles({
  *     ids: [
  *         "Lifecycles-123",
  *         "Lifecycles-321",
@@ -22,16 +23,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getLifecycles(args?: GetLifecyclesArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecyclesResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getLifecycles:getLifecycles", {
         "ids": args.ids,
         "lifecycles": args.lifecycles,
@@ -96,9 +94,28 @@ export interface GetLifecyclesResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing lifecycles.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getLifecycles({
+ *     ids: [
+ *         "Lifecycles-123",
+ *         "Lifecycles-321",
+ *     ],
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getLifecyclesOutput(args?: GetLifecyclesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecyclesResult> {
-    return pulumi.output(args).apply(a => getLifecycles(a, opts))
+    return pulumi.output(args).apply((a: any) => getLifecycles(a, opts))
 }
 
 /**

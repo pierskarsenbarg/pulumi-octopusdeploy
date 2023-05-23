@@ -5,88 +5,416 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./awsAccount";
-export * from "./awsElasticContainerRegistry";
-export * from "./azureCloudServiceDeploymentTarget";
-export * from "./azureServiceFabricClusterDeploymentTarget";
-export * from "./azureServicePrincipal";
-export * from "./azureSubscriptionAccount";
-export * from "./azureWebAppDeploymentTarget";
-export * from "./certificate";
-export * from "./channel";
-export * from "./cloudRegionDeploymentTarget";
-export * from "./deploymentProcess";
-export * from "./dockerContainerRegistry";
-export * from "./dynamicWorkerPool";
-export * from "./environment";
-export * from "./gcpAccount";
-export * from "./getAccounts";
-export * from "./getAzureCloudServiceDeploymentTargets";
-export * from "./getAzureServiceFabricClusterDeploymentTargets";
-export * from "./getAzureWebAppDeploymentTargets";
-export * from "./getCertificates";
-export * from "./getChannels";
-export * from "./getCloudRegionDeploymentTargets";
-export * from "./getDeploymentTargets";
-export * from "./getEnvironments";
-export * from "./getFeeds";
-export * from "./getGitCredentials";
-export * from "./getKubernetesClusterDeploymentTargets";
-export * from "./getLibraryVariableSets";
-export * from "./getLifecycles";
-export * from "./getListeningTentacleDeploymentTargets";
-export * from "./getMachine";
-export * from "./getMachinePolicies";
-export * from "./getOfflinePackageDropDeploymentTargets";
-export * from "./getPollingTentacleDeploymentTargets";
-export * from "./getProjectGroups";
-export * from "./getProjects";
-export * from "./getScriptModules";
-export * from "./getSpace";
-export * from "./getSpaces";
-export * from "./getSshConnectionDeploymentTargets";
-export * from "./getTagSets";
-export * from "./getTeams";
-export * from "./getTenants";
-export * from "./getUserRoles";
-export * from "./getUsers";
-export * from "./getVariables";
-export * from "./getWorkerPools";
-export * from "./gitCredentials";
-export * from "./githubRepositoryFeed";
-export * from "./helmFeed";
-export * from "./kubernetesClusterDeploymentTarget";
-export * from "./libraryVariableSet";
-export * from "./lifecycle";
-export * from "./listeningTentacleDeploymentTarget";
-export * from "./machinePolicy";
-export * from "./mavenFeed";
-export * from "./nugetFeed";
-export * from "./offlinePackageDropDeploymentTarget";
-export * from "./pollingTentacleDeploymentTarget";
-export * from "./project";
-export * from "./projectDeploymentTargetTrigger";
-export * from "./projectGroup";
-export * from "./provider";
-export * from "./runbook";
-export * from "./runbookProcess";
-export * from "./scopedUserRole";
-export * from "./scriptModule";
-export * from "./space";
-export * from "./sshConnectionDeploymentTarget";
-export * from "./sshKeyAccount";
-export * from "./staticWorkerPool";
-export * from "./tag";
-export * from "./tagSet";
-export * from "./team";
-export * from "./tenant";
-export * from "./tenantCommonVariable";
-export * from "./tenantProjectVariable";
-export * from "./tokenAccount";
-export * from "./user";
-export * from "./userRole";
-export * from "./usernamePasswordAccount";
-export * from "./variable";
+export { AwsAccountArgs, AwsAccountState } from "./awsAccount";
+export type AwsAccount = import("./awsAccount").AwsAccount;
+export const AwsAccount: typeof import("./awsAccount").AwsAccount = null as any;
+utilities.lazyLoad(exports, ["AwsAccount"], () => require("./awsAccount"));
+
+export { AwsElasticContainerRegistryArgs, AwsElasticContainerRegistryState } from "./awsElasticContainerRegistry";
+export type AwsElasticContainerRegistry = import("./awsElasticContainerRegistry").AwsElasticContainerRegistry;
+export const AwsElasticContainerRegistry: typeof import("./awsElasticContainerRegistry").AwsElasticContainerRegistry = null as any;
+utilities.lazyLoad(exports, ["AwsElasticContainerRegistry"], () => require("./awsElasticContainerRegistry"));
+
+export { AzureCloudServiceDeploymentTargetArgs, AzureCloudServiceDeploymentTargetState } from "./azureCloudServiceDeploymentTarget";
+export type AzureCloudServiceDeploymentTarget = import("./azureCloudServiceDeploymentTarget").AzureCloudServiceDeploymentTarget;
+export const AzureCloudServiceDeploymentTarget: typeof import("./azureCloudServiceDeploymentTarget").AzureCloudServiceDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["AzureCloudServiceDeploymentTarget"], () => require("./azureCloudServiceDeploymentTarget"));
+
+export { AzureServiceFabricClusterDeploymentTargetArgs, AzureServiceFabricClusterDeploymentTargetState } from "./azureServiceFabricClusterDeploymentTarget";
+export type AzureServiceFabricClusterDeploymentTarget = import("./azureServiceFabricClusterDeploymentTarget").AzureServiceFabricClusterDeploymentTarget;
+export const AzureServiceFabricClusterDeploymentTarget: typeof import("./azureServiceFabricClusterDeploymentTarget").AzureServiceFabricClusterDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["AzureServiceFabricClusterDeploymentTarget"], () => require("./azureServiceFabricClusterDeploymentTarget"));
+
+export { AzureServicePrincipalArgs, AzureServicePrincipalState } from "./azureServicePrincipal";
+export type AzureServicePrincipal = import("./azureServicePrincipal").AzureServicePrincipal;
+export const AzureServicePrincipal: typeof import("./azureServicePrincipal").AzureServicePrincipal = null as any;
+utilities.lazyLoad(exports, ["AzureServicePrincipal"], () => require("./azureServicePrincipal"));
+
+export { AzureSubscriptionAccountArgs, AzureSubscriptionAccountState } from "./azureSubscriptionAccount";
+export type AzureSubscriptionAccount = import("./azureSubscriptionAccount").AzureSubscriptionAccount;
+export const AzureSubscriptionAccount: typeof import("./azureSubscriptionAccount").AzureSubscriptionAccount = null as any;
+utilities.lazyLoad(exports, ["AzureSubscriptionAccount"], () => require("./azureSubscriptionAccount"));
+
+export { AzureWebAppDeploymentTargetArgs, AzureWebAppDeploymentTargetState } from "./azureWebAppDeploymentTarget";
+export type AzureWebAppDeploymentTarget = import("./azureWebAppDeploymentTarget").AzureWebAppDeploymentTarget;
+export const AzureWebAppDeploymentTarget: typeof import("./azureWebAppDeploymentTarget").AzureWebAppDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["AzureWebAppDeploymentTarget"], () => require("./azureWebAppDeploymentTarget"));
+
+export { CertificateArgs, CertificateState } from "./certificate";
+export type Certificate = import("./certificate").Certificate;
+export const Certificate: typeof import("./certificate").Certificate = null as any;
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
+
+export { ChannelArgs, ChannelState } from "./channel";
+export type Channel = import("./channel").Channel;
+export const Channel: typeof import("./channel").Channel = null as any;
+utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
+
+export { CloudRegionDeploymentTargetArgs, CloudRegionDeploymentTargetState } from "./cloudRegionDeploymentTarget";
+export type CloudRegionDeploymentTarget = import("./cloudRegionDeploymentTarget").CloudRegionDeploymentTarget;
+export const CloudRegionDeploymentTarget: typeof import("./cloudRegionDeploymentTarget").CloudRegionDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["CloudRegionDeploymentTarget"], () => require("./cloudRegionDeploymentTarget"));
+
+export { DeploymentProcessArgs, DeploymentProcessState } from "./deploymentProcess";
+export type DeploymentProcess = import("./deploymentProcess").DeploymentProcess;
+export const DeploymentProcess: typeof import("./deploymentProcess").DeploymentProcess = null as any;
+utilities.lazyLoad(exports, ["DeploymentProcess"], () => require("./deploymentProcess"));
+
+export { DockerContainerRegistryArgs, DockerContainerRegistryState } from "./dockerContainerRegistry";
+export type DockerContainerRegistry = import("./dockerContainerRegistry").DockerContainerRegistry;
+export const DockerContainerRegistry: typeof import("./dockerContainerRegistry").DockerContainerRegistry = null as any;
+utilities.lazyLoad(exports, ["DockerContainerRegistry"], () => require("./dockerContainerRegistry"));
+
+export { DynamicWorkerPoolArgs, DynamicWorkerPoolState } from "./dynamicWorkerPool";
+export type DynamicWorkerPool = import("./dynamicWorkerPool").DynamicWorkerPool;
+export const DynamicWorkerPool: typeof import("./dynamicWorkerPool").DynamicWorkerPool = null as any;
+utilities.lazyLoad(exports, ["DynamicWorkerPool"], () => require("./dynamicWorkerPool"));
+
+export { EnvironmentArgs, EnvironmentState } from "./environment";
+export type Environment = import("./environment").Environment;
+export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+
+export { GcpAccountArgs, GcpAccountState } from "./gcpAccount";
+export type GcpAccount = import("./gcpAccount").GcpAccount;
+export const GcpAccount: typeof import("./gcpAccount").GcpAccount = null as any;
+utilities.lazyLoad(exports, ["GcpAccount"], () => require("./gcpAccount"));
+
+export { GetAccountsArgs, GetAccountsResult, GetAccountsOutputArgs } from "./getAccounts";
+export const getAccounts: typeof import("./getAccounts").getAccounts = null as any;
+export const getAccountsOutput: typeof import("./getAccounts").getAccountsOutput = null as any;
+utilities.lazyLoad(exports, ["getAccounts","getAccountsOutput"], () => require("./getAccounts"));
+
+export { GetAzureCloudServiceDeploymentTargetsArgs, GetAzureCloudServiceDeploymentTargetsResult, GetAzureCloudServiceDeploymentTargetsOutputArgs } from "./getAzureCloudServiceDeploymentTargets";
+export const getAzureCloudServiceDeploymentTargets: typeof import("./getAzureCloudServiceDeploymentTargets").getAzureCloudServiceDeploymentTargets = null as any;
+export const getAzureCloudServiceDeploymentTargetsOutput: typeof import("./getAzureCloudServiceDeploymentTargets").getAzureCloudServiceDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureCloudServiceDeploymentTargets","getAzureCloudServiceDeploymentTargetsOutput"], () => require("./getAzureCloudServiceDeploymentTargets"));
+
+export { GetAzureServiceFabricClusterDeploymentTargetsArgs, GetAzureServiceFabricClusterDeploymentTargetsResult, GetAzureServiceFabricClusterDeploymentTargetsOutputArgs } from "./getAzureServiceFabricClusterDeploymentTargets";
+export const getAzureServiceFabricClusterDeploymentTargets: typeof import("./getAzureServiceFabricClusterDeploymentTargets").getAzureServiceFabricClusterDeploymentTargets = null as any;
+export const getAzureServiceFabricClusterDeploymentTargetsOutput: typeof import("./getAzureServiceFabricClusterDeploymentTargets").getAzureServiceFabricClusterDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureServiceFabricClusterDeploymentTargets","getAzureServiceFabricClusterDeploymentTargetsOutput"], () => require("./getAzureServiceFabricClusterDeploymentTargets"));
+
+export { GetAzureWebAppDeploymentTargetsArgs, GetAzureWebAppDeploymentTargetsResult, GetAzureWebAppDeploymentTargetsOutputArgs } from "./getAzureWebAppDeploymentTargets";
+export const getAzureWebAppDeploymentTargets: typeof import("./getAzureWebAppDeploymentTargets").getAzureWebAppDeploymentTargets = null as any;
+export const getAzureWebAppDeploymentTargetsOutput: typeof import("./getAzureWebAppDeploymentTargets").getAzureWebAppDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getAzureWebAppDeploymentTargets","getAzureWebAppDeploymentTargetsOutput"], () => require("./getAzureWebAppDeploymentTargets"));
+
+export { GetCertificatesArgs, GetCertificatesResult, GetCertificatesOutputArgs } from "./getCertificates";
+export const getCertificates: typeof import("./getCertificates").getCertificates = null as any;
+export const getCertificatesOutput: typeof import("./getCertificates").getCertificatesOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificates","getCertificatesOutput"], () => require("./getCertificates"));
+
+export { GetChannelsArgs, GetChannelsResult, GetChannelsOutputArgs } from "./getChannels";
+export const getChannels: typeof import("./getChannels").getChannels = null as any;
+export const getChannelsOutput: typeof import("./getChannels").getChannelsOutput = null as any;
+utilities.lazyLoad(exports, ["getChannels","getChannelsOutput"], () => require("./getChannels"));
+
+export { GetCloudRegionDeploymentTargetsArgs, GetCloudRegionDeploymentTargetsResult, GetCloudRegionDeploymentTargetsOutputArgs } from "./getCloudRegionDeploymentTargets";
+export const getCloudRegionDeploymentTargets: typeof import("./getCloudRegionDeploymentTargets").getCloudRegionDeploymentTargets = null as any;
+export const getCloudRegionDeploymentTargetsOutput: typeof import("./getCloudRegionDeploymentTargets").getCloudRegionDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getCloudRegionDeploymentTargets","getCloudRegionDeploymentTargetsOutput"], () => require("./getCloudRegionDeploymentTargets"));
+
+export { GetDeploymentTargetsArgs, GetDeploymentTargetsResult, GetDeploymentTargetsOutputArgs } from "./getDeploymentTargets";
+export const getDeploymentTargets: typeof import("./getDeploymentTargets").getDeploymentTargets = null as any;
+export const getDeploymentTargetsOutput: typeof import("./getDeploymentTargets").getDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getDeploymentTargets","getDeploymentTargetsOutput"], () => require("./getDeploymentTargets"));
+
+export { GetEnvironmentsArgs, GetEnvironmentsResult, GetEnvironmentsOutputArgs } from "./getEnvironments";
+export const getEnvironments: typeof import("./getEnvironments").getEnvironments = null as any;
+export const getEnvironmentsOutput: typeof import("./getEnvironments").getEnvironmentsOutput = null as any;
+utilities.lazyLoad(exports, ["getEnvironments","getEnvironmentsOutput"], () => require("./getEnvironments"));
+
+export { GetFeedsArgs, GetFeedsResult, GetFeedsOutputArgs } from "./getFeeds";
+export const getFeeds: typeof import("./getFeeds").getFeeds = null as any;
+export const getFeedsOutput: typeof import("./getFeeds").getFeedsOutput = null as any;
+utilities.lazyLoad(exports, ["getFeeds","getFeedsOutput"], () => require("./getFeeds"));
+
+export { GetGitCredentialsArgs, GetGitCredentialsResult, GetGitCredentialsOutputArgs } from "./getGitCredentials";
+export const getGitCredentials: typeof import("./getGitCredentials").getGitCredentials = null as any;
+export const getGitCredentialsOutput: typeof import("./getGitCredentials").getGitCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getGitCredentials","getGitCredentialsOutput"], () => require("./getGitCredentials"));
+
+export { GetKubernetesClusterDeploymentTargetsArgs, GetKubernetesClusterDeploymentTargetsResult, GetKubernetesClusterDeploymentTargetsOutputArgs } from "./getKubernetesClusterDeploymentTargets";
+export const getKubernetesClusterDeploymentTargets: typeof import("./getKubernetesClusterDeploymentTargets").getKubernetesClusterDeploymentTargets = null as any;
+export const getKubernetesClusterDeploymentTargetsOutput: typeof import("./getKubernetesClusterDeploymentTargets").getKubernetesClusterDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getKubernetesClusterDeploymentTargets","getKubernetesClusterDeploymentTargetsOutput"], () => require("./getKubernetesClusterDeploymentTargets"));
+
+export { GetLibraryVariableSetsArgs, GetLibraryVariableSetsResult, GetLibraryVariableSetsOutputArgs } from "./getLibraryVariableSets";
+export const getLibraryVariableSets: typeof import("./getLibraryVariableSets").getLibraryVariableSets = null as any;
+export const getLibraryVariableSetsOutput: typeof import("./getLibraryVariableSets").getLibraryVariableSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getLibraryVariableSets","getLibraryVariableSetsOutput"], () => require("./getLibraryVariableSets"));
+
+export { GetLifecyclesArgs, GetLifecyclesResult, GetLifecyclesOutputArgs } from "./getLifecycles";
+export const getLifecycles: typeof import("./getLifecycles").getLifecycles = null as any;
+export const getLifecyclesOutput: typeof import("./getLifecycles").getLifecyclesOutput = null as any;
+utilities.lazyLoad(exports, ["getLifecycles","getLifecyclesOutput"], () => require("./getLifecycles"));
+
+export { GetListeningTentacleDeploymentTargetsArgs, GetListeningTentacleDeploymentTargetsResult, GetListeningTentacleDeploymentTargetsOutputArgs } from "./getListeningTentacleDeploymentTargets";
+export const getListeningTentacleDeploymentTargets: typeof import("./getListeningTentacleDeploymentTargets").getListeningTentacleDeploymentTargets = null as any;
+export const getListeningTentacleDeploymentTargetsOutput: typeof import("./getListeningTentacleDeploymentTargets").getListeningTentacleDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getListeningTentacleDeploymentTargets","getListeningTentacleDeploymentTargetsOutput"], () => require("./getListeningTentacleDeploymentTargets"));
+
+export { GetMachineArgs, GetMachineResult, GetMachineOutputArgs } from "./getMachine";
+export const getMachine: typeof import("./getMachine").getMachine = null as any;
+export const getMachineOutput: typeof import("./getMachine").getMachineOutput = null as any;
+utilities.lazyLoad(exports, ["getMachine","getMachineOutput"], () => require("./getMachine"));
+
+export { GetMachinePoliciesArgs, GetMachinePoliciesResult, GetMachinePoliciesOutputArgs } from "./getMachinePolicies";
+export const getMachinePolicies: typeof import("./getMachinePolicies").getMachinePolicies = null as any;
+export const getMachinePoliciesOutput: typeof import("./getMachinePolicies").getMachinePoliciesOutput = null as any;
+utilities.lazyLoad(exports, ["getMachinePolicies","getMachinePoliciesOutput"], () => require("./getMachinePolicies"));
+
+export { GetOfflinePackageDropDeploymentTargetsArgs, GetOfflinePackageDropDeploymentTargetsResult, GetOfflinePackageDropDeploymentTargetsOutputArgs } from "./getOfflinePackageDropDeploymentTargets";
+export const getOfflinePackageDropDeploymentTargets: typeof import("./getOfflinePackageDropDeploymentTargets").getOfflinePackageDropDeploymentTargets = null as any;
+export const getOfflinePackageDropDeploymentTargetsOutput: typeof import("./getOfflinePackageDropDeploymentTargets").getOfflinePackageDropDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getOfflinePackageDropDeploymentTargets","getOfflinePackageDropDeploymentTargetsOutput"], () => require("./getOfflinePackageDropDeploymentTargets"));
+
+export { GetPollingTentacleDeploymentTargetsArgs, GetPollingTentacleDeploymentTargetsResult, GetPollingTentacleDeploymentTargetsOutputArgs } from "./getPollingTentacleDeploymentTargets";
+export const getPollingTentacleDeploymentTargets: typeof import("./getPollingTentacleDeploymentTargets").getPollingTentacleDeploymentTargets = null as any;
+export const getPollingTentacleDeploymentTargetsOutput: typeof import("./getPollingTentacleDeploymentTargets").getPollingTentacleDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getPollingTentacleDeploymentTargets","getPollingTentacleDeploymentTargetsOutput"], () => require("./getPollingTentacleDeploymentTargets"));
+
+export { GetProjectGroupsArgs, GetProjectGroupsResult, GetProjectGroupsOutputArgs } from "./getProjectGroups";
+export const getProjectGroups: typeof import("./getProjectGroups").getProjectGroups = null as any;
+export const getProjectGroupsOutput: typeof import("./getProjectGroups").getProjectGroupsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectGroups","getProjectGroupsOutput"], () => require("./getProjectGroups"));
+
+export { GetProjectsArgs, GetProjectsResult, GetProjectsOutputArgs } from "./getProjects";
+export const getProjects: typeof import("./getProjects").getProjects = null as any;
+export const getProjectsOutput: typeof import("./getProjects").getProjectsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjects","getProjectsOutput"], () => require("./getProjects"));
+
+export { GetScriptModulesArgs, GetScriptModulesResult, GetScriptModulesOutputArgs } from "./getScriptModules";
+export const getScriptModules: typeof import("./getScriptModules").getScriptModules = null as any;
+export const getScriptModulesOutput: typeof import("./getScriptModules").getScriptModulesOutput = null as any;
+utilities.lazyLoad(exports, ["getScriptModules","getScriptModulesOutput"], () => require("./getScriptModules"));
+
+export { GetSpaceArgs, GetSpaceResult, GetSpaceOutputArgs } from "./getSpace";
+export const getSpace: typeof import("./getSpace").getSpace = null as any;
+export const getSpaceOutput: typeof import("./getSpace").getSpaceOutput = null as any;
+utilities.lazyLoad(exports, ["getSpace","getSpaceOutput"], () => require("./getSpace"));
+
+export { GetSpacesArgs, GetSpacesResult, GetSpacesOutputArgs } from "./getSpaces";
+export const getSpaces: typeof import("./getSpaces").getSpaces = null as any;
+export const getSpacesOutput: typeof import("./getSpaces").getSpacesOutput = null as any;
+utilities.lazyLoad(exports, ["getSpaces","getSpacesOutput"], () => require("./getSpaces"));
+
+export { GetSshConnectionDeploymentTargetsArgs, GetSshConnectionDeploymentTargetsResult, GetSshConnectionDeploymentTargetsOutputArgs } from "./getSshConnectionDeploymentTargets";
+export const getSshConnectionDeploymentTargets: typeof import("./getSshConnectionDeploymentTargets").getSshConnectionDeploymentTargets = null as any;
+export const getSshConnectionDeploymentTargetsOutput: typeof import("./getSshConnectionDeploymentTargets").getSshConnectionDeploymentTargetsOutput = null as any;
+utilities.lazyLoad(exports, ["getSshConnectionDeploymentTargets","getSshConnectionDeploymentTargetsOutput"], () => require("./getSshConnectionDeploymentTargets"));
+
+export { GetTagSetsArgs, GetTagSetsResult, GetTagSetsOutputArgs } from "./getTagSets";
+export const getTagSets: typeof import("./getTagSets").getTagSets = null as any;
+export const getTagSetsOutput: typeof import("./getTagSets").getTagSetsOutput = null as any;
+utilities.lazyLoad(exports, ["getTagSets","getTagSetsOutput"], () => require("./getTagSets"));
+
+export { GetTeamsArgs, GetTeamsResult, GetTeamsOutputArgs } from "./getTeams";
+export const getTeams: typeof import("./getTeams").getTeams = null as any;
+export const getTeamsOutput: typeof import("./getTeams").getTeamsOutput = null as any;
+utilities.lazyLoad(exports, ["getTeams","getTeamsOutput"], () => require("./getTeams"));
+
+export { GetTenantsArgs, GetTenantsResult, GetTenantsOutputArgs } from "./getTenants";
+export const getTenants: typeof import("./getTenants").getTenants = null as any;
+export const getTenantsOutput: typeof import("./getTenants").getTenantsOutput = null as any;
+utilities.lazyLoad(exports, ["getTenants","getTenantsOutput"], () => require("./getTenants"));
+
+export { GetUserRolesArgs, GetUserRolesResult, GetUserRolesOutputArgs } from "./getUserRoles";
+export const getUserRoles: typeof import("./getUserRoles").getUserRoles = null as any;
+export const getUserRolesOutput: typeof import("./getUserRoles").getUserRolesOutput = null as any;
+utilities.lazyLoad(exports, ["getUserRoles","getUserRolesOutput"], () => require("./getUserRoles"));
+
+export { GetUsersArgs, GetUsersResult, GetUsersOutputArgs } from "./getUsers";
+export const getUsers: typeof import("./getUsers").getUsers = null as any;
+export const getUsersOutput: typeof import("./getUsers").getUsersOutput = null as any;
+utilities.lazyLoad(exports, ["getUsers","getUsersOutput"], () => require("./getUsers"));
+
+export { GetVariablesArgs, GetVariablesResult, GetVariablesOutputArgs } from "./getVariables";
+export const getVariables: typeof import("./getVariables").getVariables = null as any;
+export const getVariablesOutput: typeof import("./getVariables").getVariablesOutput = null as any;
+utilities.lazyLoad(exports, ["getVariables","getVariablesOutput"], () => require("./getVariables"));
+
+export { GetWorkerPoolsArgs, GetWorkerPoolsResult, GetWorkerPoolsOutputArgs } from "./getWorkerPools";
+export const getWorkerPools: typeof import("./getWorkerPools").getWorkerPools = null as any;
+export const getWorkerPoolsOutput: typeof import("./getWorkerPools").getWorkerPoolsOutput = null as any;
+utilities.lazyLoad(exports, ["getWorkerPools","getWorkerPoolsOutput"], () => require("./getWorkerPools"));
+
+export { GitCredentialsArgs, GitCredentialsState } from "./gitCredentials";
+export type GitCredentials = import("./gitCredentials").GitCredentials;
+export const GitCredentials: typeof import("./gitCredentials").GitCredentials = null as any;
+utilities.lazyLoad(exports, ["GitCredentials"], () => require("./gitCredentials"));
+
+export { GithubRepositoryFeedArgs, GithubRepositoryFeedState } from "./githubRepositoryFeed";
+export type GithubRepositoryFeed = import("./githubRepositoryFeed").GithubRepositoryFeed;
+export const GithubRepositoryFeed: typeof import("./githubRepositoryFeed").GithubRepositoryFeed = null as any;
+utilities.lazyLoad(exports, ["GithubRepositoryFeed"], () => require("./githubRepositoryFeed"));
+
+export { HelmFeedArgs, HelmFeedState } from "./helmFeed";
+export type HelmFeed = import("./helmFeed").HelmFeed;
+export const HelmFeed: typeof import("./helmFeed").HelmFeed = null as any;
+utilities.lazyLoad(exports, ["HelmFeed"], () => require("./helmFeed"));
+
+export { KubernetesClusterDeploymentTargetArgs, KubernetesClusterDeploymentTargetState } from "./kubernetesClusterDeploymentTarget";
+export type KubernetesClusterDeploymentTarget = import("./kubernetesClusterDeploymentTarget").KubernetesClusterDeploymentTarget;
+export const KubernetesClusterDeploymentTarget: typeof import("./kubernetesClusterDeploymentTarget").KubernetesClusterDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["KubernetesClusterDeploymentTarget"], () => require("./kubernetesClusterDeploymentTarget"));
+
+export { LibraryVariableSetArgs, LibraryVariableSetState } from "./libraryVariableSet";
+export type LibraryVariableSet = import("./libraryVariableSet").LibraryVariableSet;
+export const LibraryVariableSet: typeof import("./libraryVariableSet").LibraryVariableSet = null as any;
+utilities.lazyLoad(exports, ["LibraryVariableSet"], () => require("./libraryVariableSet"));
+
+export { LifecycleArgs, LifecycleState } from "./lifecycle";
+export type Lifecycle = import("./lifecycle").Lifecycle;
+export const Lifecycle: typeof import("./lifecycle").Lifecycle = null as any;
+utilities.lazyLoad(exports, ["Lifecycle"], () => require("./lifecycle"));
+
+export { ListeningTentacleDeploymentTargetArgs, ListeningTentacleDeploymentTargetState } from "./listeningTentacleDeploymentTarget";
+export type ListeningTentacleDeploymentTarget = import("./listeningTentacleDeploymentTarget").ListeningTentacleDeploymentTarget;
+export const ListeningTentacleDeploymentTarget: typeof import("./listeningTentacleDeploymentTarget").ListeningTentacleDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["ListeningTentacleDeploymentTarget"], () => require("./listeningTentacleDeploymentTarget"));
+
+export { MachinePolicyArgs, MachinePolicyState } from "./machinePolicy";
+export type MachinePolicy = import("./machinePolicy").MachinePolicy;
+export const MachinePolicy: typeof import("./machinePolicy").MachinePolicy = null as any;
+utilities.lazyLoad(exports, ["MachinePolicy"], () => require("./machinePolicy"));
+
+export { MavenFeedArgs, MavenFeedState } from "./mavenFeed";
+export type MavenFeed = import("./mavenFeed").MavenFeed;
+export const MavenFeed: typeof import("./mavenFeed").MavenFeed = null as any;
+utilities.lazyLoad(exports, ["MavenFeed"], () => require("./mavenFeed"));
+
+export { NugetFeedArgs, NugetFeedState } from "./nugetFeed";
+export type NugetFeed = import("./nugetFeed").NugetFeed;
+export const NugetFeed: typeof import("./nugetFeed").NugetFeed = null as any;
+utilities.lazyLoad(exports, ["NugetFeed"], () => require("./nugetFeed"));
+
+export { OfflinePackageDropDeploymentTargetArgs, OfflinePackageDropDeploymentTargetState } from "./offlinePackageDropDeploymentTarget";
+export type OfflinePackageDropDeploymentTarget = import("./offlinePackageDropDeploymentTarget").OfflinePackageDropDeploymentTarget;
+export const OfflinePackageDropDeploymentTarget: typeof import("./offlinePackageDropDeploymentTarget").OfflinePackageDropDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["OfflinePackageDropDeploymentTarget"], () => require("./offlinePackageDropDeploymentTarget"));
+
+export { PollingTentacleDeploymentTargetArgs, PollingTentacleDeploymentTargetState } from "./pollingTentacleDeploymentTarget";
+export type PollingTentacleDeploymentTarget = import("./pollingTentacleDeploymentTarget").PollingTentacleDeploymentTarget;
+export const PollingTentacleDeploymentTarget: typeof import("./pollingTentacleDeploymentTarget").PollingTentacleDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["PollingTentacleDeploymentTarget"], () => require("./pollingTentacleDeploymentTarget"));
+
+export { ProjectArgs, ProjectState } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+
+export { ProjectDeploymentTargetTriggerArgs, ProjectDeploymentTargetTriggerState } from "./projectDeploymentTargetTrigger";
+export type ProjectDeploymentTargetTrigger = import("./projectDeploymentTargetTrigger").ProjectDeploymentTargetTrigger;
+export const ProjectDeploymentTargetTrigger: typeof import("./projectDeploymentTargetTrigger").ProjectDeploymentTargetTrigger = null as any;
+utilities.lazyLoad(exports, ["ProjectDeploymentTargetTrigger"], () => require("./projectDeploymentTargetTrigger"));
+
+export { ProjectGroupArgs, ProjectGroupState } from "./projectGroup";
+export type ProjectGroup = import("./projectGroup").ProjectGroup;
+export const ProjectGroup: typeof import("./projectGroup").ProjectGroup = null as any;
+utilities.lazyLoad(exports, ["ProjectGroup"], () => require("./projectGroup"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RunbookArgs, RunbookState } from "./runbook";
+export type Runbook = import("./runbook").Runbook;
+export const Runbook: typeof import("./runbook").Runbook = null as any;
+utilities.lazyLoad(exports, ["Runbook"], () => require("./runbook"));
+
+export { RunbookProcessArgs, RunbookProcessState } from "./runbookProcess";
+export type RunbookProcess = import("./runbookProcess").RunbookProcess;
+export const RunbookProcess: typeof import("./runbookProcess").RunbookProcess = null as any;
+utilities.lazyLoad(exports, ["RunbookProcess"], () => require("./runbookProcess"));
+
+export { ScopedUserRoleArgs, ScopedUserRoleState } from "./scopedUserRole";
+export type ScopedUserRole = import("./scopedUserRole").ScopedUserRole;
+export const ScopedUserRole: typeof import("./scopedUserRole").ScopedUserRole = null as any;
+utilities.lazyLoad(exports, ["ScopedUserRole"], () => require("./scopedUserRole"));
+
+export { ScriptModuleArgs, ScriptModuleState } from "./scriptModule";
+export type ScriptModule = import("./scriptModule").ScriptModule;
+export const ScriptModule: typeof import("./scriptModule").ScriptModule = null as any;
+utilities.lazyLoad(exports, ["ScriptModule"], () => require("./scriptModule"));
+
+export { SpaceArgs, SpaceState } from "./space";
+export type Space = import("./space").Space;
+export const Space: typeof import("./space").Space = null as any;
+utilities.lazyLoad(exports, ["Space"], () => require("./space"));
+
+export { SshConnectionDeploymentTargetArgs, SshConnectionDeploymentTargetState } from "./sshConnectionDeploymentTarget";
+export type SshConnectionDeploymentTarget = import("./sshConnectionDeploymentTarget").SshConnectionDeploymentTarget;
+export const SshConnectionDeploymentTarget: typeof import("./sshConnectionDeploymentTarget").SshConnectionDeploymentTarget = null as any;
+utilities.lazyLoad(exports, ["SshConnectionDeploymentTarget"], () => require("./sshConnectionDeploymentTarget"));
+
+export { SshKeyAccountArgs, SshKeyAccountState } from "./sshKeyAccount";
+export type SshKeyAccount = import("./sshKeyAccount").SshKeyAccount;
+export const SshKeyAccount: typeof import("./sshKeyAccount").SshKeyAccount = null as any;
+utilities.lazyLoad(exports, ["SshKeyAccount"], () => require("./sshKeyAccount"));
+
+export { StaticWorkerPoolArgs, StaticWorkerPoolState } from "./staticWorkerPool";
+export type StaticWorkerPool = import("./staticWorkerPool").StaticWorkerPool;
+export const StaticWorkerPool: typeof import("./staticWorkerPool").StaticWorkerPool = null as any;
+utilities.lazyLoad(exports, ["StaticWorkerPool"], () => require("./staticWorkerPool"));
+
+export { TagArgs, TagState } from "./tag";
+export type Tag = import("./tag").Tag;
+export const Tag: typeof import("./tag").Tag = null as any;
+utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
+
+export { TagSetArgs, TagSetState } from "./tagSet";
+export type TagSet = import("./tagSet").TagSet;
+export const TagSet: typeof import("./tagSet").TagSet = null as any;
+utilities.lazyLoad(exports, ["TagSet"], () => require("./tagSet"));
+
+export { TeamArgs, TeamState } from "./team";
+export type Team = import("./team").Team;
+export const Team: typeof import("./team").Team = null as any;
+utilities.lazyLoad(exports, ["Team"], () => require("./team"));
+
+export { TenantArgs, TenantState } from "./tenant";
+export type Tenant = import("./tenant").Tenant;
+export const Tenant: typeof import("./tenant").Tenant = null as any;
+utilities.lazyLoad(exports, ["Tenant"], () => require("./tenant"));
+
+export { TenantCommonVariableArgs, TenantCommonVariableState } from "./tenantCommonVariable";
+export type TenantCommonVariable = import("./tenantCommonVariable").TenantCommonVariable;
+export const TenantCommonVariable: typeof import("./tenantCommonVariable").TenantCommonVariable = null as any;
+utilities.lazyLoad(exports, ["TenantCommonVariable"], () => require("./tenantCommonVariable"));
+
+export { TenantProjectVariableArgs, TenantProjectVariableState } from "./tenantProjectVariable";
+export type TenantProjectVariable = import("./tenantProjectVariable").TenantProjectVariable;
+export const TenantProjectVariable: typeof import("./tenantProjectVariable").TenantProjectVariable = null as any;
+utilities.lazyLoad(exports, ["TenantProjectVariable"], () => require("./tenantProjectVariable"));
+
+export { TokenAccountArgs, TokenAccountState } from "./tokenAccount";
+export type TokenAccount = import("./tokenAccount").TokenAccount;
+export const TokenAccount: typeof import("./tokenAccount").TokenAccount = null as any;
+utilities.lazyLoad(exports, ["TokenAccount"], () => require("./tokenAccount"));
+
+export { UserArgs, UserState } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
+
+export { UserRoleArgs, UserRoleState } from "./userRole";
+export type UserRole = import("./userRole").UserRole;
+export const UserRole: typeof import("./userRole").UserRole = null as any;
+utilities.lazyLoad(exports, ["UserRole"], () => require("./userRole"));
+
+export { UsernamePasswordAccountArgs, UsernamePasswordAccountState } from "./usernamePasswordAccount";
+export type UsernamePasswordAccount = import("./usernamePasswordAccount").UsernamePasswordAccount;
+export const UsernamePasswordAccount: typeof import("./usernamePasswordAccount").UsernamePasswordAccount = null as any;
+utilities.lazyLoad(exports, ["UsernamePasswordAccount"], () => require("./usernamePasswordAccount"));
+
+export { VariableArgs, VariableState } from "./variable";
+export type Variable = import("./variable").Variable;
+export const Variable: typeof import("./variable").Variable = null as any;
+utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -96,57 +424,6 @@ export {
     config,
     types,
 };
-
-// Import resources to register:
-import { AwsAccount } from "./awsAccount";
-import { AwsElasticContainerRegistry } from "./awsElasticContainerRegistry";
-import { AzureCloudServiceDeploymentTarget } from "./azureCloudServiceDeploymentTarget";
-import { AzureServiceFabricClusterDeploymentTarget } from "./azureServiceFabricClusterDeploymentTarget";
-import { AzureServicePrincipal } from "./azureServicePrincipal";
-import { AzureSubscriptionAccount } from "./azureSubscriptionAccount";
-import { AzureWebAppDeploymentTarget } from "./azureWebAppDeploymentTarget";
-import { Certificate } from "./certificate";
-import { Channel } from "./channel";
-import { CloudRegionDeploymentTarget } from "./cloudRegionDeploymentTarget";
-import { DeploymentProcess } from "./deploymentProcess";
-import { DockerContainerRegistry } from "./dockerContainerRegistry";
-import { DynamicWorkerPool } from "./dynamicWorkerPool";
-import { Environment } from "./environment";
-import { GcpAccount } from "./gcpAccount";
-import { GitCredentials } from "./gitCredentials";
-import { GithubRepositoryFeed } from "./githubRepositoryFeed";
-import { HelmFeed } from "./helmFeed";
-import { KubernetesClusterDeploymentTarget } from "./kubernetesClusterDeploymentTarget";
-import { LibraryVariableSet } from "./libraryVariableSet";
-import { Lifecycle } from "./lifecycle";
-import { ListeningTentacleDeploymentTarget } from "./listeningTentacleDeploymentTarget";
-import { MachinePolicy } from "./machinePolicy";
-import { MavenFeed } from "./mavenFeed";
-import { NugetFeed } from "./nugetFeed";
-import { OfflinePackageDropDeploymentTarget } from "./offlinePackageDropDeploymentTarget";
-import { PollingTentacleDeploymentTarget } from "./pollingTentacleDeploymentTarget";
-import { Project } from "./project";
-import { ProjectDeploymentTargetTrigger } from "./projectDeploymentTargetTrigger";
-import { ProjectGroup } from "./projectGroup";
-import { Runbook } from "./runbook";
-import { RunbookProcess } from "./runbookProcess";
-import { ScopedUserRole } from "./scopedUserRole";
-import { ScriptModule } from "./scriptModule";
-import { Space } from "./space";
-import { SshConnectionDeploymentTarget } from "./sshConnectionDeploymentTarget";
-import { SshKeyAccount } from "./sshKeyAccount";
-import { StaticWorkerPool } from "./staticWorkerPool";
-import { Tag } from "./tag";
-import { TagSet } from "./tagSet";
-import { Team } from "./team";
-import { Tenant } from "./tenant";
-import { TenantCommonVariable } from "./tenantCommonVariable";
-import { TenantProjectVariable } from "./tenantProjectVariable";
-import { TokenAccount } from "./tokenAccount";
-import { User } from "./user";
-import { UserRole } from "./userRole";
-import { UsernamePasswordAccount } from "./usernamePasswordAccount";
-import { Variable } from "./variable";
 
 const _module = {
     version: utilities.getVersion(),
@@ -304,9 +581,6 @@ pulumi.runtime.registerResourceModule("octopusdeploy", "index/user", _module)
 pulumi.runtime.registerResourceModule("octopusdeploy", "index/userRole", _module)
 pulumi.runtime.registerResourceModule("octopusdeploy", "index/usernamePasswordAccount", _module)
 pulumi.runtime.registerResourceModule("octopusdeploy", "index/variable", _module)
-
-import { Provider } from "./provider";
-
 pulumi.runtime.registerResourcePackage("octopusdeploy", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {

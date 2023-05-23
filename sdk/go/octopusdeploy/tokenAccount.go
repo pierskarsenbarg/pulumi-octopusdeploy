@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -75,6 +75,13 @@ func NewTokenAccount(ctx *pulumi.Context,
 	if args.Token == nil {
 		return nil, errors.New("invalid value for required argument 'Token'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource TokenAccount
 	err := ctx.RegisterResource("octopusdeploy:index/tokenAccount:TokenAccount", name, args, &resource, opts...)
 	if err != nil {

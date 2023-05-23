@@ -72,7 +72,7 @@ export class Space extends pulumi.CustomResource {
      */
     public readonly isTaskQueueStopped!: pulumi.Output<boolean | undefined>;
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -140,7 +140,7 @@ export interface SpaceState {
      */
     isTaskQueueStopped?: pulumi.Input<boolean>;
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     name?: pulumi.Input<string>;
     /**
@@ -174,7 +174,7 @@ export interface SpaceArgs {
      */
     isTaskQueueStopped?: pulumi.Input<boolean>;
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     name?: pulumi.Input<string>;
     /**

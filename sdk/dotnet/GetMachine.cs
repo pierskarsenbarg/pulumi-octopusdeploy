@@ -12,10 +12,10 @@ namespace Pulumi.Octopusdeploy
     public static class GetMachine
     {
         public static Task<GetMachineResult> InvokeAsync(GetMachineArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMachineResult>("octopusdeploy:index/getMachine:getMachine", args ?? new GetMachineArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMachineResult>("octopusdeploy:index/getMachine:getMachine", args ?? new GetMachineArgs(), options.WithDefaults());
 
         public static Output<GetMachineResult> Invoke(GetMachineInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMachineResult>("octopusdeploy:index/getMachine:getMachine", args ?? new GetMachineInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMachineResult>("octopusdeploy:index/getMachine:getMachine", args ?? new GetMachineInvokeArgs(), options.WithDefaults());
     }
 
 

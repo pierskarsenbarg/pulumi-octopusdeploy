@@ -901,7 +901,7 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["archived"] = archived
             if certificate_data is None and not opts.urn:
                 raise TypeError("Missing required property 'certificate_data'")
-            __props__.__dict__["certificate_data"] = certificate_data
+            __props__.__dict__["certificate_data"] = None if certificate_data is None else pulumi.Output.secret(certificate_data)
             __props__.__dict__["certificate_data_format"] = certificate_data_format
             __props__.__dict__["environments"] = environments
             __props__.__dict__["has_private_key"] = has_private_key
@@ -915,7 +915,7 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["notes"] = notes
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["replaced_by"] = replaced_by
             __props__.__dict__["self_signed"] = self_signed
             __props__.__dict__["serial_number"] = serial_number
@@ -929,6 +929,8 @@ class Certificate(pulumi.CustomResource):
             __props__.__dict__["tenants"] = tenants
             __props__.__dict__["thumbprint"] = thumbprint
             __props__.__dict__["version"] = version
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["certificateData", "password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Certificate, __self__).__init__(
             'octopusdeploy:index/certificate:Certificate',
             resource_name,

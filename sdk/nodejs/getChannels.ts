@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = pulumi.output(octopusdeploy.getChannels({
+ * const example = octopusdeploy.getChannels({
  *     ids: [
  *         "Channels-123",
  *         "Channels-321",
@@ -22,16 +23,13 @@ import * as utilities from "./utilities";
  *     partialName: "Defau",
  *     skip: 5,
  *     take: 100,
- * }));
+ * });
  * ```
  */
 export function getChannels(args?: GetChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetChannelsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getChannels:getChannels", {
         "channels": args.channels,
         "ids": args.ids,
@@ -96,9 +94,28 @@ export interface GetChannelsResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing channels.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const example = octopusdeploy.getChannels({
+ *     ids: [
+ *         "Channels-123",
+ *         "Channels-321",
+ *     ],
+ *     partialName: "Defau",
+ *     skip: 5,
+ *     take: 100,
+ * });
+ * ```
+ */
 export function getChannelsOutput(args?: GetChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChannelsResult> {
-    return pulumi.output(args).apply(a => getChannels(a, opts))
+    return pulumi.output(args).apply((a: any) => getChannels(a, opts))
 }
 
 /**

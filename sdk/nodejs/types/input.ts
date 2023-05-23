@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "../types";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 
 export interface AzureCloudServiceDeploymentTargetEndpoint {
     aadClientCredentialSecret?: pulumi.Input<string>;
@@ -1067,55 +1068,6 @@ export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymen
     useCurrentInstanceCount?: pulumi.Input<boolean>;
 }
 
-export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointArgs {
-    aadClientCredentialSecret?: pulumi.Input<string>;
-    aadCredentialType?: pulumi.Input<string>;
-    aadUserCredentialUsername?: pulumi.Input<string>;
-    accountId?: pulumi.Input<string>;
-    applicationsDirectory?: pulumi.Input<string>;
-    authentication?: pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointAuthenticationArgs>;
-    certificateSignatureAlgorithm?: pulumi.Input<string>;
-    certificateStoreLocation?: pulumi.Input<string>;
-    certificateStoreName?: pulumi.Input<string>;
-    clientCertificateVariable?: pulumi.Input<string>;
-    cloudServiceName?: pulumi.Input<string>;
-    clusterCertificate?: pulumi.Input<string>;
-    clusterUrl?: pulumi.Input<string>;
-    communicationStyle: pulumi.Input<string>;
-    connectionEndpoint?: pulumi.Input<string>;
-    containers?: pulumi.Input<pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointContainerArgs>[]>;
-    defaultWorkerPoolId?: pulumi.Input<string>;
-    destinations?: pulumi.Input<pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointDestinationArgs>[]>;
-    dotNetCorePlatform?: pulumi.Input<string>;
-    fingerprint?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
-    /**
-     * An auto-generated identifier that includes the timestamp when this data source was last modified.
-     */
-    id?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
-    proxyId?: pulumi.Input<string>;
-    resourceGroupName?: pulumi.Input<string>;
-    runningInContainer?: pulumi.Input<boolean>;
-    securityMode?: pulumi.Input<string>;
-    serverCertificateThumbprint?: pulumi.Input<string>;
-    skipTlsVerification?: pulumi.Input<boolean>;
-    slot?: pulumi.Input<string>;
-    storageAccountName?: pulumi.Input<string>;
-    swapIfPossible?: pulumi.Input<boolean>;
-    tentacleVersionDetails?: pulumi.Input<pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointTentacleVersionDetailArgs>[]>;
-    /**
-     * The thumbprint of the deployment target to match in the query and/or search
-     */
-    thumbprint?: pulumi.Input<string>;
-    uri?: pulumi.Input<string>;
-    useCurrentInstanceCount?: pulumi.Input<boolean>;
-    webAppName?: pulumi.Input<string>;
-    webAppSlotName?: pulumi.Input<string>;
-    workingDirectory?: pulumi.Input<string>;
-}
-
 export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpoint {
     aadClientCredentialSecret?: string;
     aadCredentialType?: string;
@@ -1165,25 +1117,53 @@ export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymen
     workingDirectory?: string;
 }
 
-export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointAuthenticationArgs {
+export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointArgs {
+    aadClientCredentialSecret?: pulumi.Input<string>;
+    aadCredentialType?: pulumi.Input<string>;
+    aadUserCredentialUsername?: pulumi.Input<string>;
     accountId?: pulumi.Input<string>;
-    adminLogin?: pulumi.Input<string>;
-    assumeRole?: pulumi.Input<boolean>;
-    assumeRoleExternalId?: pulumi.Input<string>;
-    assumeRoleSessionDuration?: pulumi.Input<number>;
-    assumedRoleArn?: pulumi.Input<string>;
-    assumedRoleSession?: pulumi.Input<string>;
-    authenticationType?: pulumi.Input<string>;
-    clientCertificate?: pulumi.Input<string>;
-    clusterName?: pulumi.Input<string>;
-    clusterResourceGroup?: pulumi.Input<string>;
-    impersonateServiceAccount?: pulumi.Input<boolean>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    serviceAccountEmails?: pulumi.Input<string>;
-    useInstanceRole?: pulumi.Input<boolean>;
-    useVmServiceAccount?: pulumi.Input<boolean>;
-    zone?: pulumi.Input<string>;
+    applicationsDirectory?: pulumi.Input<string>;
+    authentication?: pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointAuthenticationArgs>;
+    certificateSignatureAlgorithm?: pulumi.Input<string>;
+    certificateStoreLocation?: pulumi.Input<string>;
+    certificateStoreName?: pulumi.Input<string>;
+    clientCertificateVariable?: pulumi.Input<string>;
+    cloudServiceName?: pulumi.Input<string>;
+    clusterCertificate?: pulumi.Input<string>;
+    clusterUrl?: pulumi.Input<string>;
+    communicationStyle: pulumi.Input<string>;
+    connectionEndpoint?: pulumi.Input<string>;
+    containers?: pulumi.Input<pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointContainerArgs>[]>;
+    defaultWorkerPoolId?: pulumi.Input<string>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointDestinationArgs>[]>;
+    dotNetCorePlatform?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    /**
+     * An auto-generated identifier that includes the timestamp when this data source was last modified.
+     */
+    id?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
+    runningInContainer?: pulumi.Input<boolean>;
+    securityMode?: pulumi.Input<string>;
+    serverCertificateThumbprint?: pulumi.Input<string>;
+    skipTlsVerification?: pulumi.Input<boolean>;
+    slot?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string>;
+    swapIfPossible?: pulumi.Input<boolean>;
+    tentacleVersionDetails?: pulumi.Input<pulumi.Input<inputs.GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointTentacleVersionDetailArgs>[]>;
+    /**
+     * The thumbprint of the deployment target to match in the query and/or search
+     */
+    thumbprint?: pulumi.Input<string>;
+    uri?: pulumi.Input<string>;
+    useCurrentInstanceCount?: pulumi.Input<boolean>;
+    webAppName?: pulumi.Input<string>;
+    webAppSlotName?: pulumi.Input<string>;
+    workingDirectory?: pulumi.Input<string>;
 }
 
 export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointAuthentication {
@@ -1207,6 +1187,27 @@ export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymen
     zone?: string;
 }
 
+export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointAuthenticationArgs {
+    accountId?: pulumi.Input<string>;
+    adminLogin?: pulumi.Input<string>;
+    assumeRole?: pulumi.Input<boolean>;
+    assumeRoleExternalId?: pulumi.Input<string>;
+    assumeRoleSessionDuration?: pulumi.Input<number>;
+    assumedRoleArn?: pulumi.Input<string>;
+    assumedRoleSession?: pulumi.Input<string>;
+    authenticationType?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
+    clusterResourceGroup?: pulumi.Input<string>;
+    impersonateServiceAccount?: pulumi.Input<boolean>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    serviceAccountEmails?: pulumi.Input<string>;
+    useInstanceRole?: pulumi.Input<boolean>;
+    useVmServiceAccount?: pulumi.Input<boolean>;
+    zone?: pulumi.Input<string>;
+}
+
 export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointContainer {
     feedId?: string;
     image?: string;
@@ -1227,18 +1228,18 @@ export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymen
     dropFolderPath?: pulumi.Input<string>;
 }
 
-export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointTentacleVersionDetailArgs {
-    upgradeLocked?: pulumi.Input<boolean>;
-    upgradeRequired?: pulumi.Input<boolean>;
-    upgradeSuggested?: pulumi.Input<boolean>;
-    version?: pulumi.Input<string>;
-}
-
 export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointTentacleVersionDetail {
     upgradeLocked?: boolean;
     upgradeRequired?: boolean;
     upgradeSuggested?: boolean;
     version?: string;
+}
+
+export interface GetAzureCloudServiceDeploymentTargetsAzureCloudServiceDeploymentTargetEndpointTentacleVersionDetailArgs {
+    upgradeLocked?: pulumi.Input<boolean>;
+    upgradeRequired?: pulumi.Input<boolean>;
+    upgradeSuggested?: pulumi.Input<boolean>;
+    version?: pulumi.Input<string>;
 }
 
 export interface GetAzureServiceFabricClusterDeploymentTargetsAzureServiceFabricClusterDeploymentTarget {
@@ -1527,14 +1528,14 @@ export interface GetAzureServiceFabricClusterDeploymentTargetsAzureServiceFabric
     zone?: pulumi.Input<string>;
 }
 
-export interface GetAzureServiceFabricClusterDeploymentTargetsAzureServiceFabricClusterDeploymentTargetEndpointContainerArgs {
-    feedId?: pulumi.Input<string>;
-    image?: pulumi.Input<string>;
-}
-
 export interface GetAzureServiceFabricClusterDeploymentTargetsAzureServiceFabricClusterDeploymentTargetEndpointContainer {
     feedId?: string;
     image?: string;
+}
+
+export interface GetAzureServiceFabricClusterDeploymentTargetsAzureServiceFabricClusterDeploymentTargetEndpointContainerArgs {
+    feedId?: pulumi.Input<string>;
+    image?: pulumi.Input<string>;
 }
 
 export interface GetAzureServiceFabricClusterDeploymentTargetsAzureServiceFabricClusterDeploymentTargetEndpointDestination {
@@ -1695,55 +1696,6 @@ export interface GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetArgs 
     webAppSlotName?: pulumi.Input<string>;
 }
 
-export interface GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointArgs {
-    aadClientCredentialSecret?: pulumi.Input<string>;
-    aadCredentialType?: pulumi.Input<string>;
-    aadUserCredentialUsername?: pulumi.Input<string>;
-    accountId?: pulumi.Input<string>;
-    applicationsDirectory?: pulumi.Input<string>;
-    authentication?: pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointAuthenticationArgs>;
-    certificateSignatureAlgorithm?: pulumi.Input<string>;
-    certificateStoreLocation?: pulumi.Input<string>;
-    certificateStoreName?: pulumi.Input<string>;
-    clientCertificateVariable?: pulumi.Input<string>;
-    cloudServiceName?: pulumi.Input<string>;
-    clusterCertificate?: pulumi.Input<string>;
-    clusterUrl?: pulumi.Input<string>;
-    communicationStyle: pulumi.Input<string>;
-    connectionEndpoint?: pulumi.Input<string>;
-    containers?: pulumi.Input<pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointContainerArgs>[]>;
-    defaultWorkerPoolId?: pulumi.Input<string>;
-    destinations?: pulumi.Input<pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointDestinationArgs>[]>;
-    dotNetCorePlatform?: pulumi.Input<string>;
-    fingerprint?: pulumi.Input<string>;
-    host?: pulumi.Input<string>;
-    /**
-     * An auto-generated identifier that includes the timestamp when this data source was last modified.
-     */
-    id?: pulumi.Input<string>;
-    namespace?: pulumi.Input<string>;
-    port?: pulumi.Input<number>;
-    proxyId?: pulumi.Input<string>;
-    resourceGroupName?: pulumi.Input<string>;
-    runningInContainer?: pulumi.Input<boolean>;
-    securityMode?: pulumi.Input<string>;
-    serverCertificateThumbprint?: pulumi.Input<string>;
-    skipTlsVerification?: pulumi.Input<boolean>;
-    slot?: pulumi.Input<string>;
-    storageAccountName?: pulumi.Input<string>;
-    swapIfPossible?: pulumi.Input<boolean>;
-    tentacleVersionDetails?: pulumi.Input<pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointTentacleVersionDetailArgs>[]>;
-    /**
-     * The thumbprint of the deployment target to match in the query and/or search
-     */
-    thumbprint?: pulumi.Input<string>;
-    uri?: pulumi.Input<string>;
-    useCurrentInstanceCount?: pulumi.Input<boolean>;
-    webAppName?: pulumi.Input<string>;
-    webAppSlotName?: pulumi.Input<string>;
-    workingDirectory?: pulumi.Input<string>;
-}
-
 export interface GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpoint {
     aadClientCredentialSecret?: string;
     aadCredentialType?: string;
@@ -1791,6 +1743,55 @@ export interface GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpo
     webAppName?: string;
     webAppSlotName?: string;
     workingDirectory?: string;
+}
+
+export interface GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointArgs {
+    aadClientCredentialSecret?: pulumi.Input<string>;
+    aadCredentialType?: pulumi.Input<string>;
+    aadUserCredentialUsername?: pulumi.Input<string>;
+    accountId?: pulumi.Input<string>;
+    applicationsDirectory?: pulumi.Input<string>;
+    authentication?: pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointAuthenticationArgs>;
+    certificateSignatureAlgorithm?: pulumi.Input<string>;
+    certificateStoreLocation?: pulumi.Input<string>;
+    certificateStoreName?: pulumi.Input<string>;
+    clientCertificateVariable?: pulumi.Input<string>;
+    cloudServiceName?: pulumi.Input<string>;
+    clusterCertificate?: pulumi.Input<string>;
+    clusterUrl?: pulumi.Input<string>;
+    communicationStyle: pulumi.Input<string>;
+    connectionEndpoint?: pulumi.Input<string>;
+    containers?: pulumi.Input<pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointContainerArgs>[]>;
+    defaultWorkerPoolId?: pulumi.Input<string>;
+    destinations?: pulumi.Input<pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointDestinationArgs>[]>;
+    dotNetCorePlatform?: pulumi.Input<string>;
+    fingerprint?: pulumi.Input<string>;
+    host?: pulumi.Input<string>;
+    /**
+     * An auto-generated identifier that includes the timestamp when this data source was last modified.
+     */
+    id?: pulumi.Input<string>;
+    namespace?: pulumi.Input<string>;
+    port?: pulumi.Input<number>;
+    proxyId?: pulumi.Input<string>;
+    resourceGroupName?: pulumi.Input<string>;
+    runningInContainer?: pulumi.Input<boolean>;
+    securityMode?: pulumi.Input<string>;
+    serverCertificateThumbprint?: pulumi.Input<string>;
+    skipTlsVerification?: pulumi.Input<boolean>;
+    slot?: pulumi.Input<string>;
+    storageAccountName?: pulumi.Input<string>;
+    swapIfPossible?: pulumi.Input<boolean>;
+    tentacleVersionDetails?: pulumi.Input<pulumi.Input<inputs.GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointTentacleVersionDetailArgs>[]>;
+    /**
+     * The thumbprint of the deployment target to match in the query and/or search
+     */
+    thumbprint?: pulumi.Input<string>;
+    uri?: pulumi.Input<string>;
+    useCurrentInstanceCount?: pulumi.Input<boolean>;
+    webAppName?: pulumi.Input<string>;
+    webAppSlotName?: pulumi.Input<string>;
+    workingDirectory?: pulumi.Input<string>;
 }
 
 export interface GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpointAuthentication {
@@ -1869,73 +1870,6 @@ export interface GetAzureWebAppDeploymentTargetsAzureWebAppDeploymentTargetEndpo
     version?: pulumi.Input<string>;
 }
 
-export interface GetCertificatesCertificateArgs {
-    /**
-     * A filter to search for resources that have been archived.
-     */
-    archived?: pulumi.Input<string>;
-    /**
-     * The encoded data of the certificate.
-     */
-    certificateData?: pulumi.Input<string>;
-    /**
-     * Specifies the archive file format used for storing cryptography objects in the certificate. Valid formats are `Der`, `Pem`, `Pkcs12`, or `Unknown`.
-     */
-    certificateDataFormat?: pulumi.Input<string>;
-    /**
-     * A list of environment IDs associated with this resource.
-     */
-    environments?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * Indicates if the certificate has a private key.
-     */
-    hasPrivateKey?: pulumi.Input<boolean>;
-    /**
-     * The unique ID for this resource.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * Indicates if the certificate has expired.
-     */
-    isExpired?: pulumi.Input<boolean>;
-    issuerCommonName?: pulumi.Input<string>;
-    issuerDistinguishedName?: pulumi.Input<string>;
-    issuerOrganization?: pulumi.Input<string>;
-    /**
-     * The name of this resource.
-     */
-    name?: pulumi.Input<string>;
-    notAfter?: pulumi.Input<string>;
-    notBefore?: pulumi.Input<string>;
-    notes?: pulumi.Input<string>;
-    /**
-     * The password associated with this resource.
-     */
-    password?: pulumi.Input<string>;
-    replacedBy?: pulumi.Input<string>;
-    selfSigned?: pulumi.Input<boolean>;
-    serialNumber?: pulumi.Input<string>;
-    signatureAlgorithmName?: pulumi.Input<string>;
-    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
-    subjectCommonName?: pulumi.Input<string>;
-    subjectDistinguishedName?: pulumi.Input<string>;
-    subjectOrganization?: pulumi.Input<string>;
-    /**
-     * A list of tenant tags associated with this resource.
-     */
-    tenantTags?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The tenanted deployment mode of the resource. Valid account types are `Untenanted`, `TenantedOrUntenanted`, or `Tenanted`.
-     */
-    tenantedDeploymentParticipation?: pulumi.Input<string>;
-    /**
-     * A list of tenant IDs associated with this resource.
-     */
-    tenants?: pulumi.Input<pulumi.Input<string>[]>;
-    thumbprint?: pulumi.Input<string>;
-    version?: pulumi.Input<number>;
-}
-
 export interface GetCertificatesCertificate {
     /**
      * A filter to search for resources that have been archived.
@@ -2001,6 +1935,73 @@ export interface GetCertificatesCertificate {
     tenants?: string[];
     thumbprint?: string;
     version?: number;
+}
+
+export interface GetCertificatesCertificateArgs {
+    /**
+     * A filter to search for resources that have been archived.
+     */
+    archived?: pulumi.Input<string>;
+    /**
+     * The encoded data of the certificate.
+     */
+    certificateData?: pulumi.Input<string>;
+    /**
+     * Specifies the archive file format used for storing cryptography objects in the certificate. Valid formats are `Der`, `Pem`, `Pkcs12`, or `Unknown`.
+     */
+    certificateDataFormat?: pulumi.Input<string>;
+    /**
+     * A list of environment IDs associated with this resource.
+     */
+    environments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Indicates if the certificate has a private key.
+     */
+    hasPrivateKey?: pulumi.Input<boolean>;
+    /**
+     * The unique ID for this resource.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * Indicates if the certificate has expired.
+     */
+    isExpired?: pulumi.Input<boolean>;
+    issuerCommonName?: pulumi.Input<string>;
+    issuerDistinguishedName?: pulumi.Input<string>;
+    issuerOrganization?: pulumi.Input<string>;
+    /**
+     * The name of this resource.
+     */
+    name?: pulumi.Input<string>;
+    notAfter?: pulumi.Input<string>;
+    notBefore?: pulumi.Input<string>;
+    notes?: pulumi.Input<string>;
+    /**
+     * The password associated with this resource.
+     */
+    password?: pulumi.Input<string>;
+    replacedBy?: pulumi.Input<string>;
+    selfSigned?: pulumi.Input<boolean>;
+    serialNumber?: pulumi.Input<string>;
+    signatureAlgorithmName?: pulumi.Input<string>;
+    subjectAlternativeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    subjectCommonName?: pulumi.Input<string>;
+    subjectDistinguishedName?: pulumi.Input<string>;
+    subjectOrganization?: pulumi.Input<string>;
+    /**
+     * A list of tenant tags associated with this resource.
+     */
+    tenantTags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The tenanted deployment mode of the resource. Valid account types are `Untenanted`, `TenantedOrUntenanted`, or `Tenanted`.
+     */
+    tenantedDeploymentParticipation?: pulumi.Input<string>;
+    /**
+     * A list of tenant IDs associated with this resource.
+     */
+    tenants?: pulumi.Input<pulumi.Input<string>[]>;
+    thumbprint?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
 }
 
 export interface GetChannelsChannel {
@@ -2629,12 +2630,12 @@ export interface GetEnvironmentsEnvironmentJiraServiceManagementExtensionSetting
     isEnabled: pulumi.Input<boolean>;
 }
 
-export interface GetEnvironmentsEnvironmentServicenowExtensionSettingArgs {
-    isEnabled: pulumi.Input<boolean>;
-}
-
 export interface GetEnvironmentsEnvironmentServicenowExtensionSetting {
     isEnabled: boolean;
+}
+
+export interface GetEnvironmentsEnvironmentServicenowExtensionSettingArgs {
+    isEnabled: pulumi.Input<boolean>;
 }
 
 export interface GetFeedsFeed {
@@ -2981,12 +2982,12 @@ export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymen
     clusterResourceGroup: pulumi.Input<string>;
 }
 
-export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetCertificateAuthenticationArgs {
-    clientCertificate?: pulumi.Input<string>;
-}
-
 export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetCertificateAuthentication {
     clientCertificate?: string;
+}
+
+export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetCertificateAuthenticationArgs {
+    clientCertificate?: pulumi.Input<string>;
 }
 
 export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetContainer {
@@ -3097,27 +3098,6 @@ export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymen
     workingDirectory?: pulumi.Input<string>;
 }
 
-export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetEndpointAuthenticationArgs {
-    accountId?: pulumi.Input<string>;
-    adminLogin?: pulumi.Input<string>;
-    assumeRole?: pulumi.Input<boolean>;
-    assumeRoleExternalId?: pulumi.Input<string>;
-    assumeRoleSessionDuration?: pulumi.Input<number>;
-    assumedRoleArn?: pulumi.Input<string>;
-    assumedRoleSession?: pulumi.Input<string>;
-    authenticationType?: pulumi.Input<string>;
-    clientCertificate?: pulumi.Input<string>;
-    clusterName?: pulumi.Input<string>;
-    clusterResourceGroup?: pulumi.Input<string>;
-    impersonateServiceAccount?: pulumi.Input<boolean>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    serviceAccountEmails?: pulumi.Input<string>;
-    useInstanceRole?: pulumi.Input<boolean>;
-    useVmServiceAccount?: pulumi.Input<boolean>;
-    zone?: pulumi.Input<string>;
-}
-
 export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetEndpointAuthentication {
     accountId?: string;
     adminLogin?: string;
@@ -3137,6 +3117,27 @@ export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymen
     useInstanceRole?: boolean;
     useVmServiceAccount?: boolean;
     zone?: string;
+}
+
+export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetEndpointAuthenticationArgs {
+    accountId?: pulumi.Input<string>;
+    adminLogin?: pulumi.Input<string>;
+    assumeRole?: pulumi.Input<boolean>;
+    assumeRoleExternalId?: pulumi.Input<string>;
+    assumeRoleSessionDuration?: pulumi.Input<number>;
+    assumedRoleArn?: pulumi.Input<string>;
+    assumedRoleSession?: pulumi.Input<string>;
+    authenticationType?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
+    clusterResourceGroup?: pulumi.Input<string>;
+    impersonateServiceAccount?: pulumi.Input<boolean>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    serviceAccountEmails?: pulumi.Input<string>;
+    useInstanceRole?: pulumi.Input<boolean>;
+    useVmServiceAccount?: pulumi.Input<boolean>;
+    zone?: pulumi.Input<string>;
 }
 
 export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymentTargetEndpointContainer {
@@ -3195,27 +3196,6 @@ export interface GetKubernetesClusterDeploymentTargetsKubernetesClusterDeploymen
     zone?: pulumi.Input<string>;
 }
 
-export interface GetLibraryVariableSetsLibraryVariableSetArgs {
-    /**
-     * The description of this library variable set.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The unique ID for this resource.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The name of this resource.
-     */
-    name?: pulumi.Input<string>;
-    /**
-     * The space ID associated with this resource.
-     */
-    spaceId?: pulumi.Input<string>;
-    templates?: pulumi.Input<pulumi.Input<inputs.GetLibraryVariableSetsLibraryVariableSetTemplateArgs>[]>;
-    variableSetId?: pulumi.Input<string>;
-}
-
 export interface GetLibraryVariableSetsLibraryVariableSet {
     /**
      * The description of this library variable set.
@@ -3235,6 +3215,27 @@ export interface GetLibraryVariableSetsLibraryVariableSet {
     spaceId?: string;
     templates?: inputs.GetLibraryVariableSetsLibraryVariableSetTemplate[];
     variableSetId?: string;
+}
+
+export interface GetLibraryVariableSetsLibraryVariableSetArgs {
+    /**
+     * The description of this library variable set.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique ID for this resource.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of this resource.
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * The space ID associated with this resource.
+     */
+    spaceId?: pulumi.Input<string>;
+    templates?: pulumi.Input<pulumi.Input<inputs.GetLibraryVariableSetsLibraryVariableSetTemplateArgs>[]>;
+    variableSetId?: pulumi.Input<string>;
 }
 
 export interface GetLibraryVariableSetsLibraryVariableSetTemplate {
@@ -3261,28 +3262,6 @@ export interface GetLibraryVariableSetsLibraryVariableSetTemplateArgs {
     name: pulumi.Input<string>;
 }
 
-export interface GetLifecyclesLifecycleArgs {
-    /**
-     * The description of this lifecycle.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The unique ID for this resource.
-     */
-    id?: pulumi.Input<string>;
-    /**
-     * The name of this resource.
-     */
-    name?: pulumi.Input<string>;
-    phases?: pulumi.Input<pulumi.Input<inputs.GetLifecyclesLifecyclePhaseArgs>[]>;
-    releaseRetentionPolicies?: pulumi.Input<pulumi.Input<inputs.GetLifecyclesLifecycleReleaseRetentionPolicyArgs>[]>;
-    /**
-     * The space ID associated with this resource.
-     */
-    spaceId?: pulumi.Input<string>;
-    tentacleRetentionPolicies?: pulumi.Input<pulumi.Input<inputs.GetLifecyclesLifecycleTentacleRetentionPolicyArgs>[]>;
-}
-
 export interface GetLifecyclesLifecycle {
     /**
      * The description of this lifecycle.
@@ -3303,6 +3282,28 @@ export interface GetLifecyclesLifecycle {
      */
     spaceId?: string;
     tentacleRetentionPolicies?: inputs.GetLifecyclesLifecycleTentacleRetentionPolicy[];
+}
+
+export interface GetLifecyclesLifecycleArgs {
+    /**
+     * The description of this lifecycle.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique ID for this resource.
+     */
+    id?: pulumi.Input<string>;
+    /**
+     * The name of this resource.
+     */
+    name?: pulumi.Input<string>;
+    phases?: pulumi.Input<pulumi.Input<inputs.GetLifecyclesLifecyclePhaseArgs>[]>;
+    releaseRetentionPolicies?: pulumi.Input<pulumi.Input<inputs.GetLifecyclesLifecycleReleaseRetentionPolicyArgs>[]>;
+    /**
+     * The space ID associated with this resource.
+     */
+    spaceId?: pulumi.Input<string>;
+    tentacleRetentionPolicies?: pulumi.Input<pulumi.Input<inputs.GetLifecyclesLifecycleTentacleRetentionPolicyArgs>[]>;
 }
 
 export interface GetLifecyclesLifecyclePhase {
@@ -3369,16 +3370,16 @@ export interface GetLifecyclesLifecycleReleaseRetentionPolicyArgs {
     unit?: pulumi.Input<string>;
 }
 
-export interface GetLifecyclesLifecycleTentacleRetentionPolicyArgs {
-    quantityToKeep?: pulumi.Input<number>;
-    shouldKeepForever?: pulumi.Input<boolean>;
-    unit?: pulumi.Input<string>;
-}
-
 export interface GetLifecyclesLifecycleTentacleRetentionPolicy {
     quantityToKeep?: number;
     shouldKeepForever?: boolean;
     unit?: string;
+}
+
+export interface GetLifecyclesLifecycleTentacleRetentionPolicyArgs {
+    quantityToKeep?: pulumi.Input<number>;
+    shouldKeepForever?: pulumi.Input<boolean>;
+    unit?: pulumi.Input<string>;
 }
 
 export interface GetListeningTentacleDeploymentTargetsListeningTentacleDeploymentTarget {
@@ -3575,36 +3576,6 @@ export interface GetListeningTentacleDeploymentTargetsListeningTentacleDeploymen
     version?: pulumi.Input<string>;
 }
 
-export interface GetMachinePoliciesMachinePolicyArgs {
-    connectionConnectTimeout?: pulumi.Input<number>;
-    connectionRetryCountLimit?: pulumi.Input<number>;
-    connectionRetrySleepInterval?: pulumi.Input<number>;
-    connectionRetryTimeLimit?: pulumi.Input<number>;
-    /**
-     * The description of this machine policy.
-     */
-    description?: pulumi.Input<string>;
-    /**
-     * The unique ID for this resource.
-     */
-    id?: pulumi.Input<string>;
-    isDefault?: pulumi.Input<boolean>;
-    machineCleanupPolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineCleanupPolicyArgs>[]>;
-    machineConnectivityPolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineConnectivityPolicyArgs>[]>;
-    machineHealthCheckPolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyArgs>[]>;
-    machineUpdatePolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineUpdatePolicyArgs>[]>;
-    /**
-     * The name of this resource.
-     */
-    name?: pulumi.Input<string>;
-    pollingRequestMaximumMessageProcessingTimeout?: pulumi.Input<number>;
-    pollingRequestQueueTimeout?: pulumi.Input<number>;
-    /**
-     * The space ID associated with this resource.
-     */
-    spaceId?: pulumi.Input<string>;
-}
-
 export interface GetMachinePoliciesMachinePolicy {
     connectionConnectTimeout?: number;
     connectionRetryCountLimit?: number;
@@ -3633,6 +3604,36 @@ export interface GetMachinePoliciesMachinePolicy {
      * The space ID associated with this resource.
      */
     spaceId?: string;
+}
+
+export interface GetMachinePoliciesMachinePolicyArgs {
+    connectionConnectTimeout?: pulumi.Input<number>;
+    connectionRetryCountLimit?: pulumi.Input<number>;
+    connectionRetrySleepInterval?: pulumi.Input<number>;
+    connectionRetryTimeLimit?: pulumi.Input<number>;
+    /**
+     * The description of this machine policy.
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * The unique ID for this resource.
+     */
+    id?: pulumi.Input<string>;
+    isDefault?: pulumi.Input<boolean>;
+    machineCleanupPolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineCleanupPolicyArgs>[]>;
+    machineConnectivityPolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineConnectivityPolicyArgs>[]>;
+    machineHealthCheckPolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyArgs>[]>;
+    machineUpdatePolicies?: pulumi.Input<pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineUpdatePolicyArgs>[]>;
+    /**
+     * The name of this resource.
+     */
+    name?: pulumi.Input<string>;
+    pollingRequestMaximumMessageProcessingTimeout?: pulumi.Input<number>;
+    pollingRequestQueueTimeout?: pulumi.Input<number>;
+    /**
+     * The space ID associated with this resource.
+     */
+    spaceId?: pulumi.Input<string>;
 }
 
 export interface GetMachinePoliciesMachinePolicyMachineCleanupPolicy {
@@ -3671,14 +3672,14 @@ export interface GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyArgs {
     powershellHealthCheckPolicy: pulumi.Input<inputs.GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyPowershellHealthCheckPolicyArgs>;
 }
 
-export interface GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyBashHealthCheckPolicyArgs {
-    runType?: pulumi.Input<string>;
-    scriptBody?: pulumi.Input<string>;
-}
-
 export interface GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyBashHealthCheckPolicy {
     runType?: string;
     scriptBody?: string;
+}
+
+export interface GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyBashHealthCheckPolicyArgs {
+    runType?: pulumi.Input<string>;
+    scriptBody?: pulumi.Input<string>;
 }
 
 export interface GetMachinePoliciesMachinePolicyMachineHealthCheckPolicyPowershellHealthCheckPolicy {
@@ -3943,27 +3944,6 @@ export interface GetOfflinePackageDropDeploymentTargetsOfflinePackageDropDeploym
     workingDirectory?: pulumi.Input<string>;
 }
 
-export interface GetOfflinePackageDropDeploymentTargetsOfflinePackageDropDeploymentTargetEndpointAuthenticationArgs {
-    accountId?: pulumi.Input<string>;
-    adminLogin?: pulumi.Input<string>;
-    assumeRole?: pulumi.Input<boolean>;
-    assumeRoleExternalId?: pulumi.Input<string>;
-    assumeRoleSessionDuration?: pulumi.Input<number>;
-    assumedRoleArn?: pulumi.Input<string>;
-    assumedRoleSession?: pulumi.Input<string>;
-    authenticationType?: pulumi.Input<string>;
-    clientCertificate?: pulumi.Input<string>;
-    clusterName?: pulumi.Input<string>;
-    clusterResourceGroup?: pulumi.Input<string>;
-    impersonateServiceAccount?: pulumi.Input<boolean>;
-    project?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    serviceAccountEmails?: pulumi.Input<string>;
-    useInstanceRole?: pulumi.Input<boolean>;
-    useVmServiceAccount?: pulumi.Input<boolean>;
-    zone?: pulumi.Input<string>;
-}
-
 export interface GetOfflinePackageDropDeploymentTargetsOfflinePackageDropDeploymentTargetEndpointAuthentication {
     accountId?: string;
     adminLogin?: string;
@@ -3983,6 +3963,27 @@ export interface GetOfflinePackageDropDeploymentTargetsOfflinePackageDropDeploym
     useInstanceRole?: boolean;
     useVmServiceAccount?: boolean;
     zone?: string;
+}
+
+export interface GetOfflinePackageDropDeploymentTargetsOfflinePackageDropDeploymentTargetEndpointAuthenticationArgs {
+    accountId?: pulumi.Input<string>;
+    adminLogin?: pulumi.Input<string>;
+    assumeRole?: pulumi.Input<boolean>;
+    assumeRoleExternalId?: pulumi.Input<string>;
+    assumeRoleSessionDuration?: pulumi.Input<number>;
+    assumedRoleArn?: pulumi.Input<string>;
+    assumedRoleSession?: pulumi.Input<string>;
+    authenticationType?: pulumi.Input<string>;
+    clientCertificate?: pulumi.Input<string>;
+    clusterName?: pulumi.Input<string>;
+    clusterResourceGroup?: pulumi.Input<string>;
+    impersonateServiceAccount?: pulumi.Input<boolean>;
+    project?: pulumi.Input<string>;
+    region?: pulumi.Input<string>;
+    serviceAccountEmails?: pulumi.Input<string>;
+    useInstanceRole?: pulumi.Input<boolean>;
+    useVmServiceAccount?: pulumi.Input<boolean>;
+    zone?: pulumi.Input<string>;
 }
 
 export interface GetOfflinePackageDropDeploymentTargetsOfflinePackageDropDeploymentTargetEndpointContainer {
@@ -4619,16 +4620,16 @@ export interface GetProjectsProjectGitUsernamePasswordPersistenceSettingArgs {
     username: pulumi.Input<string>;
 }
 
-export interface GetProjectsProjectJiraServiceManagementExtensionSettingArgs {
-    connectionId: pulumi.Input<string>;
-    isEnabled: pulumi.Input<boolean>;
-    serviceDeskProjectName: pulumi.Input<string>;
-}
-
 export interface GetProjectsProjectJiraServiceManagementExtensionSetting {
     connectionId: string;
     isEnabled: boolean;
     serviceDeskProjectName: string;
+}
+
+export interface GetProjectsProjectJiraServiceManagementExtensionSettingArgs {
+    connectionId: pulumi.Input<string>;
+    isEnabled: pulumi.Input<boolean>;
+    serviceDeskProjectName: pulumi.Input<string>;
 }
 
 export interface GetProjectsProjectReleaseCreationStrategy {
@@ -4801,7 +4802,7 @@ export interface GetSpacesSpace {
      */
     isTaskQueueStopped?: boolean;
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     name?: string;
     /**
@@ -4836,7 +4837,7 @@ export interface GetSpacesSpaceArgs {
      */
     isTaskQueueStopped?: pulumi.Input<boolean>;
     /**
-     * The name of this resource.
+     * The name of this resource, no more than 20 characters long
      */
     name?: pulumi.Input<string>;
     /**
@@ -5267,15 +5268,6 @@ export interface GetTeamsTeamArgs {
     users?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
-export interface GetTeamsTeamExternalSecurityGroupArgs {
-    displayIdAndName?: pulumi.Input<boolean>;
-    displayName?: pulumi.Input<string>;
-    /**
-     * An auto-generated identifier that includes the timestamp when this data source was last modified.
-     */
-    id?: pulumi.Input<string>;
-}
-
 export interface GetTeamsTeamExternalSecurityGroup {
     displayIdAndName?: boolean;
     displayName?: string;
@@ -5283,6 +5275,15 @@ export interface GetTeamsTeamExternalSecurityGroup {
      * An auto-generated identifier that includes the timestamp when this data source was last modified.
      */
     id?: string;
+}
+
+export interface GetTeamsTeamExternalSecurityGroupArgs {
+    displayIdAndName?: pulumi.Input<boolean>;
+    displayName?: pulumi.Input<string>;
+    /**
+     * An auto-generated identifier that includes the timestamp when this data source was last modified.
+     */
+    id?: pulumi.Input<string>;
 }
 
 export interface GetTenantsTenant {
@@ -5561,14 +5562,14 @@ export interface GetVariablesVariablePromptArgs {
     label?: pulumi.Input<string>;
 }
 
-export interface GetVariablesVariablePromptDisplaySettingsArgs {
-    controlType: pulumi.Input<string>;
-    selectOptions?: pulumi.Input<pulumi.Input<inputs.GetVariablesVariablePromptDisplaySettingsSelectOptionArgs>[]>;
-}
-
 export interface GetVariablesVariablePromptDisplaySettings {
     controlType: string;
     selectOptions?: inputs.GetVariablesVariablePromptDisplaySettingsSelectOption[];
+}
+
+export interface GetVariablesVariablePromptDisplaySettingsArgs {
+    controlType: pulumi.Input<string>;
+    selectOptions?: pulumi.Input<pulumi.Input<inputs.GetVariablesVariablePromptDisplaySettingsSelectOptionArgs>[]>;
 }
 
 export interface GetVariablesVariablePromptDisplaySettingsSelectOption {
@@ -7113,4 +7114,3 @@ export interface VariableScope {
      */
     tenantTags?: pulumi.Input<pulumi.Input<string>[]>;
 }
-

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getGitCredentials(args?: GetGitCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetGitCredentialsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getGitCredentials:getGitCredentials", {
         "gitCredentials": args.gitCredentials,
         "name": args.name,
@@ -70,9 +68,11 @@ export interface GetGitCredentialsResult {
      */
     readonly take?: number;
 }
-
+/**
+ * Provides information about existing GitCredentials.
+ */
 export function getGitCredentialsOutput(args?: GetGitCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGitCredentialsResult> {
-    return pulumi.output(args).apply(a => getGitCredentials(a, opts))
+    return pulumi.output(args).apply((a: any) => getGitCredentials(a, opts))
 }
 
 /**

@@ -13,9 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = new octopusdeploy.AzureSubscriptionAccount("example", {
- *     subscriptionId: "00000000-0000-0000-0000-000000000000",
- * });
+ * const example = new octopusdeploy.AzureSubscriptionAccount("example", {subscriptionId: "00000000-0000-0000-0000-000000000000"});
  * ```
  *
  * ## Import
@@ -134,8 +132,8 @@ export class AzureSubscriptionAccount extends pulumi.CustomResource {
                 throw new Error("Missing required property 'subscriptionId'");
             }
             resourceInputs["azureEnvironment"] = args ? args.azureEnvironment : undefined;
-            resourceInputs["certificate"] = args ? args.certificate : undefined;
-            resourceInputs["certificateThumbprint"] = args ? args.certificateThumbprint : undefined;
+            resourceInputs["certificate"] = args?.certificate ? pulumi.secret(args.certificate) : undefined;
+            resourceInputs["certificateThumbprint"] = args?.certificateThumbprint ? pulumi.secret(args.certificateThumbprint) : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["managementEndpoint"] = args ? args.managementEndpoint : undefined;
@@ -148,6 +146,8 @@ export class AzureSubscriptionAccount extends pulumi.CustomResource {
             resourceInputs["tenants"] = args ? args.tenants : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["certificate", "certificateThumbprint"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AzureSubscriptionAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

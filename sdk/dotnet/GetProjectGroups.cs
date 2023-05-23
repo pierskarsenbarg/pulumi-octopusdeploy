@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -43,7 +44,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetProjectGroupsResult> InvokeAsync(GetProjectGroupsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetProjectGroupsResult>("octopusdeploy:index/getProjectGroups:getProjectGroups", args ?? new GetProjectGroupsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectGroupsResult>("octopusdeploy:index/getProjectGroups:getProjectGroups", args ?? new GetProjectGroupsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing project groups.
@@ -54,6 +55,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -77,7 +79,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetProjectGroupsResult> Invoke(GetProjectGroupsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetProjectGroupsResult>("octopusdeploy:index/getProjectGroups:getProjectGroups", args ?? new GetProjectGroupsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectGroupsResult>("octopusdeploy:index/getProjectGroups:getProjectGroups", args ?? new GetProjectGroupsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -13,9 +13,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const example = new octopusdeploy.GcpAccount("example", {
- *     jsonKey: "json-key",
- * });
+ * const example = new octopusdeploy.GcpAccount("example", {jsonKey: "json-key"});
  * ```
  *
  * ## Import
@@ -113,7 +111,7 @@ export class GcpAccount extends pulumi.CustomResource {
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
-            resourceInputs["jsonKey"] = args ? args.jsonKey : undefined;
+            resourceInputs["jsonKey"] = args?.jsonKey ? pulumi.secret(args.jsonKey) : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["spaceId"] = args ? args.spaceId : undefined;
             resourceInputs["tenantTags"] = args ? args.tenantTags : undefined;
@@ -121,6 +119,8 @@ export class GcpAccount extends pulumi.CustomResource {
             resourceInputs["tenants"] = args ? args.tenants : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["jsonKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(GcpAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing library variable sets.
         /// </summary>
         public static Task<GetLibraryVariableSetsResult> InvokeAsync(GetLibraryVariableSetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetLibraryVariableSetsResult>("octopusdeploy:index/getLibraryVariableSets:getLibraryVariableSets", args ?? new GetLibraryVariableSetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetLibraryVariableSetsResult>("octopusdeploy:index/getLibraryVariableSets:getLibraryVariableSets", args ?? new GetLibraryVariableSetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing library variable sets.
         /// </summary>
         public static Output<GetLibraryVariableSetsResult> Invoke(GetLibraryVariableSetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetLibraryVariableSetsResult>("octopusdeploy:index/getLibraryVariableSets:getLibraryVariableSets", args ?? new GetLibraryVariableSetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetLibraryVariableSetsResult>("octopusdeploy:index/getLibraryVariableSets:getLibraryVariableSets", args ?? new GetLibraryVariableSetsInvokeArgs(), options.WithDefaults());
     }
 
 

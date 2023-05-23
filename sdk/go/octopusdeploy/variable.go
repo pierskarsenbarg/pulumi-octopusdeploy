@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -55,6 +55,17 @@ func NewVariable(ctx *pulumi.Context,
 	if args.Type == nil {
 		return nil, errors.New("invalid value for required argument 'Type'")
 	}
+	if args.PgpKey != nil {
+		args.PgpKey = pulumi.ToSecret(args.PgpKey).(pulumi.StringPtrInput)
+	}
+	if args.SensitiveValue != nil {
+		args.SensitiveValue = pulumi.ToSecret(args.SensitiveValue).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"pgpKey",
+		"sensitiveValue",
+	})
+	opts = append(opts, secrets)
 	var resource Variable
 	err := ctx.RegisterResource("octopusdeploy:index/variable:Variable", name, args, &resource, opts...)
 	if err != nil {

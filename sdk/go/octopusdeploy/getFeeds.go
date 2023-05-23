@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetFeeds(ctx, &GetFeedsArgs{
+//			_, err := octopusdeploy.GetFeeds(ctx, &octopusdeploy.GetFeedsArgs{
 //				FeedType: pulumi.StringRef("NuGet"),
 //				Ids: []string{
 //					"Feeds-123",

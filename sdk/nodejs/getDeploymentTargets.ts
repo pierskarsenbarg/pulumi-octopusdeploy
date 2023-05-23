@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getDeploymentTargets(args?: GetDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getDeploymentTargets:getDeploymentTargets", {
         "communicationStyles": args.communicationStyles,
         "deploymentId": args.deploymentId,
@@ -178,9 +176,11 @@ export interface GetDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing deployment targets.
+ */
 export function getDeploymentTargetsOutput(args?: GetDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getDeploymentTargets(a, opts))
 }
 
 /**

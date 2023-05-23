@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetCertificates(ctx, &GetCertificatesArgs{
+//			_, err := octopusdeploy.GetCertificates(ctx, &octopusdeploy.GetCertificatesArgs{
 //				Archived: pulumi.StringRef("false"),
 //				Ids: []string{
 //					"Certificates-123",

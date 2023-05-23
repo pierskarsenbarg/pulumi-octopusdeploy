@@ -15,20 +15,20 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about an existing space.
         /// </summary>
         public static Task<GetSpaceResult> InvokeAsync(GetSpaceArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpaceResult>("octopusdeploy:index/getSpace:getSpace", args ?? new GetSpaceArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpaceResult>("octopusdeploy:index/getSpace:getSpace", args ?? new GetSpaceArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about an existing space.
         /// </summary>
         public static Output<GetSpaceResult> Invoke(GetSpaceInvokeArgs args, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpaceResult>("octopusdeploy:index/getSpace:getSpace", args ?? new GetSpaceInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpaceResult>("octopusdeploy:index/getSpace:getSpace", args ?? new GetSpaceInvokeArgs(), options.WithDefaults());
     }
 
 
     public sealed class GetSpaceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
@@ -42,7 +42,7 @@ namespace Pulumi.Octopusdeploy
     public sealed class GetSpaceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.Octopusdeploy
         /// </summary>
         public readonly bool IsTaskQueueStopped;
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         public readonly string Name;
         /// <summary>

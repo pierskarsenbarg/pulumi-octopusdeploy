@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing GitCredentials.
         /// </summary>
         public static Task<GetGitCredentialsResult> InvokeAsync(GetGitCredentialsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetGitCredentialsResult>("octopusdeploy:index/getGitCredentials:getGitCredentials", args ?? new GetGitCredentialsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetGitCredentialsResult>("octopusdeploy:index/getGitCredentials:getGitCredentials", args ?? new GetGitCredentialsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing GitCredentials.
         /// </summary>
         public static Output<GetGitCredentialsResult> Invoke(GetGitCredentialsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetGitCredentialsResult>("octopusdeploy:index/getGitCredentials:getGitCredentials", args ?? new GetGitCredentialsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetGitCredentialsResult>("octopusdeploy:index/getGitCredentials:getGitCredentials", args ?? new GetGitCredentialsInvokeArgs(), options.WithDefaults());
     }
 
 

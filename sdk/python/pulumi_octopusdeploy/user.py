@@ -393,12 +393,14 @@ class User(pulumi.CustomResource):
             __props__.__dict__["identities"] = identities
             __props__.__dict__["is_active"] = is_active
             __props__.__dict__["is_service"] = is_service
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
-            __props__.__dict__["username"] = username
+            __props__.__dict__["username"] = None if username is None else pulumi.Output.secret(username)
             __props__.__dict__["can_password_be_edited"] = None
             __props__.__dict__["is_requestor"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password", "username"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(User, __self__).__init__(
             'octopusdeploy:index/user:User',
             resource_name,

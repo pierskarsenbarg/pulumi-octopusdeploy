@@ -385,12 +385,14 @@ class GcpAccount(pulumi.CustomResource):
             __props__.__dict__["environments"] = environments
             if json_key is None and not opts.urn:
                 raise TypeError("Missing required property 'json_key'")
-            __props__.__dict__["json_key"] = json_key
+            __props__.__dict__["json_key"] = None if json_key is None else pulumi.Output.secret(json_key)
             __props__.__dict__["name"] = name
             __props__.__dict__["space_id"] = space_id
             __props__.__dict__["tenant_tags"] = tenant_tags
             __props__.__dict__["tenanted_deployment_participation"] = tenanted_deployment_participation
             __props__.__dict__["tenants"] = tenants
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["jsonKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(GcpAccount, __self__).__init__(
             'octopusdeploy:index/gcpAccount:GcpAccount',
             resource_name,

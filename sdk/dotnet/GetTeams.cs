@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing users.
         /// </summary>
         public static Task<GetTeamsResult> InvokeAsync(GetTeamsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTeamsResult>("octopusdeploy:index/getTeams:getTeams", args ?? new GetTeamsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTeamsResult>("octopusdeploy:index/getTeams:getTeams", args ?? new GetTeamsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing users.
         /// </summary>
         public static Output<GetTeamsResult> Invoke(GetTeamsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTeamsResult>("octopusdeploy:index/getTeams:getTeams", args ?? new GetTeamsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTeamsResult>("octopusdeploy:index/getTeams:getTeams", args ?? new GetTeamsInvokeArgs(), options.WithDefaults());
     }
 
 

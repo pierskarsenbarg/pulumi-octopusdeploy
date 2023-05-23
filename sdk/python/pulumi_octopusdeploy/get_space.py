@@ -83,7 +83,7 @@ class GetSpaceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of this resource.
+        The name of this resource, no more than 20 characters long
         """
         return pulumi.get(self, "name")
 
@@ -134,7 +134,7 @@ def get_space(name: Optional[str] = None,
     Provides information about an existing space.
 
 
-    :param str name: The name of this resource.
+    :param str name: The name of this resource, no more than 20 characters long
     """
     __args__ = dict()
     __args__['name'] = name
@@ -159,6 +159,6 @@ def get_space_output(name: Optional[pulumi.Input[str]] = None,
     Provides information about an existing space.
 
 
-    :param str name: The name of this resource.
+    :param str name: The name of this resource, no more than 20 characters long
     """
     ...

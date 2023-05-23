@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetProjects(ctx, &GetProjectsArgs{
+//			_, err := octopusdeploy.GetProjects(ctx, &octopusdeploy.GetProjectsArgs{
 //				ClonedFromProjectId: pulumi.StringRef("Projects-456"),
 //				Ids: []string{
 //					"Projects-123",

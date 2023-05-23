@@ -18,11 +18,21 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("archived", required: true)]
         public Input<string> Archived { get; set; } = null!;
 
+        [Input("certificateData", required: true)]
+        private Input<string>? _certificateData;
+
         /// <summary>
         /// The encoded data of the certificate.
         /// </summary>
-        [Input("certificateData", required: true)]
-        public Input<string> CertificateData { get; set; } = null!;
+        public Input<string>? CertificateData
+        {
+            get => _certificateData;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _certificateData = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// Specifies the archive file format used for storing cryptography objects in the certificate. Valid formats are `Der`, `Pem`, `Pkcs12`, or `Unknown`.
@@ -84,11 +94,21 @@ namespace Pulumi.Octopusdeploy.Inputs
         [Input("notes", required: true)]
         public Input<string> Notes { get; set; } = null!;
 
+        [Input("password", required: true)]
+        private Input<string>? _password;
+
         /// <summary>
         /// The password associated with this resource.
         /// </summary>
-        [Input("password", required: true)]
-        public Input<string> Password { get; set; } = null!;
+        public Input<string>? Password
+        {
+            get => _password;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _password = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("replacedBy", required: true)]
         public Input<string> ReplacedBy { get; set; } = null!;

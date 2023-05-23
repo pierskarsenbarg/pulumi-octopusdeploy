@@ -63,7 +63,7 @@ type Space struct {
 	IsDefault pulumi.BoolPtrOutput `pulumi:"isDefault"`
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped pulumi.BoolPtrOutput `pulumi:"isTaskQueueStopped"`
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique slug of this space.
 	Slug pulumi.StringOutput `pulumi:"slug"`
@@ -108,7 +108,7 @@ type spaceState struct {
 	IsDefault *bool `pulumi:"isDefault"`
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped *bool `pulumi:"isTaskQueueStopped"`
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name *string `pulumi:"name"`
 	// The unique slug of this space.
 	Slug *string `pulumi:"slug"`
@@ -125,7 +125,7 @@ type SpaceState struct {
 	IsDefault pulumi.BoolPtrInput
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped pulumi.BoolPtrInput
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name pulumi.StringPtrInput
 	// The unique slug of this space.
 	Slug pulumi.StringPtrInput
@@ -146,7 +146,7 @@ type spaceArgs struct {
 	IsDefault *bool `pulumi:"isDefault"`
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped *bool `pulumi:"isTaskQueueStopped"`
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name *string `pulumi:"name"`
 	// The unique slug of this space.
 	Slug *string `pulumi:"slug"`
@@ -164,7 +164,7 @@ type SpaceArgs struct {
 	IsDefault pulumi.BoolPtrInput
 	// Specifies the status of the task queue for this space.
 	IsTaskQueueStopped pulumi.BoolPtrInput
-	// The name of this resource.
+	// The name of this resource, no more than 20 characters long
 	Name pulumi.StringPtrInput
 	// The unique slug of this space.
 	Slug pulumi.StringPtrInput
@@ -276,7 +276,7 @@ func (o SpaceOutput) IsTaskQueueStopped() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Space) pulumi.BoolPtrOutput { return v.IsTaskQueueStopped }).(pulumi.BoolPtrOutput)
 }
 
-// The name of this resource.
+// The name of this resource, no more than 20 characters long
 func (o SpaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Space) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

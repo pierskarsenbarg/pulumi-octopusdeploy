@@ -19,7 +19,12 @@ namespace Pulumi.Octopusdeploy.Inputs
         public string AadCredentialType { get; set; } = null!;
 
         [Input("aadUserCredentialPassword", required: true)]
-        public string AadUserCredentialPassword { get; set; } = null!;
+        private string? _aadUserCredentialPassword;
+        public string? AadUserCredentialPassword
+        {
+            get => _aadUserCredentialPassword;
+            set => _aadUserCredentialPassword = value;
+        }
 
         [Input("aadUserCredentialUsername", required: true)]
         public string AadUserCredentialUsername { get; set; } = null!;

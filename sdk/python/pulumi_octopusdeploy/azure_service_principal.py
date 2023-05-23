@@ -606,7 +606,7 @@ class AzureServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             if password is None and not opts.urn:
                 raise TypeError("Missing required property 'password'")
-            __props__.__dict__["password"] = password
+            __props__.__dict__["password"] = None if password is None else pulumi.Output.secret(password)
             __props__.__dict__["resource_manager_endpoint"] = resource_manager_endpoint
             __props__.__dict__["space_id"] = space_id
             if subscription_id is None and not opts.urn:
@@ -618,6 +618,8 @@ class AzureServicePrincipal(pulumi.CustomResource):
             __props__.__dict__["tenant_tags"] = tenant_tags
             __props__.__dict__["tenanted_deployment_participation"] = tenanted_deployment_participation
             __props__.__dict__["tenants"] = tenants
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["password"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AzureServicePrincipal, __self__).__init__(
             'octopusdeploy:index/azureServicePrincipal:AzureServicePrincipal',
             resource_name,

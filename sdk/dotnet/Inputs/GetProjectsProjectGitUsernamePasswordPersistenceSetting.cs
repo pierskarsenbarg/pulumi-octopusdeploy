@@ -19,7 +19,12 @@ namespace Pulumi.Octopusdeploy.Inputs
         public string? DefaultBranch { get; set; }
 
         [Input("password", required: true)]
-        public string Password { get; set; } = null!;
+        private string? _password;
+        public string? Password
+        {
+            get => _password;
+            set => _password = value;
+        }
 
         [Input("protectedBranches")]
         private List<string>? _protectedBranches;

@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -32,6 +33,7 @@ import * as utilities from "./utilities";
  *                 scriptBody: `  Write-Host 'Hello world, using PowerShell'
  *   #TODO: Experiment with steps of your own :)
  *   Write-Host '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+ *
  * `,
  *             }],
  *             startTrigger: "StartAfterPrevious",
@@ -50,6 +52,7 @@ import * as utilities from "./utilities";
  *                 scriptBody: `  echo 'Hello world, using Bash'
  *   #TODO: Experiment with steps of your own :)
  *   echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+ *
  * `,
  *             }],
  *             startTrigger: "StartWithPrevious",
@@ -57,7 +60,7 @@ import * as utilities from "./utilities";
  *     ],
  * });
  * // basic deployment process with 2 run a script steps as child steps
- * const childStepExample = new octopusdeploy.DeploymentProcess("child_step_example", {
+ * const childStepExample = new octopusdeploy.DeploymentProcess("childStepExample", {
  *     projectId: "Projects-123",
  *     steps: [{
  *         condition: "Success",
@@ -73,6 +76,7 @@ import * as utilities from "./utilities";
  *                 scriptBody: `  Write-Host 'Hello world, using PowerShell'
  *   #TODO: Experiment with steps of your own :)
  *   Write-Host '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+ *
  * `,
  *             },
  *             {
@@ -84,6 +88,7 @@ import * as utilities from "./utilities";
  *                 scriptBody: `  echo 'Hello world, using Bash'
  *   #TODO: Experiment with steps of your own :)
  *   echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+ *
  * `,
  *             },
  *         ],
@@ -92,7 +97,7 @@ import * as utilities from "./utilities";
  *     }],
  * });
  * // rolling deployment process with a step with 2 run a script steps as child steps deploying to 2 targets in parallel
- * const childStepRollingDeploymentExample = new octopusdeploy.DeploymentProcess("child_step_rolling_deployment_example", {
+ * const childStepRollingDeploymentExample = new octopusdeploy.DeploymentProcess("childStepRollingDeploymentExample", {
  *     projectId: "Projects-123",
  *     steps: [{
  *         condition: "Success",
@@ -108,6 +113,7 @@ import * as utilities from "./utilities";
  *                 scriptBody: `  Write-Host 'Hello world, using PowerShell'
  *   #TODO: Experiment with steps of your own :)
  *   Write-Host '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+ *
  * `,
  *             },
  *             {
@@ -119,6 +125,7 @@ import * as utilities from "./utilities";
  *                 scriptBody: `  echo 'Hello world, using Bash'
  *   #TODO: Experiment with steps of your own :)
  *   echo '[Learn more about the types of steps available in Octopus](https://g.octopushq.com/OnboardingAddStepsLearnMore)'
+ *
  * `,
  *             },
  *         ],

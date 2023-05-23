@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getWorkerPools(args?: GetWorkerPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetWorkerPoolsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getWorkerPools:getWorkerPools", {
         "ids": args.ids,
         "name": args.name,
@@ -88,9 +86,11 @@ export interface GetWorkerPoolsResult {
      */
     readonly workerPools: outputs.GetWorkerPoolsWorkerPool[];
 }
-
+/**
+ * Provides information about existing worker pools.
+ */
 export function getWorkerPoolsOutput(args?: GetWorkerPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkerPoolsResult> {
-    return pulumi.output(args).apply(a => getWorkerPools(a, opts))
+    return pulumi.output(args).apply((a: any) => getWorkerPools(a, opts))
 }
 
 /**

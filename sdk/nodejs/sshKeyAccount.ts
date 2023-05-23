@@ -122,15 +122,17 @@ export class SshKeyAccount extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateKeyFile"] = args ? args.privateKeyFile : undefined;
-            resourceInputs["privateKeyPassphrase"] = args ? args.privateKeyPassphrase : undefined;
+            resourceInputs["privateKeyFile"] = args?.privateKeyFile ? pulumi.secret(args.privateKeyFile) : undefined;
+            resourceInputs["privateKeyPassphrase"] = args?.privateKeyPassphrase ? pulumi.secret(args.privateKeyPassphrase) : undefined;
             resourceInputs["spaceId"] = args ? args.spaceId : undefined;
             resourceInputs["tenantTags"] = args ? args.tenantTags : undefined;
             resourceInputs["tenantedDeploymentParticipation"] = args ? args.tenantedDeploymentParticipation : undefined;
             resourceInputs["tenants"] = args ? args.tenants : undefined;
-            resourceInputs["username"] = args ? args.username : undefined;
+            resourceInputs["username"] = args?.username ? pulumi.secret(args.username) : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["privateKeyFile", "privateKeyPassphrase", "username"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(SshKeyAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

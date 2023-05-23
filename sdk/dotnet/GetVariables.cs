@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -33,7 +34,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetVariablesResult> InvokeAsync(GetVariablesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetVariablesResult>("octopusdeploy:index/getVariables:getVariables", args ?? new GetVariablesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetVariablesResult>("octopusdeploy:index/getVariables:getVariables", args ?? new GetVariablesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing variables.
@@ -44,6 +45,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -57,7 +59,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetVariablesResult> Invoke(GetVariablesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetVariablesResult>("octopusdeploy:index/getVariables:getVariables", args ?? new GetVariablesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetVariablesResult>("octopusdeploy:index/getVariables:getVariables", args ?? new GetVariablesInvokeArgs(), options.WithDefaults());
     }
 
 

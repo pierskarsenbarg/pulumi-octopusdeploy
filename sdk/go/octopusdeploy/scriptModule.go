@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -29,7 +29,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := octopusdeploy.NewScriptModule(ctx, "example", &octopusdeploy.ScriptModuleArgs{
 //				Description: pulumi.String("A script module to use."),
-//				Script: &ScriptModuleScriptArgs{
+//				Script: &octopusdeploy.ScriptModuleScriptArgs{
 //					Body:   pulumi.String("function Say-Hello()\n{\n    Write-Output \"Hello, Octopus!\"\n}\n\n"),
 //					Syntax: pulumi.String("PowerShell"),
 //				},

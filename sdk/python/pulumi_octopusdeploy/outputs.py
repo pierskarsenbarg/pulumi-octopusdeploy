@@ -25785,7 +25785,7 @@ class GetSpacesSpaceResult(dict):
         :param str id: The unique ID for this resource.
         :param bool is_default: Specifies if this space is the default space in Octopus.
         :param bool is_task_queue_stopped: Specifies the status of the task queue for this space.
-        :param str name: The name of this resource.
+        :param str name: The name of this resource, no more than 20 characters long
         :param str slug: The unique slug of this space.
         :param Sequence[str] space_managers_team_members: A list of user IDs designated to be managers of this space.
         :param Sequence[str] space_managers_teams: A list of team IDs designated to be managers of this space.
@@ -25835,7 +25835,7 @@ class GetSpacesSpaceResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of this resource.
+        The name of this resource, no more than 20 characters long
         """
         return pulumi.get(self, "name")
 

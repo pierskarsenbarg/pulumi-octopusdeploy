@@ -14,6 +14,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -107,6 +108,10 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -190,11 +195,21 @@ namespace Pulumi.Octopusdeploy
             set => _tenants = value;
         }
 
+        [Input("token", required: true)]
+        private Input<string>? _token;
+
         /// <summary>
         /// The token of this resource.
         /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public TokenAccountArgs()
         {
@@ -264,11 +279,21 @@ namespace Pulumi.Octopusdeploy
             set => _tenants = value;
         }
 
+        [Input("token")]
+        private Input<string>? _token;
+
         /// <summary>
         /// The token of this resource.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public TokenAccountState()
         {

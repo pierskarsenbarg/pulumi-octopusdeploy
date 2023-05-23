@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -43,7 +44,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetSpacesResult> InvokeAsync(GetSpacesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetSpacesResult>("octopusdeploy:index/getSpaces:getSpaces", args ?? new GetSpacesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesResult>("octopusdeploy:index/getSpaces:getSpaces", args ?? new GetSpacesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing spaces.
@@ -54,6 +55,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -77,7 +79,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetSpacesResult> Invoke(GetSpacesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetSpacesResult>("octopusdeploy:index/getSpaces:getSpaces", args ?? new GetSpacesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetSpacesResult>("octopusdeploy:index/getSpaces:getSpaces", args ?? new GetSpacesInvokeArgs(), options.WithDefaults());
     }
 
 

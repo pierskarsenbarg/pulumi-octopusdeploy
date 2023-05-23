@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetUsers(ctx, &GetUsersArgs{
+//			_, err := octopusdeploy.GetUsers(ctx, &octopusdeploy.GetUsersArgs{
 //				Ids: []string{
 //					"Users-123",
 //					"Users-321",

@@ -16,6 +16,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -116,6 +117,12 @@ namespace Pulumi.Octopusdeploy
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "privateKeyFile",
+                    "privateKeyPassphrase",
+                    "username",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -164,10 +171,28 @@ namespace Pulumi.Octopusdeploy
         public Input<string>? Name { get; set; }
 
         [Input("privateKeyFile", required: true)]
-        public Input<string> PrivateKeyFile { get; set; } = null!;
+        private Input<string>? _privateKeyFile;
+        public Input<string>? PrivateKeyFile
+        {
+            get => _privateKeyFile;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyFile = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("privateKeyPassphrase")]
-        public Input<string>? PrivateKeyPassphrase { get; set; }
+        private Input<string>? _privateKeyPassphrase;
+        public Input<string>? PrivateKeyPassphrase
+        {
+            get => _privateKeyPassphrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyPassphrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The space ID associated with this resource.
@@ -205,11 +230,21 @@ namespace Pulumi.Octopusdeploy
             set => _tenants = value;
         }
 
+        [Input("username", required: true)]
+        private Input<string>? _username;
+
         /// <summary>
         /// The username associated with this resource.
         /// </summary>
-        [Input("username", required: true)]
-        public Input<string> Username { get; set; } = null!;
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SshKeyAccountArgs()
         {
@@ -244,10 +279,28 @@ namespace Pulumi.Octopusdeploy
         public Input<string>? Name { get; set; }
 
         [Input("privateKeyFile")]
-        public Input<string>? PrivateKeyFile { get; set; }
+        private Input<string>? _privateKeyFile;
+        public Input<string>? PrivateKeyFile
+        {
+            get => _privateKeyFile;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyFile = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("privateKeyPassphrase")]
-        public Input<string>? PrivateKeyPassphrase { get; set; }
+        private Input<string>? _privateKeyPassphrase;
+        public Input<string>? PrivateKeyPassphrase
+        {
+            get => _privateKeyPassphrase;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _privateKeyPassphrase = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The space ID associated with this resource.
@@ -285,11 +338,21 @@ namespace Pulumi.Octopusdeploy
             set => _tenants = value;
         }
 
+        [Input("username")]
+        private Input<string>? _username;
+
         /// <summary>
         /// The username associated with this resource.
         /// </summary>
-        [Input("username")]
-        public Input<string>? Username { get; set; }
+        public Input<string>? Username
+        {
+            get => _username;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _username = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         public SshKeyAccountState()
         {

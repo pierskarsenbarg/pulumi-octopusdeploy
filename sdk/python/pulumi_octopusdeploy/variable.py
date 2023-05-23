@@ -477,20 +477,22 @@ class Variable(pulumi.CustomResource):
             __props__.__dict__["is_sensitive"] = is_sensitive
             __props__.__dict__["name"] = name
             __props__.__dict__["owner_id"] = owner_id
-            __props__.__dict__["pgp_key"] = pgp_key
+            __props__.__dict__["pgp_key"] = None if pgp_key is None else pulumi.Output.secret(pgp_key)
             if project_id is not None and not opts.urn:
                 warnings.warn("""This attribute is deprecated; please use owner_id instead.""", DeprecationWarning)
                 pulumi.log.warn("""project_id is deprecated: This attribute is deprecated; please use owner_id instead.""")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["prompt"] = prompt
             __props__.__dict__["scope"] = scope
-            __props__.__dict__["sensitive_value"] = sensitive_value
+            __props__.__dict__["sensitive_value"] = None if sensitive_value is None else pulumi.Output.secret(sensitive_value)
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
             __props__.__dict__["type"] = type
             __props__.__dict__["value"] = value
             __props__.__dict__["encrypted_value"] = None
             __props__.__dict__["key_fingerprint"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["pgpKey", "sensitiveValue"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Variable, __self__).__init__(
             'octopusdeploy:index/variable:Variable',
             resource_name,

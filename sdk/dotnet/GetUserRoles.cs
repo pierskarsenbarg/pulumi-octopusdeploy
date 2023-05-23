@@ -20,6 +20,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -43,7 +44,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Task<GetUserRolesResult> InvokeAsync(GetUserRolesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetUserRolesResult>("octopusdeploy:index/getUserRoles:getUserRoles", args ?? new GetUserRolesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserRolesResult>("octopusdeploy:index/getUserRoles:getUserRoles", args ?? new GetUserRolesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing user roles.
@@ -54,6 +55,7 @@ namespace Pulumi.Octopusdeploy
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
+        /// using System.Linq;
         /// using Pulumi;
         /// using Octopusdeploy = Pulumi.Octopusdeploy;
         /// 
@@ -77,7 +79,7 @@ namespace Pulumi.Octopusdeploy
         /// {{% /examples %}}
         /// </summary>
         public static Output<GetUserRolesResult> Invoke(GetUserRolesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetUserRolesResult>("octopusdeploy:index/getUserRoles:getUserRoles", args ?? new GetUserRolesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserRolesResult>("octopusdeploy:index/getUserRoles:getUserRoles", args ?? new GetUserRolesInvokeArgs(), options.WithDefaults());
     }
 
 

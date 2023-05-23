@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetSpaces(ctx, &GetSpacesArgs{
+//			_, err := octopusdeploy.GetSpaces(ctx, &octopusdeploy.GetSpacesArgs{
 //				Ids: []string{
 //					"Spaces-123",
 //					"Spaces-321",

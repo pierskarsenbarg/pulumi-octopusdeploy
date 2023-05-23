@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetAccounts(ctx, &GetAccountsArgs{
+//			_, err := octopusdeploy.GetAccounts(ctx, &octopusdeploy.GetAccountsArgs{
 //				AccountType: pulumi.StringRef("UsernamePassword"),
 //				Ids: []string{
 //					"Accounts-123",

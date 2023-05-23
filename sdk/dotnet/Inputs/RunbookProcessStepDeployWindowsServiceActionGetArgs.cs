@@ -47,7 +47,16 @@ namespace Pulumi.Octopusdeploy.Inputs
         public Input<string>? CustomAccountName { get; set; }
 
         [Input("customAccountPassword")]
-        public Input<string>? CustomAccountPassword { get; set; }
+        private Input<string>? _customAccountPassword;
+        public Input<string>? CustomAccountPassword
+        {
+            get => _customAccountPassword;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _customAccountPassword = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         [Input("dependencies")]
         public Input<string>? Dependencies { get; set; }

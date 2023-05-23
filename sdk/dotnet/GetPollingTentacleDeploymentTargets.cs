@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing polling tentacle deployment targets.
         /// </summary>
         public static Task<GetPollingTentacleDeploymentTargetsResult> InvokeAsync(GetPollingTentacleDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetPollingTentacleDeploymentTargetsResult>("octopusdeploy:index/getPollingTentacleDeploymentTargets:getPollingTentacleDeploymentTargets", args ?? new GetPollingTentacleDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetPollingTentacleDeploymentTargetsResult>("octopusdeploy:index/getPollingTentacleDeploymentTargets:getPollingTentacleDeploymentTargets", args ?? new GetPollingTentacleDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing polling tentacle deployment targets.
         /// </summary>
         public static Output<GetPollingTentacleDeploymentTargetsResult> Invoke(GetPollingTentacleDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetPollingTentacleDeploymentTargetsResult>("octopusdeploy:index/getPollingTentacleDeploymentTargets:getPollingTentacleDeploymentTargets", args ?? new GetPollingTentacleDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetPollingTentacleDeploymentTargetsResult>("octopusdeploy:index/getPollingTentacleDeploymentTargets:getPollingTentacleDeploymentTargets", args ?? new GetPollingTentacleDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -28,24 +28,24 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := octopusdeploy.NewLifecycle(ctx, "example", &octopusdeploy.LifecycleArgs{
 //				Description: pulumi.String("This is the default lifecycle."),
-//				Phases: LifecyclePhaseArray{
-//					&LifecyclePhaseArgs{
+//				Phases: octopusdeploy.LifecyclePhaseArray{
+//					&octopusdeploy.LifecyclePhaseArgs{
 //						AutomaticDeploymentTargets: pulumi.StringArray{
 //							pulumi.String("Environments-321"),
 //						},
 //						Name: pulumi.String("foo"),
-//						ReleaseRetentionPolicy: &LifecyclePhaseReleaseRetentionPolicyArgs{
+//						ReleaseRetentionPolicy: &octopusdeploy.LifecyclePhaseReleaseRetentionPolicyArgs{
 //							QuantityToKeep:    pulumi.Int(1),
 //							ShouldKeepForever: pulumi.Bool(true),
 //							Unit:              pulumi.String("Days"),
 //						},
-//						TentacleRetentionPolicy: &LifecyclePhaseTentacleRetentionPolicyArgs{
+//						TentacleRetentionPolicy: &octopusdeploy.LifecyclePhaseTentacleRetentionPolicyArgs{
 //							QuantityToKeep:    pulumi.Int(30),
 //							ShouldKeepForever: pulumi.Bool(false),
 //							Unit:              pulumi.String("Items"),
 //						},
 //					},
-//					&LifecyclePhaseArgs{
+//					&octopusdeploy.LifecyclePhaseArgs{
 //						IsOptionalPhase: pulumi.Bool(true),
 //						Name:            pulumi.String("bar"),
 //						OptionalDeploymentTargets: pulumi.StringArray{
@@ -53,12 +53,12 @@ import (
 //						},
 //					},
 //				},
-//				ReleaseRetentionPolicy: &LifecycleReleaseRetentionPolicyArgs{
+//				ReleaseRetentionPolicy: &octopusdeploy.LifecycleReleaseRetentionPolicyArgs{
 //					QuantityToKeep:    pulumi.Int(1),
 //					ShouldKeepForever: pulumi.Bool(true),
 //					Unit:              pulumi.String("Days"),
 //				},
-//				TentacleRetentionPolicy: &LifecycleTentacleRetentionPolicyArgs{
+//				TentacleRetentionPolicy: &octopusdeploy.LifecycleTentacleRetentionPolicyArgs{
 //					QuantityToKeep:    pulumi.Int(30),
 //					ShouldKeepForever: pulumi.Bool(false),
 //					Unit:              pulumi.String("Items"),

@@ -15,8 +15,9 @@ import * as utilities from "./utilities";
  *
  * const example = new octopusdeploy.Certificate("example", {
  *     certificateData: "a-base-64-encoded-string-representing-the-certificate-data",
- *     password: "###########", // required; get from secure environment/store
+ *     password: "###########",
  * });
+ * // required; get from secure environment/store
  * ```
  *
  * ## Import
@@ -160,7 +161,7 @@ export class Certificate extends pulumi.CustomResource {
                 throw new Error("Missing required property 'password'");
             }
             resourceInputs["archived"] = args ? args.archived : undefined;
-            resourceInputs["certificateData"] = args ? args.certificateData : undefined;
+            resourceInputs["certificateData"] = args?.certificateData ? pulumi.secret(args.certificateData) : undefined;
             resourceInputs["certificateDataFormat"] = args ? args.certificateDataFormat : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["hasPrivateKey"] = args ? args.hasPrivateKey : undefined;
@@ -172,7 +173,7 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["notAfter"] = args ? args.notAfter : undefined;
             resourceInputs["notBefore"] = args ? args.notBefore : undefined;
             resourceInputs["notes"] = args ? args.notes : undefined;
-            resourceInputs["password"] = args ? args.password : undefined;
+            resourceInputs["password"] = args?.password ? pulumi.secret(args.password) : undefined;
             resourceInputs["replacedBy"] = args ? args.replacedBy : undefined;
             resourceInputs["selfSigned"] = args ? args.selfSigned : undefined;
             resourceInputs["serialNumber"] = args ? args.serialNumber : undefined;
@@ -188,6 +189,8 @@ export class Certificate extends pulumi.CustomResource {
             resourceInputs["version"] = args ? args.version : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["certificateData", "password"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Certificate.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -441,15 +441,17 @@ class SshKeyAccount(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             if private_key_file is None and not opts.urn:
                 raise TypeError("Missing required property 'private_key_file'")
-            __props__.__dict__["private_key_file"] = private_key_file
-            __props__.__dict__["private_key_passphrase"] = private_key_passphrase
+            __props__.__dict__["private_key_file"] = None if private_key_file is None else pulumi.Output.secret(private_key_file)
+            __props__.__dict__["private_key_passphrase"] = None if private_key_passphrase is None else pulumi.Output.secret(private_key_passphrase)
             __props__.__dict__["space_id"] = space_id
             __props__.__dict__["tenant_tags"] = tenant_tags
             __props__.__dict__["tenanted_deployment_participation"] = tenanted_deployment_participation
             __props__.__dict__["tenants"] = tenants
             if username is None and not opts.urn:
                 raise TypeError("Missing required property 'username'")
-            __props__.__dict__["username"] = username
+            __props__.__dict__["username"] = None if username is None else pulumi.Output.secret(username)
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKeyFile", "privateKeyPassphrase", "username"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SshKeyAccount, __self__).__init__(
             'octopusdeploy:index/sshKeyAccount:SshKeyAccount',
             resource_name,

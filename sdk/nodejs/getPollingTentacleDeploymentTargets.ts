@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -10,11 +11,8 @@ import * as utilities from "./utilities";
  */
 export function getPollingTentacleDeploymentTargets(args?: GetPollingTentacleDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetPollingTentacleDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getPollingTentacleDeploymentTargets:getPollingTentacleDeploymentTargets", {
         "deploymentId": args.deploymentId,
         "environments": args.environments,
@@ -169,9 +167,11 @@ export interface GetPollingTentacleDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing polling tentacle deployment targets.
+ */
 export function getPollingTentacleDeploymentTargetsOutput(args?: GetPollingTentacleDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPollingTentacleDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getPollingTentacleDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getPollingTentacleDeploymentTargets(a, opts))
 }
 
 /**

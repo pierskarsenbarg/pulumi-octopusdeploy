@@ -2,7 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
-import { input as inputs, output as outputs } from "./types";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
 import * as utilities from "./utilities";
 
 /**
@@ -14,16 +15,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as octopusdeploy from "@pulumi/octopusdeploy";
  *
- * const listeningTentacleDeploymentTargets = pulumi.output(octopusdeploy.getListeningTentacleDeploymentTargets());
+ * const listeningTentacleDeploymentTargets = octopusdeploy.getListeningTentacleDeploymentTargets({});
  * ```
  */
 export function getListeningTentacleDeploymentTargets(args?: GetListeningTentacleDeploymentTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetListeningTentacleDeploymentTargetsResult> {
     args = args || {};
-    if (!opts) {
-        opts = {}
-    }
 
-    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("octopusdeploy:index/getListeningTentacleDeploymentTargets:getListeningTentacleDeploymentTargets", {
         "deploymentId": args.deploymentId,
         "environments": args.environments,
@@ -178,9 +176,20 @@ export interface GetListeningTentacleDeploymentTargetsResult {
      */
     readonly thumbprint?: string;
 }
-
+/**
+ * Provides information about existing listening tentacle deployment targets.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as octopusdeploy from "@pulumi/octopusdeploy";
+ *
+ * const listeningTentacleDeploymentTargets = octopusdeploy.getListeningTentacleDeploymentTargets({});
+ * ```
+ */
 export function getListeningTentacleDeploymentTargetsOutput(args?: GetListeningTentacleDeploymentTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListeningTentacleDeploymentTargetsResult> {
-    return pulumi.output(args).apply(a => getListeningTentacleDeploymentTargets(a, opts))
+    return pulumi.output(args).apply((a: any) => getListeningTentacleDeploymentTargets(a, opts))
 }
 
 /**

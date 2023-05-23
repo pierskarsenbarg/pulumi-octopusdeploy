@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing tenants.
         /// </summary>
         public static Task<GetTenantsResult> InvokeAsync(GetTenantsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetTenantsResult>("octopusdeploy:index/getTenants:getTenants", args ?? new GetTenantsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetTenantsResult>("octopusdeploy:index/getTenants:getTenants", args ?? new GetTenantsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing tenants.
         /// </summary>
         public static Output<GetTenantsResult> Invoke(GetTenantsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetTenantsResult>("octopusdeploy:index/getTenants:getTenants", args ?? new GetTenantsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetTenantsResult>("octopusdeploy:index/getTenants:getTenants", args ?? new GetTenantsInvokeArgs(), options.WithDefaults());
     }
 
 

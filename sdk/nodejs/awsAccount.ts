@@ -15,8 +15,9 @@ import * as utilities from "./utilities";
  *
  * const example = new octopusdeploy.AwsAccount("example", {
  *     accessKey: "access-key",
- *     secretKey: "###########", // required; get from secure environment/store
+ *     secretKey: "###########",
  * });
+ * // required; get from secure environment/store
  * ```
  *
  * ## Import
@@ -124,13 +125,15 @@ export class AwsAccount extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["environments"] = args ? args.environments : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["secretKey"] = args ? args.secretKey : undefined;
+            resourceInputs["secretKey"] = args?.secretKey ? pulumi.secret(args.secretKey) : undefined;
             resourceInputs["spaceId"] = args ? args.spaceId : undefined;
             resourceInputs["tenantTags"] = args ? args.tenantTags : undefined;
             resourceInputs["tenantedDeploymentParticipation"] = args ? args.tenantedDeploymentParticipation : undefined;
             resourceInputs["tenants"] = args ? args.tenants : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["secretKey"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(AwsAccount.__pulumiType, name, resourceInputs, opts);
     }
 }

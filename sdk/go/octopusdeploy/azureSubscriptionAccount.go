@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -90,6 +90,17 @@ func NewAzureSubscriptionAccount(ctx *pulumi.Context,
 	if args.SubscriptionId == nil {
 		return nil, errors.New("invalid value for required argument 'SubscriptionId'")
 	}
+	if args.Certificate != nil {
+		args.Certificate = pulumi.ToSecret(args.Certificate).(pulumi.StringPtrInput)
+	}
+	if args.CertificateThumbprint != nil {
+		args.CertificateThumbprint = pulumi.ToSecret(args.CertificateThumbprint).(pulumi.StringPtrInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"certificate",
+		"certificateThumbprint",
+	})
+	opts = append(opts, secrets)
 	var resource AzureSubscriptionAccount
 	err := ctx.RegisterResource("octopusdeploy:index/azureSubscriptionAccount:AzureSubscriptionAccount", name, args, &resource, opts...)
 	if err != nil {

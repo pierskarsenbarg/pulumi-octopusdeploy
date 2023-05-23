@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pkg/errors"
+	"errors"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -83,6 +83,13 @@ func NewAwsAccount(ctx *pulumi.Context,
 	if args.SecretKey == nil {
 		return nil, errors.New("invalid value for required argument 'SecretKey'")
 	}
+	if args.SecretKey != nil {
+		args.SecretKey = pulumi.ToSecret(args.SecretKey).(pulumi.StringInput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"secretKey",
+	})
+	opts = append(opts, secrets)
 	var resource AwsAccount
 	err := ctx.RegisterResource("octopusdeploy:index/awsAccount:AwsAccount", name, args, &resource, opts...)
 	if err != nil {

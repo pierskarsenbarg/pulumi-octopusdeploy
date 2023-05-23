@@ -16,6 +16,7 @@ namespace Pulumi.Octopusdeploy
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
+    /// using System.Linq;
     /// using Pulumi;
     /// using Octopusdeploy = Pulumi.Octopusdeploy;
     /// 
@@ -68,7 +69,7 @@ namespace Pulumi.Octopusdeploy
         public Output<bool?> IsTaskQueueStopped { get; private set; } = null!;
 
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -156,7 +157,7 @@ namespace Pulumi.Octopusdeploy
         public Input<bool>? IsTaskQueueStopped { get; set; }
 
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -218,7 +219,7 @@ namespace Pulumi.Octopusdeploy
         public Input<bool>? IsTaskQueueStopped { get; set; }
 
         /// <summary>
-        /// The name of this resource.
+        /// The name of this resource, no more than 20 characters long
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

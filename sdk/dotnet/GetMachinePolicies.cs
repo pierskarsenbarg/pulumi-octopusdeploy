@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing machine policies.
         /// </summary>
         public static Task<GetMachinePoliciesResult> InvokeAsync(GetMachinePoliciesArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetMachinePoliciesResult>("octopusdeploy:index/getMachinePolicies:getMachinePolicies", args ?? new GetMachinePoliciesArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetMachinePoliciesResult>("octopusdeploy:index/getMachinePolicies:getMachinePolicies", args ?? new GetMachinePoliciesArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing machine policies.
         /// </summary>
         public static Output<GetMachinePoliciesResult> Invoke(GetMachinePoliciesInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetMachinePoliciesResult>("octopusdeploy:index/getMachinePolicies:getMachinePolicies", args ?? new GetMachinePoliciesInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetMachinePoliciesResult>("octopusdeploy:index/getMachinePolicies:getMachinePolicies", args ?? new GetMachinePoliciesInvokeArgs(), options.WithDefaults());
     }
 
 

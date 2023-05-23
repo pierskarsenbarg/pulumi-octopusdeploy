@@ -316,8 +316,10 @@ class AwsElasticContainerRegistry(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             if secret_key is None and not opts.urn:
                 raise TypeError("Missing required property 'secret_key'")
-            __props__.__dict__["secret_key"] = secret_key
+            __props__.__dict__["secret_key"] = None if secret_key is None else pulumi.Output.secret(secret_key)
             __props__.__dict__["space_id"] = space_id
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["secretKey"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(AwsElasticContainerRegistry, __self__).__init__(
             'octopusdeploy:index/awsElasticContainerRegistry:AwsElasticContainerRegistry',
             resource_name,

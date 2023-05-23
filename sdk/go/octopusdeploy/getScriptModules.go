@@ -26,7 +26,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := octopusdeploy.GetScriptModules(ctx, &GetScriptModulesArgs{
+//			_, err := octopusdeploy.GetScriptModules(ctx, &octopusdeploy.GetScriptModulesArgs{
 //				Ids: []string{
 //					"LibraryVariableSets-123",
 //					"LibraryVariableSets-321",

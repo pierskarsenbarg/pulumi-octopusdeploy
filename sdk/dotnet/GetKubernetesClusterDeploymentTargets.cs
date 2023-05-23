@@ -15,13 +15,13 @@ namespace Pulumi.Octopusdeploy
         /// Provides information about existing Kubernetes cluster deployment targets.
         /// </summary>
         public static Task<GetKubernetesClusterDeploymentTargetsResult> InvokeAsync(GetKubernetesClusterDeploymentTargetsArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClusterDeploymentTargetsResult>("octopusdeploy:index/getKubernetesClusterDeploymentTargets:getKubernetesClusterDeploymentTargets", args ?? new GetKubernetesClusterDeploymentTargetsArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesClusterDeploymentTargetsResult>("octopusdeploy:index/getKubernetesClusterDeploymentTargets:getKubernetesClusterDeploymentTargets", args ?? new GetKubernetesClusterDeploymentTargetsArgs(), options.WithDefaults());
 
         /// <summary>
         /// Provides information about existing Kubernetes cluster deployment targets.
         /// </summary>
         public static Output<GetKubernetesClusterDeploymentTargetsResult> Invoke(GetKubernetesClusterDeploymentTargetsInvokeArgs? args = null, InvokeOptions? options = null)
-            => Pulumi.Deployment.Instance.Invoke<GetKubernetesClusterDeploymentTargetsResult>("octopusdeploy:index/getKubernetesClusterDeploymentTargets:getKubernetesClusterDeploymentTargets", args ?? new GetKubernetesClusterDeploymentTargetsInvokeArgs(), options.WithDefaults());
+            => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesClusterDeploymentTargetsResult>("octopusdeploy:index/getKubernetesClusterDeploymentTargets:getKubernetesClusterDeploymentTargets", args ?? new GetKubernetesClusterDeploymentTargetsInvokeArgs(), options.WithDefaults());
     }
 
 
