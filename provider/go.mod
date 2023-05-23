@@ -9,7 +9,7 @@ replace github.com/OctopusDeploy/terraform-provider-octopusdeploy => github.com/
 require (
 	github.com/OctopusDeploy/terraform-provider-octopusdeploy v0.12.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.3
-	github.com/pulumi/pulumi/sdk/v3 v3.66.0
+	github.com/pulumi/pulumi/sdk/v3 v3.68.0
 )
 
 require (
