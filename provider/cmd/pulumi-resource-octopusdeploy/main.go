@@ -19,9 +19,9 @@ package main
 import (
 	_ "embed"
 
+	octopusdeploy "github.com/pierskarsenbarg/pulumi-octopusdeploy/provider"
+	"github.com/pierskarsenbarg/pulumi-octopusdeploy/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	xyz "github.com/pulumi/pulumi-xyz/provider"
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
 )
 
 //go:embed schema-embed.json
@@ -29,5 +29,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("xyz", version.Version, xyz.Provider(), pulumiSchema)
+	tfbridge.Main("octopusdeploy", version.Version, octopusdeploy.Provider(), pulumiSchema)
 }
