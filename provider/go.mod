@@ -9,7 +9,7 @@ replace github.com/OctopusDeploy/terraform-provider-octopusdeploy => github.com/
 require (
 	github.com/OctopusDeploy/terraform-provider-octopusdeploy v0.12.2
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.47.3
-	github.com/pulumi/pulumi/sdk/v3 v3.66.0
+	github.com/pulumi/pulumi/sdk/v3 v3.72.2
 )
 
 require (
@@ -186,7 +186,7 @@ require (
 	github.com/pulumi/pulumi/pkg/v3 v3.66.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.0-20201211191010-ad4715e9285e // indirect
-	github.com/rivo/uniseg v0.2.0 // indirect
+	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.9.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
